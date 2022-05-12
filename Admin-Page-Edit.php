@@ -52,6 +52,7 @@
             <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
                 <a href="" class="navbar-brand p-0">
                     <h1 class="m-0"></i>CDMA<span class="fs-5 text-danger">2022</span></h1>
+                      
                     <!-- <img src="img/logo.png" alt="Logo"> -->
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -59,13 +60,13 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
-                        <a href="index.html" class="nav-item nav-link ">Home</a>
+                        <a href="index.php" class="nav-item nav-link ">Home</a>
                         <a href="#about" class="nav-item nav-link">About</a>
                         <a href="#Sponsors" class="nav-item nav-link">Sponsors</a>
-                        <a href="Speaker.html" class="nav-item nav-link">Speakers</a>
+                        <a href="Speaker.php" class="nav-item nav-link">Speakers</a>
                         <a href="#program" class="nav-item nav-link">Program</a>
                         <a href="#committees" class="nav-item nav-link">Committees</a>
-                        <a href="CAMERA-READY.html" class="nav-item nav-link">CameraReady</a>
+                        <a href="CAMERA-READY.php" class="nav-item nav-link">CameraReady</a>
                         <a href="#venue" class="nav-item nav-link">Venue</a>
                         <a href="#hotels" class="nav-item nav-link">Hotels</a>
                         <a href="#F.A.Qs" class="nav-item nav-link">F.A.Q's</a>
@@ -140,11 +141,17 @@
                         <div class="col-lg-6 text-center text-lg-start">
                             <h1 class="text-white mb-4 animated zoomIn">7<sup>TH</sup> INTERNATIONAL CONFERENCE ON
                                 DATA SCIENCE AND MACHINE LEARNING APPLICATIONS</h1>
+                                <div class="input-group mb-3">
+
+                                    <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
+                                 </div>   
                             <p class="text-white pb-3 animated zoomIn">01-03 March 2022, Prince Sultan University, Riyadh, KSA</p>
                             <a href="#registration" class="btn btn-light py-sm-3 px-sm-5 rounded-pill me-3 animated slideInLeft">Register</a>
                             <a href="#Contact Us" class="btn btn-outline-light py-sm-3 px-sm-5 rounded-pill animated slideInRight">Contact Us</a>
                         </div>
                         <div class="col-lg-6 text-center text-lg-start">
+                      
                             <img class="img-fluid bg-transparent animated zoomIn " src="img/cdma2022_logo-removebg-preview.png" alt="">
                         </div>
                     </div>
