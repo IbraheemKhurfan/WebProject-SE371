@@ -8,4 +8,22 @@ $event_year
 
 
 
+# Fouad Section Login, SignUp
+
+#SignUp
+$name = $_POST['name'];
+$name = $_POST['phone'];
+$name = $_POST['email'];
+$name = $_POST['password'];
+
+
+#Login
+$name = $_POST['fname'];
+$name = $_POST['fname'];
+$name = $_POST['fname'];
+$name = $_POST['fname'];
+$name = $_POST['fname'];
+$name = $_POST['fname'];
+
+
 ?>
