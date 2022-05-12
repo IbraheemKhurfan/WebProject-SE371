@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php include"var.php";?>
+
 <head>
     <meta charset="utf-8">
     <title>CDMA2022</title>
@@ -775,69 +775,94 @@ gallery[i].onclick = () =>{
                 <div class="section-title position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
                     <h6 class="position-relative d-inline text-primary ps-4">Our Labs</h6>
                     <h2 class="mt-2">Prince Sultan University Labs</h2>
+                    <button type="button" class="btn btn-primary" onclick="addingLab()">Add Lab </button>
                 </div>
-                <div id="Lab1" class="row g-4">
-                    <!-- Security Engineering Lab  -->
-                    <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.1s">
-                        <div class="service-item d-flex flex-column justify-content-center text-center rounded">
-                            <div class="service-icon flex-shrink-0">
-                                <img src="img/Labs/sel-removebg-preview.png" alt="SEL LAB">
+                <div id="labs">
+                    <div id="Lab1" class="row g-4">
+                        <!-- Security Engineering Lab  -->
+                        <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.1s">
+                            <div class="service-item d-flex flex-column justify-content-center text-center rounded">
+                                <div class="service-icon flex-shrink-0">
+                                    <img src="img/Labs/sel-removebg-preview.png" alt="SEL LAB">
+                                </div>
+                                <h5 class="mb-3">Security Engineering Lab</h5>
+                                <p>A research lab at Prince Sultan University. Aims to contribute significantly to providing educational, research, outreach, and partnering security services nationally and internationally.</p>
+                                <a class="btn px-3 mt-auto mx-auto" href="https://ric.psu.edu.sa/sel-lab.php">Read More</a>
                             </div>
-                            <h5 class="mb-3">Security Engineering Lab</h5>
-                            <p>A research lab at Prince Sultan University. Aims to contribute significantly to providing educational, research, outreach, and partnering security services nationally and internationally.</p>
-                            <a class="btn px-3 mt-auto mx-auto" href="https://ric.psu.edu.sa/sel-lab.php">Read More</a>
-                        </div>
                     </div>
-                    <!-- Artificial Intelligence And Data Analytics Lab  -->
-                    <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.3s">
-                        <div class="service-item d-flex flex-column justify-content-center text-center rounded">
-                            <div class="service-icon flex-shrink-0">
-                                <img src="img/Labs/aida-lab_1630216442-removebg-preview.png" alt="AIDA LAB">
+                        <!-- Artificial Intelligence And Data Analytics Lab  -->
+                        <div id="Lab2"  class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.3s">
+                            <div class="service-item d-flex flex-column justify-content-center text-center rounded">
+                                <div class="service-icon flex-shrink-0">
+                                    <img src="img/Labs/aida-lab_1630216442-removebg-preview.png" alt="AIDA LAB">
+                                </div>
+                                <h5 class="mb-3">Artificial Intelligence And Data Analytics Lab</h5>
+                                <p>First Interdisciplinary & Multidisciplinary Research Lab at Prince Sultan University,Riyadh,KSA</p>
+                                <a class="btn px-3 mt-auto mx-auto" href="https://ric.psu.edu.sa/aida-lab.php">Read More</a>
                             </div>
-                            <h5 class="mb-3">Artificial Intelligence And Data Analytics Lab</h5>
-                            <p>First Interdisciplinary & Multidisciplinary Research Lab at Prince Sultan University,Riyadh,KSA</p>
-                            <a class="btn px-3 mt-auto mx-auto" href="https://ric.psu.edu.sa/aida-lab.php">Read More</a>
                         </div>
-                    </div>
-                    <!-- EMERGING INTELLIGENT AUTONOMOUS SYSTEMS LAB  -->
-                    <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.6s">
-                        <div class="service-item d-flex flex-column justify-content-center text-center rounded">
-                            <div class="service-icon flex-shrink-0">
-                                <img src="img/Labs/eias-lab_1630216559-removebg-preview.png" alt="EIAS LAB">
+                        <!-- EMERGING INTELLIGENT AUTONOMOUS SYSTEMS LAB  -->
+                        <div id="Lab3"  class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.6s">
+                            <div class="service-item d-flex flex-column justify-content-center text-center rounded">
+                                <div class="service-icon flex-shrink-0">
+                                    <img src="img/Labs/eias-lab_1630216559-removebg-preview.png" alt="EIAS LAB">
+                                </div>
+                                <h5 class="mb-3">EMERGING INTELLIGENT AUTONOMOUS SYSTEMS LAB</h5>
+                                <p>A research lab at Prince Sultan University. Areas of interest include emerging intelligent autonomous systems data science and blockchain.</p>
+                                <a class="btn px-3 mt-auto mx-auto" href="https://ric.psu.edu.sa/eias-lab.php">Read More</a>
                             </div>
-                            <h5 class="mb-3">EMERGING INTELLIGENT AUTONOMOUS SYSTEMS LAB</h5>
-                            <p>A research lab at Prince Sultan University. Areas of interest include emerging intelligent autonomous systems data science and blockchain.</p>
-                            <a class="btn px-3 mt-auto mx-auto" href="https://ric.psu.edu.sa/eias-lab.php">Read More</a>
                         </div>
-                    </div>
-                    <!-- ROBOTICS & INTERNET of THINGS LAB -->
-                    <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.1s">
-                        <div class="service-item d-flex flex-column justify-content-center text-center rounded">
-                            <div class="service-icon flex-shrink-0">
-                                <img src="img/Labs/riotu-lab_1630215836-removebg-preview.png" alt="RIOT LAB">
+                        <!-- ROBOTICS & INTERNET of THINGS LAB -->
+                        <div id="Lab4"  class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.1s">
+                            <div class="service-item d-flex flex-column justify-content-center text-center rounded">
+                                <div class="service-icon flex-shrink-0">
+                                    <img src="img/Labs/riotu-lab_1630215836-removebg-preview.png" alt="RIOT LAB">
+                                </div>
+                                <h5 class="mb-3">ROBOTICS & INTERNET of THINGS LAB</h5>
+                                <p>A research lab at Prince Sultan University. Areas of interest include Internet-of-Things, Drones, and Deep Learning.</p>
+                                <a class="btn px-3 mt-auto mx-auto" href="https://ric.psu.edu.sa/riotu-lab.php">Read More</a>
                             </div>
-                            <h5 class="mb-3">ROBOTICS & INTERNET of THINGS LAB</h5>
-                            <p>A research lab at Prince Sultan University. Areas of interest include Internet-of-Things, Drones, and Deep Learning.</p>
-                            <a class="btn px-3 mt-auto mx-auto" href="https://ric.psu.edu.sa/riotu-lab.php">Read More</a>
                         </div>
-                    </div>
-                    <!-- AUTOMATED SYSTEMS & SOFT COMPUTING LAB -->
-                    <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.3s">
-                        <div class="service-item d-flex flex-column justify-content-center text-center rounded">
-                            <div class="service-icon flex-shrink-0">
-                                <img src="img/Labs/asscl7-removebg-preview.png" width="40%" alt="RIOT LAB">
+                        <!-- AUTOMATED SYSTEMS & SOFT COMPUTING LAB -->
+                        <div id="Lab5"  class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.3s">
+                            <div class="service-item d-flex flex-column justify-content-center text-center rounded">
+                                <div class="service-icon flex-shrink-0">
+                                    <img src="img/Labs/asscl7-removebg-preview.png" width="40%" alt="RIOT LAB">
+                                </div>
+                                <h5 class="mb-1">AUTOMATED SYSTEMS & SOFT COMPUTING LAB</h5>
+                                <p>A research lab at Prince Sultan University. Aims to promote applied research on automated systems, as well as providing solutions to any specific problems within its scope.</p>
+                                <a class="btn px-3 mt-auto mx-auto" href="https://ric.psu.edu.sa/asscl-lab.php">Read More</a>
                             </div>
-                            <h5 class="mb-1">AUTOMATED SYSTEMS & SOFT COMPUTING LAB</h5>
-                            <p>A research lab at Prince Sultan University. Aims to promote applied research on automated systems, as well as providing solutions to any specific problems within its scope.</p>
-                            <a class="btn px-3 mt-auto mx-auto" href="https://ric.psu.edu.sa/asscl-lab.php">Read More</a>
                         </div>
-                    </div>
+                </div>
+
+                
                    
                 </div>
             </div>
         </div>
         <!-- Service End -->
+        <script>
+        
+        function addingLab() {
+            const box = document.getElementById('labs');
 
+            const allChildren = box.getElementsByTagName('div').length;
+            console.log(allChildren+"Hey");
+            // Get the element
+            var elem = document.querySelector('#Lab1');
+
+            // Create a copy of it
+            var clone = elem.cloneNode(true);
+
+            // Update the ID and add a class
+            clone.id = 'Lab'+allChildren;
+            //clone.classList.add('text-large');
+            elem = document.querySelector('#Lab1');
+            // Inject it into the DOM
+            elem.after(clone);
+       }
+        </script>
 
         <!-- Portfolio Start -->
         <!-- <div class="container-xxl py-5 mb-5">

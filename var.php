@@ -18,14 +18,13 @@ $password = $_POST['password'];
 $repassword = $_POST['repassword'];
 
 #Check the Validality of Password 
-
-
-?>
-<script>
+/*script>
 function validate(){
 
     if(!document.getElementById("password").value==document.getElementById("repassword").value)alert("Passwords do no match");
         return document.getElementById("password").value==document.getElementById("repassword").value;
         return false;
     }
-</script>
+</script>*/
+
+?>
