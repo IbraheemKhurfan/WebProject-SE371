@@ -59,66 +59,10 @@
                         <a href="SpeakerAdmin.php" class="nav-item nav-link">Speakers</a>
                         <a href="CAMERA-READYAdmin.php" class="nav-item nav-link">CameraReady</a>
                     </div>
-                    <button class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">SignUp</button>
-                    <button class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Login</button>
-                    <!--=====================SIGNUP FORM START=====================-->
-                <div id="id01" class="modal">
-                    <form class="modal-content animate" action="/action_page.php">
-                        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-                      <div class="container">
-                        <h1>Sign Up</h1>
-                        <p>Please fill in this form to create an account.</p>
-                        <hr>
-                        <label for="email"><b>Email</b></label>
-                        <input type="text" placeholder="Enter Email" name="email" required>
-                  
-                        <label for="psw"><b>Password</b></label>
-                        <input type="password" placeholder="Enter Password" name="psw" required>
-                  
-                        <label for="psw-repeat"><b>Repeat Password</b></label>
-                        <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
-                        
-                        <label>
-                          <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-                        </label>
-                  
-                        <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
-                  
-                        <div class="container">
-                          <button id="signup_cancel_btn" type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                          <button id="signup_btn" type="submit" class="signupbtn">Sign Up</button>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                <!--=====================SIGNUP FORM END=====================-->
-
-
-                <!--=====================LOGIN FORM START=====================-->
-                <div id="id02" class="modal">
-                    <form class="modal-content animate" action="/action_page.php" method="post">
-                        <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
-                      <div class="container">
-                        <h1>Login</h1>
-                        <label for="uname"><b>Username</b></label>
-                        <input type="text" placeholder="Enter Username" name="uname" required>
-                  
-                        <label for="psw"><b>Password</b></label>
-                        <input type="password" placeholder="Enter Password" name="psw" required>
-                          
-                        <button id="Login_btn" type="submit">Login</button>
-                        <label>
-                          <input type="checkbox" checked="checked" name="remember"> Remember me
-                        </label>
-                      </div>
-                  
-                      <div class="container" style="background-color:#f1f1f1">
-                        <button id="login_cancel_btn" type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
-                        <span class="psw">Forgot <a href="#">password?</a></span>
-                      </div>
-                    </form>
-                  </div>
-                  <!--=====================LOGIN FORM END=====================-->
+                    <!-- Buttons -->
+<!--                   <button class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">SignUp</button> -->
+<!--                   <button class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Login</button>  -->                    <!--=====================SIGNUP FORM START=====================-->
+               
 
                 </div>
             </nav>
