@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<?php include"var.php";?>
 <head>
     <meta charset="utf-8">
     <title>CDMA2022</title>
@@ -51,8 +51,7 @@
         <div class="container-fluid position-relative p-0">
             <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
                 <a href="" class="navbar-brand p-0">
-                    <h1 class="m-0"></i>CDMA<span class="fs-5 text-danger">2022</span></h1>
-                      
+                    <h1 class="m-0"></i>CDMA<span class="fs-5 text-danger">2022</span></h1>    
                     <!-- <img src="img/logo.png" alt="Logo"> -->
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -139,6 +138,10 @@
                 <div class="container my-5 py-5 px-lg-5">
                     <div class="row g-5 py-5">
                         <div class="col-lg-6 text-center text-lg-start">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1">Title</span>
+                            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
                             <h1 class="text-white mb-4 animated zoomIn">7<sup>TH</sup> INTERNATIONAL CONFERENCE ON
                                 DATA SCIENCE AND MACHINE LEARNING APPLICATIONS</h1>
                                 <div class="input-group mb-3">
