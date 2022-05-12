@@ -154,7 +154,7 @@
                             <a href="#Contact Us" class="btn btn-outline-light py-sm-3 px-sm-5 rounded-pill animated slideInRight">Contact Us</a>
                         </div>
                         <div class="col-lg-6 text-center text-lg-start">
-                      
+                                
                             <img class="img-fluid bg-transparent animated zoomIn " src="img/cdma2022_logo-removebg-preview.png" alt="">
                         </div>
                     </div>
