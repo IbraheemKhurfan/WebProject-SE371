@@ -138,9 +138,10 @@
                 <div class="container my-5 py-5 px-lg-5">
                     <div class="row g-5 py-5">
                         <div class="col-lg-6 text-center text-lg-start">
+                        <!-- Edit button for title  -->
                         <div class="input-group mb-3">
-                            <span class="input-group-text" id="basic-addon1">Title</span>
-                            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                            <span class="input-group-text" id="basic-addon1" >Title</span>
+                            <input type="text" class="form-control" placeholder="Title" aria-label="Title" aria-describedby="basic-addon1" value=<?php $GLOBALS['name']?>>
                         </div>
                             <h1 class="text-white mb-4 animated zoomIn">7<sup>TH</sup> INTERNATIONAL CONFERENCE ON
                                 DATA SCIENCE AND MACHINE LEARNING APPLICATIONS</h1>
