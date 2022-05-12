@@ -51,6 +51,7 @@
         <div class="container-fluid position-relative p-0">
             <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
                 <a href="" class="navbar-brand p-0">
+                    <?php $name="CDMA" ?>
                     <h1 class="m-0"></i>CDMA<span class="fs-5 text-danger">2022</span></h1>
                     <!-- <img src="img/logo.png" alt="Logo"> -->
                 </a>
