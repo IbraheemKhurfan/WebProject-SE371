@@ -10,16 +10,12 @@ $event_year
 
 # Fouad Section Login, SignUp
 
-#SignUp
+#SignUp , Login
 $name = $_POST['name'];
-$name = $_POST['phone'];
-$name = $_POST['email'];
-$name = $_POST['password'];
-$name = $_POST['repassword'];
-
-#Login
-$name = $_POST['email'];
-$name = $_POST['password'];
+$phone = $_POST['phone'];
+$email = $_POST['email'];
+$password = $_POST['password'];
+$repassword = $_POST['repassword'];
 
 #Check the Validality of Password 
 <script>
