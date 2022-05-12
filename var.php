@@ -18,6 +18,9 @@ $password = $_POST['password'];
 $repassword = $_POST['repassword'];
 
 #Check the Validality of Password 
+
+
+?>
 <script>
 function validate(){
 
@@ -26,5 +29,3 @@ function validate(){
         return false;
     }
 </script>
-
-?>
