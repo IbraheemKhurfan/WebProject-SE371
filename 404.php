@@ -229,7 +229,7 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
-    <h1> Hello from another world</h1>
+ 
 </body>
 
 </html>
