@@ -776,7 +776,7 @@ gallery[i].onclick = () =>{
                     <h6 class="position-relative d-inline text-primary ps-4">Our Labs</h6>
                     <h2 class="mt-2">Prince Sultan University Labs</h2>
                 </div>
-                <div class="row g-4">
+                <div id="Lab1" class="row g-4">
                     <!-- Security Engineering Lab  -->
                     <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.1s">
                         <div class="service-item d-flex flex-column justify-content-center text-center rounded">
