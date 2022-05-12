@@ -71,18 +71,34 @@
                         <h1>Sign Up</h1>
                         <p>Please fill in this form to create an account.</p>
                         <hr>
-                        <label for="email"><b>Email</b></label>
-                        <input type="text" placeholder="Enter Email" name="email" required>
-                  
-                        <label for="psw"><b>Password</b></label>
-                        <input type="password" placeholder="Enter Password" name="psw" required>
-                  
-                        <label for="psw-repeat"><b>Repeat Password</b></label>
-                        <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+                        <!-- Name input -->
+                        <div class="form-outline mb-4">
+                            <label class="form-label" for="name">Full Name</label>
+                            <input type="text" id="name" name="name" class="form-control form-control-lg" placeholder="Full name" pattern="[A-Z , a-z]*" required/>      
+                        </div>
+                            
+                        <!-- Phone input -->
+                        <div class="form-outline mb-4">
+                            <label class="form-label" for="name">Phone No</label>
+                            <input type="number" id="number" name="phone" class="form-control form-control-lg" minlength="10" maxlength="10" placeholder="Phone No" required/>
+                        </div>
+
+                        <!-- Email input -->
+                        <div class="form-outline mb-4">
+                            <label class="form-label" for="email">Email address</label>
+                            <input type="email" id="email" class="form-control form-control-lg"
+                            placeholder="Enter a valid email address" required/>
+                        </div>
+
+                        <!-- Password input -->
+                        <div class="form-outline mb-3">
+                            <label class="form-label" for="password">Password</label>
+                            <input type="password" id="password" class="form-control form-control-lg" minlength="4" maxlength="6" placeholder="Enter password" required/>
+                        </div>
                         
-                        <label>
+                     <!--   <label>
                           <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-                        </label>
+                        </label> -->
                   
                         <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
                   
@@ -102,21 +118,27 @@
                         <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
                       <div class="container">
                         <h1>Login</h1>
-                        <label for="uname"><b>Username</b></label>
-                        <input type="text" placeholder="Enter Username" name="uname" required>
-                  
-                        <label for="psw"><b>Password</b></label>
-                        <input type="password" placeholder="Enter Password" name="psw" required>
+                        <!-- Email input -->
+                        <div class="form-outline mb-4">
+                          <label class="form-label" for="Email">Email address</label>
+                          <input type="email" id="email" class="form-control form-control-lg"placeholder="Enter a valid email address" required/>
+                        </div>
+
+                        <!-- Password input -->
+                        <div class="form-outline mb-3">
+                          <label class="form-label" for="password">Password</label>
+                          <input type="password" id="password" class="form-control form-control-lg" minlength="4" maxlength="6" placeholder="Enter password" required/>
+                        </div>
                           
                         <button id="Login_btn" type="submit">Login</button>
-                        <label>
+                      <!--  <label>
                           <input type="checkbox" checked="checked" name="remember"> Remember me
-                        </label>
+                        </label> -->
                       </div>
                   
                       <div class="container" style="background-color:#f1f1f1">
                         <button id="login_cancel_btn" type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
-                        <span class="psw">Forgot <a href="#">password?</a></span>
+                      <!--  <span class="psw">Forgot <a href="#">password?</a></span> -->
                       </div>
                     </form>
                   </div>
