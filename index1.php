@@ -603,6 +603,10 @@
             .fadeInUp {
         animation-name: fadeInUp;
     }
+    #avatar{
+        width: 50%;
+        margin-left: 29.69px;
+    }
             
             
      

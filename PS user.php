@@ -30,6 +30,12 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+    <style>
+        #avatar{
+        width: 50%;
+        margin-left: 29.69px;
+    }
+    </style>
 </head>
 
 <body>
@@ -62,8 +68,16 @@
                       <a href="CAMERA-READY.html" class="nav-item nav-link">CameraReady</a>
                   </div>
                   <!-- login and sign up button -->
-                  <button class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">SignUp</button>
-                  <button class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Login</button>
+                  <div class="col-sm-1 text-center text-lg-start">                         
+                        <img id="avatar" class="img-fluid rounded-circle bg-transparent animated zoomIn" src="img\avatar.jpg" alt="">                     
+                    </div>                     
+                    <div class="col-sm-3 text-left text-lg-start text-white">                         
+                        <p> Welcome Dear  + <!--PHP code to get the name--> </p>                     
+                    </div>                                              
+                    <!--                     
+                        <button class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">SignUp</button>                     
+                        <button class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Login</button>                     
+                    -->
                   <!--=====================SIGNUP FORM START=====================-->
               <div id="id01" class="modal">
                   <form class="modal-content animate" action="/action_page.php">
