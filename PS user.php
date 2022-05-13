@@ -61,6 +61,7 @@
 
                       <a href="CAMERA-READY.html" class="nav-item nav-link">CameraReady</a>
                   </div>
+                  <!-- login and sign up button -->
                   <button class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">SignUp</button>
                   <button class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Login</button>
                   <!--=====================SIGNUP FORM START=====================-->

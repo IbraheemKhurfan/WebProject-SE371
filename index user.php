@@ -70,6 +70,7 @@
                         <a href="#hotels" class="nav-item nav-link">Hotels</a>
                         <a href="#F.A.Qs" class="nav-item nav-link">F.A.Q's</a>
                     </div>
+                    <!-- login and sign up button -->
                     <button class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">SignUp</button>
                     <button class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Login</button>
                     <!--=====================SIGNUP FORM START=====================-->
