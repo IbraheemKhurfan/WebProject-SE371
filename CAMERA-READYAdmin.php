@@ -65,7 +65,12 @@
                     <!-- Buttons -->
 <!--                   <button class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">SignUp</button> -->
 <!--                   <button class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Login</button>  -->
-                    <p>Welcome Dear: <?php echo $name1 ?> <img src="AdminPhoto.png" class="rounded" alt="Cinque Terre"></p>                     
+                    <div class="col-sm-1 text-center text-lg-start">
+                        <img id="avatar" class="img-fluid rounded-circle bg-transparent animated zoomIn" src="img/AdminPhoto.jpg" alt="">
+                    </div>
+                    <div class="col-sm-3 text-left text-lg-start text-white">
+                        <p> Welcome Dear  + <?php echo $name1 ?> </p>
+                    </div>                    
                 </div>
             </nav>
 

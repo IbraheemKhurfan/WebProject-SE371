@@ -55,13 +55,19 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
-                        <a href="indexAdmin.php" class="nav-item nav-link active">Home</a>
-                        <a href="CAMERA-READYAdmin.php" class="nav-item nav-link">CameraReady</a>
+                        <a href="indexUser.php" class="nav-item nav-link active">Home</a>
+                        <a href="CAMERA-READYUser.php" class="nav-item nav-link">CameraReady</a>
                     </div>
                     <!-- Buttons -->
 <!--                   <button class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">SignUp</button> -->
 <!--                   <button class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Login</button>  -->                    <!--=====================SIGNUP FORM START=====================-->
-                    <p>Welcome Dear: <?php echo $name1 ?> <img src="AdminPhoto.png" class="rounded" alt="Cinque Terre"></p>                     
+                    <div class="col-sm-1 text-center text-lg-start">
+                        <img id="avatar" class="img-fluid rounded-circle bg-transparent animated zoomIn" src="img/avatar.jpg" alt="">
+                    </div>
+                    <div class="col-sm-3 text-left text-lg-start text-white">
+                        <p> Welcome Dear  + <?php echo $name1 ?> </p>
+                    </div> 
+
                 </div>
             </nav>
 
@@ -100,7 +106,7 @@
                 <div class="speaker">
                   <img src="img/Speakers/Altuwaijri.jpg" alt="Main Guest Speaker" class="img-fluid " style="height: 300px; width: 200px;">
                   <div class="details">
-                    <h3><a href="info-speakerAdmin.php">Majid Altwaijri</a></h3>
+                    <h3><a href="info-speakerUser.php">Majid Altwaijri</a></h3>
                     <p>Chief Executive Officer at the National Center for AI (NCAI) and CEO of Strategy Management Office at Saudi Data &amp; AI Authority (SDAIA), Saudi Arabia</p>
                   </div>
                 </div>
@@ -122,7 +128,7 @@
                 <div class="speaker">
                   <img src="img/Speakers/Gilbert_Strang.jpg" alt="DISTINGUISHED SPEAKERS" class="img-fluid" style="height: 200px; width: 200px;">
                   <div class="details">
-                    <h3><a href="info-speakerAdmin.php">Gilbert Strang</a></h3>
+                    <h3><a href="info-speakerUser.php">Gilbert Strang</a></h3>
                     <p>Professor of Mathematics, MIT, Massachsusets, USA</p>
                   </div>
                 </div>
@@ -132,7 +138,7 @@
                 <div class="speaker">
                   <img src="img/Speakers/yaser_abu_mostafa.jpeg" alt="DISTINGUISHED SPEAKERS" class="img-fluid" style="height: 200px; width: 200px;">
                   <div class="details">
-                    <h3><a href="info-speakerAdmin.php">Yaser Abu-Mostafa</a></h3>
+                    <h3><a href="info-speakerUser.php">Yaser Abu-Mostafa</a></h3>
                     <p>Professor at Caltech, California, USA</p>
                   </div>
                 </div>
@@ -142,7 +148,7 @@
                 <div class="speaker">
                   <img src="img/Speakers/nizar_habash.jpg" alt="DISTINGUISHED SPEAKERS" class="img-fluid" style="height: 200px; width: 200px;">
                   <div class="details">
-                    <h3><a href="info-speakerAdmin.php">Nizar Habash</a></h3>
+                    <h3><a href="info-speakerUser.php">Nizar Habash</a></h3>
                     <p>Professor at NY University in Abu Dhabi, UAE</p>
                   </div>
                 </div>
@@ -152,7 +158,7 @@
                 <div class="speaker">
                   <img src="img/Speakers/hafiz_malik.jpg" alt="DISTINGUISHED SPEAKERS" class="img-fluid" style="height: 200px; width: 200px;">
                   <div class="details">
-                    <h3><a href="info-speakerAdmin.php">Hafiz Malik</a></h3>
+                    <h3><a href="info-speakerUser.php">Hafiz Malik</a></h3>
                     <p>Professor at Michigan University, Dearborn, USA</p>
                   </div>
                 </div>
@@ -162,7 +168,7 @@
                 <div class="speaker">
                   <img src="img/Speakers/hassan_sawaf.jpg" alt="DISTINGUISHED SPEAKERS" class="img-fluid" style="height: 200px; width: 200px;">
                   <div class="details">
-                    <h3><a href="info-speakerAdmin.php">Hassan Sawaf</a></h3>
+                    <h3><a href="info-speakerUser.php">Hassan Sawaf</a></h3>
                     <p>Founder of aiXplain Inc., California, USA</p>
                   </div>
                 </div>
@@ -172,7 +178,7 @@
                 <div class="speaker">
                   <img src="img/Speakers/kareem_darwish.jpg" alt="DISTINGUISHED SPEAKERS" class="img-fluid" style="height: 200px; width: 200px;">
                   <div class="details">
-                    <h3><a href="info-speakerAdmin.php">Kareem Darwish</a></h3>
+                    <h3><a href="info-speakerUser.php">Kareem Darwish</a></h3>
                     <p>Principal Scientist at aiXplain, Inc., California, USA</p>
                   </div>
                 </div>
@@ -200,7 +206,7 @@
                 <div class="speaker wow zoomIn " data-wow-delay="0.5s">
                 <img src="img/Speakers/pd1.jpeg" alt="Panel Discussions" class="img-fluid " style="height: 200px; width: 275px; ">
                   <div class="details">
-                    <h3><a href="PSAdmin.php">Panel Discussions</a></h3>
+                    <h3><a href="PSUser.php">Panel Discussions</a></h3>
                    
                   </div>
                 </div>
@@ -226,7 +232,7 @@
               <div class="speaker">
                 <img src="img/Speakers/issam.png" alt="DISTINGUISHED SPEAKERS" class="img-fluid" style="height: 200px; width: 200px;">
                 <div class="details">
-                  <h3><a href="info-speakerAdmin.php">Issam Laradji</a></h3>
+                  <h3><a href="info-speakerUser.php">Issam Laradji</a></h3>
                   <p>Research Scientist at ServiceNow Company, Vancouver, Canada</p>
                 </div>
               </div>
@@ -236,7 +242,7 @@
               <div class="speaker">
                 <img src="img/Speakers/Lahouari_Ghouti.jpg" alt="DISTINGUISHED SPEAKERS" class="img-fluid" style="height: 200px; width: 150px;">
                 <div class="details">
-                  <h3><a href="info-speakerAdmin.php">Lahouari Ghouti</a></h3>
+                  <h3><a href="info-speakerUser.php">Lahouari Ghouti</a></h3>
                   <p>Associate Professor of Computer Science. Prince Sultan University. Riyadh, Saudi Arabia</p>
                 </div>
               </div>
@@ -293,7 +299,7 @@
                 </div>
                 <div class="col-md-6 text-center text-md-end">
                     <div class="footer-menu">
-                        <a href="indexAdmin.php">Home</a>
+                        <a href="indexUser.php">Home</a>
                         <a href="#F.A.Qs">FQAs</a>
                     </div>
                 </div>

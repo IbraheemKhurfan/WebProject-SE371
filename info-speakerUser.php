@@ -55,14 +55,20 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
-                        <a href="indexAdmin.php" class="nav-item nav-link ">Home</a>
-                        <a href="SpeakerAdmin.php" class="nav-item nav-link">Speakers</a>
-                        <a href="CAMERA-READYAdmin.php" class="nav-item nav-link">CameraReady</a>
+                        <a href="indexUser.php" class="nav-item nav-link ">Home</a>
+                        <a href="SpeakerUser.php" class="nav-item nav-link">Speakers</a>
+                        <a href="CAMERA-READYUser.php" class="nav-item nav-link">CameraReady</a>
                     </div>
                     <!-- Buttons -->
 <!--                   <button class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">SignUp</button> -->
 <!--                   <button class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Login</button>  -->                    <!--=====================SIGNUP FORM START=====================-->
-                       <p>Welcome Dear: <?php echo $name1 ?> <img src="AdminPhoto.png" class="rounded" alt="Cinque Terre"></p>                     
+                    <div class="col-sm-1 text-center text-lg-start">
+                        <img id="avatar" class="img-fluid rounded-circle bg-transparent animated zoomIn" src="img/avatar.jpg" alt="">
+                    </div>
+                    <div class="col-sm-3 text-left text-lg-start text-white">
+                        <p> Welcome Dear  + <?php echo $name1 ?> </p>
+                    </div> 
+
                 </div>
             </nav>
 
@@ -266,7 +272,7 @@
                     </div>
                     <div class="col-md-6 text-center text-md-end">
                         <div class="footer-menu">
-                            <a href="indexAdmin.php">Home</a>
+                            <a href="indexUser.php">Home</a>
                             <a href="#F.A.Qs">FQAs</a>
                         </div>
                     </div>
