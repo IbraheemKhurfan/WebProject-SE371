@@ -27,4 +27,11 @@ function validate(){
     }
 </script>*/
 
+function IsAdmin(){
+     if($_POST["psw"] == "admin"){
+        return "indexAdmin.php";
+    }else{
+      return "indexUser.php";
+    } 
+    }
 ?>

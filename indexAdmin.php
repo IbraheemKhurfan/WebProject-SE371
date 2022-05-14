@@ -77,6 +77,8 @@
                         <img id="avatar" class="img-fluid rounded-circle bg-transparent animated zoomIn" src="img/AdminPhoto.jpg" alt="">
                     </div>
                     <div class="col-sm-3 text-left text-lg-start text-white">
+                        <p> Welcome Dear  + <?php echo $name1 ?> </p>
+                    </div>  
                 </div>
             </nav>
 
