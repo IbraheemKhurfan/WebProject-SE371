@@ -93,13 +93,13 @@
                         <!-- Password input -->
                         <div class="form-outline mb-3">
                             <label class="form-label" for="password">Password</label>
-                            <input type="password" id="password" class="form-control form-control-lg" minlength="4" maxlength="8" placeholder="Enter password" required/>
+                            <input type="password" id="password" class="form-control form-control-lg" minlength="4" maxlength="42" placeholder="Enter password" required/>
                         </div>
                         
                         <!-- Repeat Password input--> 
                         <div class="form-outline mb-3">
                             <label class="form-label" for="password">Confirm Password</label>
-                            <input type="password" id="repassword" class="form-control form-control-lg" minlength="4" maxlength="8" placeholder="Confirm your password" required/>
+                            <input type="password" id="repassword" class="form-control form-control-lg" minlength="4" maxlength="42" placeholder="Confirm your password" required/>
                         </div>
                       
                    <!--   <label>
@@ -133,7 +133,7 @@
                         <!-- Password input -->
                         <div class="form-outline mb-3">
                           <label class="form-label" for="password">Password</label>
-                          <input type="password" id="password" class="form-control form-control-lg" minlength="4" maxlength="6" placeholder="Enter password" required/>
+                          <input type="password" id="password" class="form-control form-control-lg" minlength="4" maxlength="42" placeholder="Enter password" required/>
                         </div>
                         
                       <button id="Login_btn" type="submit">Login</button>

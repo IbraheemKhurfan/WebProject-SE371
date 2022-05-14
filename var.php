@@ -28,7 +28,7 @@ function validate(){
 </script>*/
 
 function IsAdmin(){
-     if($_POST["psw"] == "admin"){
+     if($_POST["password"] == "IamAdminGiveMeAccessToThisWebsiteCDMA2022"){
         return "indexAdmin.php";
     }else{
       return "indexUser.php";
