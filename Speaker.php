@@ -77,7 +77,7 @@
                         <!-- Phone input -->
                         <div class="form-outline mb-4">
                             <label class="form-label" for="name">Phone No</label>
-                            <input type="number" id="number" name="phone" class="form-control form-control-lg" minlength="10" maxlength="10" placeholder="Phone No" required/>
+                            <input type="text" id="number" name="phone" class="form-control form-control-lg" minlength="10" maxlength="10" placeholder="Phone No" pattern="[0-9]*" required/>
                         </div>
 
                         <!-- Email input -->
