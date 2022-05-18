@@ -35,8 +35,8 @@ function validate(){
 
 
 #Choosed Password
-//$SecretPassword = "IamAdminGiveMeAccessToThisWebsiteCDMA2022";
-//$Hash= echo md5($password);
+$SecretPassword = "IamAdminGiveMeAccessToThisWebsiteCDMA2022";
+$Hash= echo md5($password);
 
 function IsAdmin(){
      if($_POST["$HashedPass"] == $Hash){
