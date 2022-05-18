@@ -11,19 +11,19 @@ $titel="CDMA2022";
 # Fouad Section Login, SignUp
 
 #SignUp , Login
-$name1= $_POST["name"];
-$phone= $_POST["phone"];
-$email= $_POST["email"];
-$password= $_POST["password"];
-$repassword= $_POST["repassword"];
+// $name1= $_POST["name"];
+// $phone= $_POST["phone"];
+// $email= $_POST["email"];
+// $password= $_POST["password"];
+// $repassword= $_POST["repassword"];
 
 
 
 
 
 #Check the Validality of Password 
-function validate(){
-    if($_POST['password'] == $_POST['repassword']){
+function validate($password,$repassword){
+    if($password == $repassword){
         return true;
     }else{
       return false;

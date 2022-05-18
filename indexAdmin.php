@@ -1,10 +1,13 @@
 <?php 
+session_start();
 
-$name1= $_POST["name"];
-$phone= $_POST["phone"];
-$email= $_POST["email"];
 $password= $_POST["password"];
 $repassword= $_POST["repassword"];
+if(validate($password,$repassword)){
+    $name1= $_POST["name"];
+    $phone= $_POST["phone"];
+    $email= $_POST["email"];
+}
 
 ?>
 
