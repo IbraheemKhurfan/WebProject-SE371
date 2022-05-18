@@ -90,20 +90,20 @@ include("var.php");
                         <!-- Email input -->
                         <div class="form-outline mb-4">
                             <label class="form-label" for="email">Email address</label>
-                            <input type="email" id="email" class="form-control form-control-lg"
+                            <input type="email" id="email" name="email" class="form-control form-control-lg"
                             placeholder="Enter a valid email address" required/>
                         </div>
 
                         <!-- Password input -->
                         <div class="form-outline mb-3">
                             <label class="form-label" for="password">Password</label>
-                            <input type="password" id="password" class="form-control form-control-lg" minlength="4" maxlength="42" placeholder="Enter password" required/>
+                            <input type="password" id="password" name="password" class="form-control form-control-lg" minlength="4" maxlength="42" placeholder="Enter password" required/>
                         </div>
                         
                         <!-- Repeat Password input--> 
                         <div class="form-outline mb-3">
-                            <label class="form-label" for="password">Confirm Password</label>
-                            <input type="password" id="repassword" class="form-control form-control-lg" minlength="4" maxlength="42" placeholder="Confirm your password" required/>
+                            <label class="form-label" for="repassword">Confirm Password</label>
+                            <input type="password" id="repassword"name="repassword" class="form-control form-control-lg" minlength="4" maxlength="42" placeholder="Confirm your password" required/>
                         </div>
                       
                    <!--   <label>
