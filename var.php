@@ -13,9 +13,9 @@ $titel="CDMA2022";
 #SignUp , Login
 $name1 = $_POST["name"];
 $phone = $_POST["phone"];
-$email = $_POST["email"];
-$password = $_POST["password"];
-$repassword = $_POST["repassword"];
+$email1 = $_POST["email"];
+$password1 = $_POST["password"];
+$repassword1 = $_POST["repassword"];
 
 
 
