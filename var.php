@@ -19,8 +19,6 @@ $repassword = $_POST['repassword'];
 
 
 
-#Hased Password
-$HashedPass= md5("$password");
 
 
 
@@ -33,16 +31,13 @@ function validate(){
     }  
     }
 
+//
 
-#Choosed Password
-$SecretPassword = "IamAdminGiveMeAccessToThisWebsiteCDMA2022";
-$Hash= echo md5($password);
-
-function IsAdmin(){
-     if($_POST["$HashedPass"] == $Hash){
-        return "indexAdmin.php";
-    }else{
-      return "indexUser.php";
-    } 
-    }
+//function IsAdmin(){
+//     if($_POST["$HashedPass"] == $Hash){
+//        return "indexAdmin.php";
+//    }else{
+//     return "indexUser.php";
+//   } 
+//    }
 ?>
