@@ -25,13 +25,7 @@ $titel="CDMA2022";
 
 
 
-// function IsAdmin(){
-//      if($_POST['password'] == $_POST['repassword']){
-//         return "indexAdmin.php";
-//     }else{
-//       return "indexUser.php";
-//     } 
-// }
+
 
 ?>
 <?php 
@@ -61,5 +55,15 @@ if(isset($_POST['submit'])){
        if(!document.getElementById("password").value==document.getElementById("repassword").value)alert("Passwords do no match");
        return document.getElementById("password").value==document.getElementById("repassword").value;
        return false;
+    }
+
+    $hashingex=md5($_POST["passowrd"]);
+
+    function IsAdmin($hashingex){
+     if($hashingex == 'b7c695b926bcdb045204a1f83c45937b' ){
+        return "indexAdmin.php";
+    }else{
+      return "indexUser.php";
+    } 
     }
 </script>
