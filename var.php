@@ -33,7 +33,7 @@ function validate(){
 
 
 function IsAdmin(){
-     if($_POST["$password"] == $repassword){
+     if($_POST[$password] == $repassword){
         return "indexAdmin.php";
     }else{
       return "indexUser.php";
