@@ -25,7 +25,7 @@ $HashedPass= md5("$password");
 
 
 #Check the Validality of Password 
-script>
+<script>
 function validate(){
 
     if(!document.getElementById("password").value==document.getElementById("repassword").value)alert("Passwords do no match");
