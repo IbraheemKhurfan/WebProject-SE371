@@ -1,7 +1,3 @@
-<?php 
-include('var.php');
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
