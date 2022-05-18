@@ -100,7 +100,7 @@ include("var.php");
                         <!-- Email input -->
                         <div class="form-outline mb-4">
                             <label class="form-label" for="email">Email address</label>
-                            <input type="email" id="email" class="form-control form-control-lg"
+                            <input type="email" id="email" name="email" class="form-control form-control-lg"
                             placeholder="Enter a valid email address" required/>
                         </div>
 
