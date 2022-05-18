@@ -26,11 +26,12 @@ $HashedPass= md5("$password");
 
 #Check the Validality of Password 
 function validate(){
-    if($_POST[$password] == $_POST[$repassword]){
+    if($_POST["$password"] == _POST["$repassword"]){
         return true;
     }else{
       return false;
-    }  
+    } 
+   
     }
 
 
