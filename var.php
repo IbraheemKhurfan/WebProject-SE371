@@ -44,12 +44,11 @@ if(isset($_POST['submit'])){
     $password= $_POST["password"];
     $repassword= $_POST["repassword"];
 
-    function validate($password,$repassword){
-        if($password == $repassword){
-            return true;
-        }else{
-          return false;
-        } 
+    function validate(){
+
+       if(!document.getElementById("password").value==document.getElementById("repassword").value)alert("Passwords do no match");
+       return document.getElementById("password").value==document.getElementById("repassword").value;
+       return false;
     }
 
 }else{
