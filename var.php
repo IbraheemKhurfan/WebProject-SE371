@@ -44,12 +44,7 @@ if(isset($_POST['submit'])){
     $password= $_POST["password"];
     $repassword= $_POST["repassword"];
 
-    function validate(){
 
-       if(!document.getElementById("password").value==document.getElementById("repassword").value)alert("Passwords do no match");
-       return document.getElementById("password").value==document.getElementById("repassword").value;
-       return false;
-    }
 
 }else{
     print("Connection Failed");
@@ -60,3 +55,11 @@ if(isset($_POST['submit'])){
 
 
 ?>
+<script>
+    function validate(){
+
+       if(!document.getElementById("password").value==document.getElementById("repassword").value)alert("Passwords do no match");
+       return document.getElementById("password").value==document.getElementById("repassword").value;
+       return false;
+    }
+</script>
