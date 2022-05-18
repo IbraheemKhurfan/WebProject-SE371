@@ -23,7 +23,7 @@ $repassword = $_POST["repassword"];
 
 #Check the Validality of Password 
 function validate(){
-    if($_POST[$password] == _POST[$repassword]){
+    if($_POST['password'] == $_POST['repassword']){
         return true;
     }else{
       return false;
@@ -33,7 +33,7 @@ function validate(){
 
 
 function IsAdmin(){
-     if($_POST[$password] == $repassword){
+     if($_POST['password'] == $_POST['repassword']){
         return "indexAdmin.php";
     }else{
       return "indexUser.php";
