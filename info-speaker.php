@@ -1,3 +1,7 @@
+<?php 
+include('var.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -63,7 +67,7 @@
                     <button class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Login</button>
                     <!--=====================SIGNUP FORM START=====================-->
                 <div id="id01" class="modal">
-                    <form class="modal-content animate" action="return IsAdmin()" onSubmit="return validate()"  method="post">
+                <form class="modal-content animate" action= <?php IsAdmin() ?>  onSubmit="return validate()" method="post">
                         <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
                       <div class="container">
                         <h1>Sign Up</h1>
@@ -78,7 +82,7 @@
                         <!-- Phone input -->
                         <div class="form-outline mb-4">
                             <label class="form-label" for="name">Phone No</label>
-                            <input type="number" id="number" name="phone" class="form-control form-control-lg" minlength="10" maxlength="10" placeholder="Phone No" required/>
+                            <input type="text" id="number" name="phone" class="form-control form-control-lg" minlength="10" maxlength="10" placeholder="Phone No" pattern="[0-9]*" required/>
                         </div>
 
                         <!-- Email input -->
