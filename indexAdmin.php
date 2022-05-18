@@ -13,9 +13,6 @@
 //     print("Connection Failed");
 // }
 
-
-
-
 ?>
 <?php 
 include("var.php");
