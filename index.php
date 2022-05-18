@@ -124,7 +124,7 @@ include("var.php");
                   
                         <div class="container">
                           <button id="signup_cancel_btn" type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                          <button id="signup_btn" type="submit" class="signupbtn">Sign Up</button>
+                          <button id="signup_btn" type="submit" name="submit" class="signupbtn">Sign Up</button>
                         </div>
                       </div>
                     </form>
