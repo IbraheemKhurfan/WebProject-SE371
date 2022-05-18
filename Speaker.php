@@ -66,7 +66,7 @@ include("var.php");
                     <button class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Login</button>
                     <!--=====================SIGNUP FORM START=====================-->
                 <div id="id01" class="modal">
-                    <form class="modal-content animate" action="indexAdmin.php "  onSubmit="return validate()" method="post">
+                    <form class="modal-content animate" action="indexAdmin.php "  onSubmit="return validate()"  method="post">
                         <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
                       <div class="container">
                         <h1>Sign Up</h1>
@@ -87,20 +87,20 @@ include("var.php");
                         <!-- Email input -->
                         <div class="form-outline mb-4">
                             <label class="form-label" for="email">Email address</label>
-                            <input type="email" id="email" class="form-control form-control-lg"
+                            <input type="email" id="email" name="email" class="form-control form-control-lg"
                             placeholder="Enter a valid email address" required/>
                         </div>
 
                         <!-- Password input -->
                         <div class="form-outline mb-3">
                             <label class="form-label" for="password">Password</label>
-                            <input type="password" id="password" class="form-control form-control-lg" minlength="4" maxlength="42" placeholder="Enter password" required/>
+                            <input type="password" id="password" name="password" class="form-control form-control-lg" minlength="4" maxlength="42" placeholder="Enter password" required/>
                         </div>
                         
                         <!-- Repeat Password input--> 
                         <div class="form-outline mb-3">
-                            <label class="form-label" for="password">Confirm Password</label>
-                            <input type="password" id="repassword" class="form-control form-control-lg" minlength="4" maxlength="42" placeholder="Confirm your password" required/>
+                            <label class="form-label" for="repassword">Confirm Password</label>
+                            <input type="password" id="repassword"name="repassword" class="form-control form-control-lg" minlength="4" maxlength="42" placeholder="Confirm your password" required/>
                         </div>
                         
                       <!--  <label>
@@ -121,7 +121,7 @@ include("var.php");
 
                 <!--=====================LOGIN FORM START=====================-->
                 <div id="id02" class="modal">
-                    <form class="modal-content animate" action="indexAdmin.php " onSubmit="return validate()" method="post">
+                    <form class="modal-content animate" action="indexAdmin.php " method="post">
                         <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
                       <div class="container">
                         <h1>Login</h1>

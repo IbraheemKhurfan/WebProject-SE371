@@ -1,22 +1,5 @@
 <?php 
-session_start();
-
-if(isset($_POST['submit'])){
-    $name1= $_POST["name"];
-    $phone= $_POST["phone"];
-    $email= $_POST["email"];
-    $password= $_POST["password"];
-    $repassword= $_POST["repassword"];
-
-
-}else{
-    print("Connection Failed");
-}
-
-
-  
-
-
+include("var.php");
 ?>
 
 <!DOCTYPE html>
