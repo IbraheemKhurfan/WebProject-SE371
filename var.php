@@ -22,13 +22,6 @@ $titel="CDMA2022";
 
 
 #Check the Validality of Password 
-// function validate(){
-//     if($_POST['password'] == $_POST['repassword']){
-//         return true;
-//     }else{
-//       return false;
-//     } 
-// }
 
 
 
@@ -51,9 +44,20 @@ if(isset($_POST['submit'])){
     $password= $_POST["password"];
     $repassword= $_POST["repassword"];
 
+    function validate($password,$repassword){
+        if($password == $repassword){
+            return true;
+        }else{
+          return false;
+        } 
+    }
 
 }else{
     print("Connection Failed");
 }
+
+
+
+
 
 ?>
