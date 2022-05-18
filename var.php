@@ -39,4 +39,5 @@ function IsAdmin(){
       return "indexUser.php";
     } 
 }
+
 ?>
