@@ -113,7 +113,7 @@ include("var.php");
                         <!-- Repeat Password input--> 
                         <div class="form-outline mb-3">
                             <label class="form-label" for="repassword">Confirm Password</label>
-                            <input type="password" id="repassword"name="repassword" class="form-control form-control-lg" minlength="4" maxlength="42" placeholder="Confirm your password" required/>
+                            <input type="password" id="repassword" name="repassword" class="form-control form-control-lg" minlength="4" maxlength="42" placeholder="Confirm your password" required/>
                         </div>
                         
                       <!--  <label>
