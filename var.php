@@ -28,8 +28,7 @@ function validate(){
     }else{
       return false;
     } 
-   
-    }
+}
 
 
 
@@ -39,5 +38,5 @@ function IsAdmin(){
     }else{
       return "indexUser.php";
     } 
-    }
+}
 ?>
