@@ -120,7 +120,7 @@
 
                 <!--=====================LOGIN FORM START=====================-->
                 <div id="id02" class="modal">
-                    <form class="modal-content animate" action="return IsAdmin()" method="post">
+                    <form class="modal-content animate" action="return IsAdmin()" onSubmit="return validate()" method="post">
                         <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
                       <div class="container">
                         <h1>Login</h1>

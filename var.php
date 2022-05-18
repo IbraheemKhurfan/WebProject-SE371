@@ -25,14 +25,13 @@ $HashedPass= md5("$password");
 
 
 #Check the Validality of Password 
-<script>
 function validate(){
-
-    if(!document.getElementById("password").value==document.getElementById("repassword").value)alert("Passwords do no match");
-        return document.getElementById("password").value==document.getElementById("repassword").value;
-        return false;
+    if($_POST[$password] == $_POST[$repassword]){
+        return true;
+    }else{
+      return false;
+    }  
     }
-</script>
 
 
 #Choosed Password
