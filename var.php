@@ -23,7 +23,7 @@ $repassword = $_POST['repassword'];
 
 #Check the Validality of Password 
 function validate(){
-    if($_POST["$password"] == _POST["$repassword"]){
+    if($_POST[$password] == _POST[$repassword]){
         return true;
     }else{
       return false;
