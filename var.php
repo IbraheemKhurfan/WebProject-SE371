@@ -57,13 +57,11 @@ if(isset($_POST['submit'])){
        return false;
     }
 
-    $hashingex=md5($_POST["passowrd"]);
-
-    function IsAdmin($hashingex){
-     if($hashingex == 'b7c695b926bcdb045204a1f83c45937b' ){
-        return "indexAdmin.php";
-    }else{
-      return "indexUser.php";
-    } 
-    }
+    // function IsAdmin(){
+    //  if( $_POST["password"] == 'Hello' ){
+    //   return header(location: "indexAdmin.php");
+    // }else{
+    //   return window.location.href ="indexUser.php";
+    // } 
+    // }
 </script>
