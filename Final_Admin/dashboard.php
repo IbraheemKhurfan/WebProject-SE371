@@ -1,5 +1,17 @@
 <?php 
-include("var.php");
+// session_start();
+
+// if(isset($_POST['submit'])){
+//     $name1= $_POST["name"];
+//     $phone= $_POST["phone"];
+//     $email= $_POST["email"];
+//     $password= $_POST["password"];
+//     $repassword= $_POST["repassword"];
+
+// }else{
+//     print("Connection Failed");
+// }
+
 ?>
 
 <!DOCTYPE html>
@@ -96,7 +108,7 @@ include("var.php");
                         <li>
                             <a class="profile-pic" href="#">
                                 <img src="plugins/images/users/varun.jpg" alt="user-img" width="36"
-                                    class="img-circle"><span class="text-white font-medium">Ibrahim</span></a>
+                                    class="img-circle"><span class="text-white font-medium"><?php //echo $name1 ?></span></a>
                         </li>
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
