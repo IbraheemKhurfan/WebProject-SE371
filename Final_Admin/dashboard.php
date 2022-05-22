@@ -1,3 +1,7 @@
+<?php 
+include("var.php");
+?>
+
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -11,18 +15,15 @@
     <meta name="description"
         content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
-    <title>Ample Admin Lite Template by WrapPixel</title>
+    <title>Admin Page</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="plugins/images/favicon.png">
     <!-- Custom CSS -->
-   <link href="css/style.min.css" rel="stylesheet">
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
+    <link href="plugins/bower_components/chartist/dist/chartist.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css">
+    <!-- Custom CSS -->
+    <link href="css/style.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -49,7 +50,7 @@
                     <!-- ============================================================== -->
                     <!-- Logo -->
                     <!-- ============================================================== -->
-                    <a class="navbar-brand" href="dashboard.html">
+                    <a class="navbar-brand" href="dashboard.php">
                         <!-- Logo icon -->
                         <b class="logo-icon">
                             <!-- Dark Logo icon -->
@@ -57,6 +58,7 @@
                         </b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
+                       
                     </a>
                     <!-- ============================================================== -->
                     <!-- End Logo -->
@@ -71,12 +73,7 @@
                 <!-- End Logo -->
                 <!-- ============================================================== -->
                 <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
-                    <ul class="navbar-nav d-none d-md-block d-lg-none">
-                        <li class="nav-item">
-                            <a class="nav-toggler nav-link waves-effect waves-light text-white"
-                                href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
-                        </li>
-                    </ul>
+                   
                     <!-- ============================================================== -->
                     <!-- Right side toggle and nav items -->
                     <!-- ============================================================== -->
@@ -99,7 +96,7 @@
                         <li>
                             <a class="profile-pic" href="#">
                                 <img src="plugins/images/users/varun.jpg" alt="user-img" width="36"
-                                    class="img-circle"><span class="text-white font-medium">Steave</span></a>
+                                    class="img-circle"><span class="text-white font-medium">Ibrahim</span></a>
                         </li>
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
@@ -122,48 +119,47 @@
                     <ul id="sidebarnav">
                         <!-- User Profile-->
                         <li class="sidebar-item pt-2">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="dashboard.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="dashboard.php"
                                 aria-expanded="false">
                                 <i class="far fa-clock" aria-hidden="true"></i>
                                 <span class="hide-menu">Dashboard</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="profile.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="profile.php"
                                 aria-expanded="false">
                                 <i class="fa fa-user" aria-hidden="true"></i>
                                 <span class="hide-menu">Profile</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="basic-table.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="basic-table.php"
                                 aria-expanded="false">
                                 <i class="fa fa-table" aria-hidden="true"></i>
                                 <span class="hide-menu">Basic Table</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="fontawesome.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="fontawesome.php"
                                 aria-expanded="false">
                                 <i class="fa fa-font" aria-hidden="true"></i>
                                 <span class="hide-menu">Icon</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="blank.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="blank.php"
                                 aria-expanded="false">
                                 <i class="fa fa-columns" aria-hidden="true"></i>
                                 <span class="hide-menu">Blank Page</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="404.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="404.php"
                                 aria-expanded="false">
                                 <i class="fa fa-info-circle" aria-hidden="true"></i>
                                 <span class="hide-menu">Error 404</span>
                             </a>
                         </li>
-
                     </ul>
 
                 </nav>
@@ -184,9 +180,8 @@
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Basic Table</h4>
+                        <h4 class="page-title">Dashboard</h4>
                     </div>
-                </div>
                 <!-- /.col-lg-12 -->
             </div>
             <!-- ============================================================== -->
@@ -197,66 +192,135 @@
             <!-- ============================================================== -->
             <div class="container-fluid">
                 <!-- ============================================================== -->
-                <!-- Start Page Content -->
+                <!-- Three charts -->
+                <!-- ============================================================== -->
+                <div class="row justify-content-center">
+                    <div class="col-lg-4 col-md-12">
+                        <div class="white-box analytics-info">
+                            <!-- Here are total visit  -->
+                            <h3 class="box-title">Total Visit</h3>
+                            <ul class="list-inline two-part d-flex align-items-center mb-0">
+                                <li>
+                                    <div id="sparklinedash"><canvas width="67" height="30"
+                                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
+                                    </div>
+                                </li>
+                                <li class="ms-auto"><span class="counter text-success">659</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12">
+                        <div class="white-box analytics-info">
+                            <!-- Here are total page visit   -->
+                            <h3 class="box-title">Total Page Views</h3>
+                            <ul class="list-inline two-part d-flex align-items-center mb-0">
+                                <li>
+                                    <div id="sparklinedash2"><canvas width="67" height="30"
+                                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
+                                    </div>
+                                </li>
+                                <li class="ms-auto"><span class="counter text-purple">869</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12">
+                        <div class="white-box analytics-info">
+                            <!-- Here are unique visitor  -->
+                            <h3 class="box-title">Unique Visitor</h3>
+                            <ul class="list-inline two-part d-flex align-items-center mb-0">
+                                <li>
+                                    <div id="sparklinedash3"><canvas width="67" height="30"
+                                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
+                                    </div>
+                                </li>
+                                <li class="ms-auto"><span class="counter text-info">911</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- PRODUCTS YEARLY SALES -->
+                <!-- ============================================================== -->
+
+                <!-- ============================================================== -->
+                <!-- RECENT SALES -->
                 <!-- ============================================================== -->
                 <div class="row">
-                    <div class="col-sm-12">
+                    <div class="col-md-12 col-lg-12 col-sm-12">
                         <div class="white-box">
-                            <h3 class="box-title">Basic Table</h3>
-                            <p class="text-muted">Add class <code>.table</code></p>
+                            <div class="d-md-flex mb-3">
+                                <h3 class="box-title mb-0">Recent sales</h3>
+                                <div class="col-md-3 col-sm-4 col-xs-6 ms-auto">
+                                    <select class="form-select shadow-none row border-top">
+                                        <option>March 2021</option>
+                                        <option>April 2021</option>
+                                        <option>May 2021</option>
+                                        <option>June 2021</option>
+                                        <option>July 2021</option>
+                                    </select>
+                                </div>
+                            </div>
                             <div class="table-responsive">
-                                <table class="table text-nowrap">
+                                <table class="table no-wrap">
                                     <thead>
                                         <tr>
                                             <th class="border-top-0">#</th>
-                                            <th class="border-top-0">First Name</th>
-                                            <th class="border-top-0">Last Name</th>
-                                            <th class="border-top-0">Username</th>
-                                            <th class="border-top-0">Role</th>
+                                            <th class="border-top-0">Name</th>
+                                            <th class="border-top-0">Status</th>
+                                            <th class="border-top-0">Date</th>
+                                            <th class="border-top-0">Price</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <td>1</td>
-                                            <td>Deshmukh</td>
-                                            <td>Prohaska</td>
-                                            <td>@Genelia</td>
-                                            <td>admin</td>
+                                            <td class="txt-oflo">Elite admin</td>
+                                            <td>SALE</td>
+                                            <td class="txt-oflo">April 18, 2021</td>
+                                            <td><span class="text-success">$24</span></td>
                                         </tr>
                                         <tr>
                                             <td>2</td>
-                                            <td>Deshmukh</td>
-                                            <td>Gaylord</td>
-                                            <td>@Ritesh</td>
-                                            <td>member</td>
+                                            <td class="txt-oflo">Real Homes WP Theme</td>
+                                            <td>EXTENDED</td>
+                                            <td class="txt-oflo">April 19, 2021</td>
+                                            <td><span class="text-info">$1250</span></td>
                                         </tr>
                                         <tr>
                                             <td>3</td>
-                                            <td>Sanghani</td>
-                                            <td>Gusikowski</td>
-                                            <td>@Govinda</td>
-                                            <td>developer</td>
+                                            <td class="txt-oflo">Ample Admin</td>
+                                            <td>EXTENDED</td>
+                                            <td class="txt-oflo">April 19, 2021</td>
+                                            <td><span class="text-info">$1250</span></td>
                                         </tr>
                                         <tr>
                                             <td>4</td>
-                                            <td>Roshan</td>
-                                            <td>Rogahn</td>
-                                            <td>@Hritik</td>
-                                            <td>supporter</td>
+                                            <td class="txt-oflo">Medical Pro WP Theme</td>
+                                            <td>TAX</td>
+                                            <td class="txt-oflo">April 20, 2021</td>
+                                            <td><span class="text-danger">-$24</span></td>
                                         </tr>
                                         <tr>
                                             <td>5</td>
-                                            <td>Joshi</td>
-                                            <td>Hickle</td>
-                                            <td>@Maruti</td>
-                                            <td>member</td>
+                                            <td class="txt-oflo">Hosting press html</td>
+                                            <td>SALE</td>
+                                            <td class="txt-oflo">April 21, 2021</td>
+                                            <td><span class="text-success">$24</span></td>
                                         </tr>
                                         <tr>
                                             <td>6</td>
-                                            <td>Nigam</td>
-                                            <td>Eichmann</td>
-                                            <td>@Sonu</td>
-                                            <td>supporter</td>
+                                            <td class="txt-oflo">Digital Agency PSD</td>
+                                            <td>SALE</td>
+                                            <td class="txt-oflo">April 23, 2021</td>
+                                            <td><span class="text-danger">-$14</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>7</td>
+                                            <td class="txt-oflo">Helping Hands WP Theme</td>
+                                            <td>MEMBER</td>
+                                            <td class="txt-oflo">April 22, 2021</td>
+                                            <td><span class="text-success">$64</span></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -265,15 +329,9 @@
                     </div>
                 </div>
                 <!-- ============================================================== -->
-                <!-- End PAge Content -->
+                <!-- Recent Comments -->
                 <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- Right sidebar -->
-                <!-- ============================================================== -->
-                <!-- .right-sidebar -->
-                <!-- ============================================================== -->
-                <!-- End Right sidebar -->
-                <!-- ============================================================== -->
+            
             </div>
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
@@ -281,7 +339,7 @@
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            <footer class="footer text-center"> 2022 © CDMA
+            <footer class="footer text-center"> 2022 © CDMA 
             </footer>
             <!-- ============================================================== -->
             <!-- End footer -->
@@ -301,12 +359,18 @@
     <!-- Bootstrap tether Core JavaScript -->
     <script src="bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/app-style-switcher.js"></script>
+    <script src="plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
     <!--Wave Effects -->
     <script src="js/waves.js"></script>
     <!--Menu sidebar -->
     <script src="js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="js/custom.js"></script>
+    <!--This page JavaScript -->
+    <!--chartis chart-->
+    <script src="plugins/bower_components/chartist/dist/chartist.min.js"></script>
+    <script src="plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
+    <script src="js/pages/dashboards/dashboard1.js"></script>
 </body>
 
 </html>
