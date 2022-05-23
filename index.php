@@ -40,14 +40,7 @@ include("var.php");
     
 </head>
 <?php
-session_start();
-if($_SESSION['LogIn']==True){
-    if($_SESSION['Is_Admin']==1){
-        header('Location:indexAdmin.php');
-        }else{
-        header('Location:indexUser.php');
-    }
-}
+
 ?>
 
 <body>

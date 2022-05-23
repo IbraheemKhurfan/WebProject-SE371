@@ -74,9 +74,14 @@ session_start();
                         <a href="#venue" class="nav-item nav-link">Venue</a>
                         <a href="#hotels" class="nav-item nav-link">Hotels</a>
                         <a href="#F.A.Qs" class="nav-item nav-link">F.A.Q's</a>
-                        <a href="#F.A.Qs" class="nav-item nav-link">|</a>
-                        <a href="" class="nav-item nav-link"><?php echo $_SESSION['name'] ?></a>
-                        
+                        <a href="" class="nav-item nav-link">F.A.Q's</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><?php echo $_SESSION['name'] ?></a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="">Settings</a></li>
+                                <li><a class="dropdown-item" href="logout.php">Logout</a></li>
+                            </ul>
+                        </li>
                         
                     </div>               
                 </div>
