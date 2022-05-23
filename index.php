@@ -39,6 +39,16 @@ include("var.php");
     
     
 </head>
+<?php
+session_start();
+if($_SESSION['LogIn']==True){
+    if($_SESSION['Is_Admin']==1){
+        header('Location:indexAdmin.php');
+        }else{
+        header('Location:indexUser.php');
+    }
+}
+?>
 
 <body>
     <div class="container-xxl bg-white p-0">
@@ -75,8 +85,8 @@ include("var.php");
                         <a href="#hotels" class="nav-item nav-link">Hotels</a>
                         <a href="#F.A.Qs" class="nav-item nav-link">F.A.Q's</a>
                     </div>
-                    <button class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3" onclick="location.href='\\SignIn-Login\\colorlib-regform-32\\SignUp.html';" style="width:auto;">SignUp</button>
-                    <button class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Login</button>
+                    <button class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3" onclick="window.open('SignUp.php','_self');" style="width:auto;">SignUp</button>
+                    <button class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3"onclick="window.open('Login.php','_self');" style="width:auto;">Login</button>
                     <!--=====================SIGNUP FORM START=====================-->
                 <div id="id01" class="modal">
                 <form class="modal-content animate" action="return IsAdmin();"  onSubmit="return validate();" method="post">

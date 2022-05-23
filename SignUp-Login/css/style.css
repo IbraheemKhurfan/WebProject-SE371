@@ -22,7 +22,7 @@ body {
 }
 .form-v6-content  {
 	background: #fff;
-	width: 968px;
+	width: 300%px;
 	border-radius: 8px;
 	-o-border-radius: 8px;
 	-ms-border-radius: 8px;
@@ -133,7 +133,7 @@ input:-moz-placeholder { /* Firefox 18- */
 }
 
 /* Responsive */
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 300%) {
 	.form-v6-content {
 		margin: 180px 20px;
 		flex-direction:  column;
