@@ -1378,7 +1378,14 @@ gallery[i].onclick = () =>{
             <h6 class="position-relative d-inline text-primary ps-4">Fees</h6>
             <h2 class="mt-2">AUTHOR REGISTRATION</h2>
         </div>
-        <p class="text-center wow fadeInUp" data-wow-delay="0.5s">Thanks to the generous support of Prince Sultan University, all participants are waived from the CDMA2022 Conference registration fees.</p>
+     <!-- Button for Form submittion--> 
+        <!-- <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+        <button type="button" class="btn btn-Primary  "><a href="https://forms.gle/cvftTLsQPyYGWt6u9" class="text-white"> Resgistration Fees</a></button>
+        </div> -->
+
+    <!-- Text--> 
+    <p>Thanks to the generous support of Prince Sultan University, the CDMA2022 Conference attendees are waived from paying the registrations fees!</p>
+
     </div>
     <!-- Author registration End-->
 
