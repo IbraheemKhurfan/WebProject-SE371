@@ -40,6 +40,30 @@ session_start();
     
     
 </head>
+<?php
+include_once('dbconnect.php');
+    session_start();
+
+//checking passwords are registration
+    if($_SESSION['registration']!='1'){
+        $Query="UPDATE users SET registration ='1' where email='$email'";
+        $result=$conn->query($Query);
+        $_SESSION['registration']='1';
+        
+        
+         
+       
+    
+    }else{?>
+        <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <strong>Error</strong> You are already register in the evnt
+        </div>
+<?php 
+    //else closing
+    }
+
+?>
 
 <body>
     <div class="container-xxl bg-white p-0">
