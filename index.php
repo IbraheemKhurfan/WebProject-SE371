@@ -1377,13 +1377,13 @@ gallery[i].onclick = () =>{
         </div> -->
 
     <!-- Text--> 
-    <p>Thanks to the generous support of Prince Sultan University, the CDMA2022 Conference attendees are waived from paying the registrations fees!</p>
+    <p class="text-center">Thanks to the generous support of Prince Sultan University, the CDMA2022 Conference attendees are waived from paying the registrations fees!</p>
 
     <div class="container mt-3">
   <div class="container">
         <div class="col-md-12 text-center">
-            <button type="button" class="btn btn-primary"> <a href="LogIn.php"
-                class="text-white">Submit</a></button>
+            <button type="button" class="btn btn-primary  btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;"> <a href="LogIn.php"
+                class="text-white">Register</a></button>
             
         </div>      
 </div>
