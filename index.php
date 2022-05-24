@@ -153,7 +153,7 @@ include("var.php");
                           <input type="password" id="password" class="form-control form-control-lg" minlength="4" maxlength="42" placeholder="Enter password" required/>
                         </div>
                           
-                        <button id="Login_btn" type="submit">Login</button>
+                        <button id="Login_btn" type="submit">Lgin</button>
                       <!--  <label>
                           <input type="checkbox" checked="checked" name="remember"> Remember me
                         </label> -->
