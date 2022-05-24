@@ -158,10 +158,10 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="blank.php"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="AddCorusel&Lab.php"
                                 aria-expanded="false">
                                 <i class="fa fa-columns" aria-hidden="true"></i>
-                                <span class="hide-menu">Blank_Carousel Page</span>
+                                <span class="hide-menu">Add Carousel & Lab</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
