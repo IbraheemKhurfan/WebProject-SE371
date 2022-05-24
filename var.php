@@ -21,9 +21,6 @@ $titel="CDMA2022";
 
 
 
-#Check the Validality of Password 
-
-
 
 
 

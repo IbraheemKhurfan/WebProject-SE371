@@ -312,14 +312,9 @@ function lessThanFive(){
                         <h2 style="font-size: 2vw;" class="colorMain text-dark">Add Picture in Carouesel</h2>
                         <form action="" method="post" enctype="multipart/form-data">
                             <div class="mb-5 mt-3">
-                                <label for="text" class="colorSecond text-dark" style="font-size: 1vw;">Photo Tag:</label>
-                                <input type="text" class="form-control colorSecond"  name="tag" placeholder="Enter Photo Tag" required>
-                            </div>
-                            <div class="mb-5 mt-3">
                                 <label for="myfile" class="text-dark">Select a photo:</label>
                                 <input type="file" id="image" name="image" required>
                             </div>
-
                             <div class="mb-5 mt-3">
                                 <p style="font-size: 0.8vw; " class="text-dark"> <?php if($error) echo $msg ?></p>
                                 <p style="font-size: 0.8vw; " class="text-dark"> <?php if(!$error) echo $msg ?></p>
