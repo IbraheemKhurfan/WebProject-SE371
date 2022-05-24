@@ -55,6 +55,7 @@ if(isset($_POST['Login'])){
 			$result=$result->fetch_array();
 			$_SESSION['Is_Admin']=$result['Is_Admin'];
 			$_SESSION['name']=$result['name'];
+			$_SESSION['email']=$result['email'];
 			// relocate him to user page 
 			if($_SESSION['Is_Admin']==1){
 			header('Location:indexAdmin.php');
