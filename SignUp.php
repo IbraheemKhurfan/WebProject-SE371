@@ -99,7 +99,7 @@ if(isset($_POST['SignUp'])){
 					<input type="text" name="your-email" id="your-email" class="input-text" placeholder="Email Address" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}">
 				</div>
 				<div class="form-row">
-					<input type="number" name="phone-number" id="phone-number" class="input-text" placeholder="Phone Number"  >
+					<input type="tel" name="phone-number" id="phone-number" class="input-text" minlength="3" maxlength="13" pattern="+9[1-9]{2}-[0-9]{3}-[0-9]{4}" value="+966" placeholder="Phone Number"  >
 				</div>
 				<div class="form-row">
 					<input type="password" name="password" id="password" class="input-text" placeholder="Password" minlength="4"  required>
