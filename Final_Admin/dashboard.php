@@ -1,5 +1,5 @@
 <?php 
-// session_start();
+ session_start();
 
 // if(isset($_POST['submit'])){
 //     $name1= $_POST["name"];
@@ -108,7 +108,7 @@
                         <li>
                             <a class="profile-pic" href="#">
                                 <img src="plugins/images/users/varun.jpg" alt="user-img" width="36"
-                                    class="img-circle"><span class="text-white font-medium"><?php //echo $name1 ?></span></a>
+                                    class="img-circle"><span class="text-white font-medium"><?php echo $_SESSION['name'] ?></span></a>
                         </li>
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
