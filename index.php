@@ -1383,7 +1383,7 @@ gallery[i].onclick = () =>{
   <div class="container">
         <div class="col-md-12 text-center">
             <button type="button" class="btn btn-primary"> <a href="LogIn.php"
-                class="text-white">Submit</a></button>
+                class="text-white">Register</a></button>
             
         </div>      
 </div>
