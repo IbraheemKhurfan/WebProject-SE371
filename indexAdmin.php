@@ -206,7 +206,7 @@ session_start();
                                     $counter+=1;
                                     ?>
                                     <!-- getting the image  -->
-                                    <?php echo '<img style="width: 190px; height:160px;"  src="data:image/'.';base64,'.base64_encode($row['carousel_image']).'"/>'?>; 
+                                    <?php echo '<img style="height: 400px; border-radius: 50px 20px;" class="d-block w-100 "  src="data:image/'.';base64,'.base64_encode($row['carousel_image']).'"/>'?>; 
                                      <!-- bring the image from the database, it will display image from anywhere, no need to be in the same folder as project-->
                                      <!-- Here we print the path from the database -->         
                                 <?php endwhile; ?>            
