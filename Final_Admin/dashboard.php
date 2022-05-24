@@ -1,5 +1,6 @@
 <?php 
- session_start();
+include_once("dbconnect.php");
+session_start();
 
 // if(isset($_POST['submit'])){
 //     $name1= $_POST["name"];
@@ -106,9 +107,12 @@
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
                         <li>
-                            <a class="profile-pic" href="#">
-                                <img src="plugins/images/users/varun.jpg" alt="user-img" width="36"
-                                    class="img-circle"><span class="text-white font-medium"><?php echo $_SESSION['name'] ?></span></a>
+                            <li class="nav-item dropdown ">
+                                <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" ><?php echo $_SESSION['name'] ?></a>
+                                <ul class="dropdown-menu">
+                                     <li><a class="dropdown-item" href="logout.php">Logout</a></li>
+                                </ul>
+                            </li>
                         </li>
                         <!-- ============================================================== -->
                         <!-- User profile and search -->

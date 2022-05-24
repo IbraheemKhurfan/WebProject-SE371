@@ -76,11 +76,7 @@ session_start();
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><?php echo $_SESSION['name'] ?></a>
                             <ul class="dropdown-menu">
-<<<<<<< HEAD
-                                <li><a class="dropdown-item" href="Final_Admin/blank_Corusel.php">Settings</a></li>
-=======
                                 <li><a class="dropdown-item" href="\GithubWebProject\WebProject\WebProject-SE371\Final_Admin\dashboard.php">Settings</a></li>
->>>>>>> ce3ce008f4e739a755619c11fc800a436426eb48
                                 <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                             </ul>
                         </li>
