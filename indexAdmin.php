@@ -76,7 +76,7 @@ session_start();
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><?php echo $_SESSION['name'] ?></a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="">Settings</a></li>
+                                <li><a class="dropdown-item" href="Final_Admin/blank_Corusel.php">Settings</a></li>
                                 <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                             </ul>
                         </li>
