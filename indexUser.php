@@ -1,5 +1,6 @@
 <?php 
 //include("var.php");
+include_once('dbconnect.php');
 session_start();
 ?>
 
@@ -40,30 +41,7 @@ session_start();
     
     
 </head>
-<?php
-include_once('dbconnect.php');
-    session_start();
 
-//checking passwords are registration
-    if($_SESSION['registration']!='1'){
-        $Query="UPDATE users SET registration ='1' where email='$email'";
-        $result=$conn->query($Query);
-        $_SESSION['registration']='1';
-        
-        
-         
-       
-    
-    }else{?>
-        <div class="alert alert-danger alert-dismissible">
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            <strong>Error</strong> You are already register in the evnt
-        </div>
-<?php 
-    //else closing
-    }
-
-?>
 
 <body>
     <div class="container-xxl bg-white p-0">
@@ -109,9 +87,34 @@ include_once('dbconnect.php');
                         
                     </div>               
                 </div>
+                
             </nav>
-
+            
             <div class="container-xxl py-5 bg-primary hero-header mb-5">
+            <?php
+
+                if(isset($_POST['Register'])){
+                //checking passwords are registration
+                    if($_SESSION['registration']!='1'){
+                        $email=$_SESSION['email'];
+                        $Query="UPDATE users SET registration ='1' where email='$email' ";
+                        $result=$conn->query($Query);
+                        $_SESSION['registration']='1';?>
+                        <div class="alert  alert-success alert-dismissible mt-5">
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                            <strong>All Set!</strong> You are have been registered successfully to CDMA 2022
+                        </div>
+                        <?php
+                    }else{?>
+                        <div class="alert  alert-danger alert-dismissible mt-5">
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                            <strong>Error</strong> You are already register in the evnt
+                        </div>
+                <?php 
+                    //else closing
+                    }
+                    }
+                ?>
                 <div class="container my-5 py-5 px-lg-5">
                     <div class="row g-5 py-5">
                         <div class="col-lg-6 text-center text-lg-start">
@@ -1314,16 +1317,15 @@ gallery[i].onclick = () =>{
         </div>
         <p class="text-center wow fadeInUp" data-wow-delay="0.5s">Thanks to the generous support of Prince Sultan University, all participants are waived from the CDMA2022 Conference registration fees.</p>
     </div>
-    <div class="container mt-3">
-  <div class="container">
-        <div class="col-md-12 text-center">
-            <button type="button" class="btn btn-primary  btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;"> <a href="LogIn.php"
-                class="text-white">Register</a></button>
+    <form class="container mt-3" action=""  method="post">
+  <div class="container" >
+        <div class="form col-md-12 text-center">
+        <button type="submit" name="Register" class="btn btn-primary text-white  btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;"> Register</button>
+        </div>  
+        
+     </div >
             
-        </div>      
- </div>
-            
-            </div>
+    </form>
     <!-- Author registration End-->
 
     <!-- Contact Us Start-->
