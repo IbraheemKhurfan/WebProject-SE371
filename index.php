@@ -1377,7 +1377,7 @@ gallery[i].onclick = () =>{
         </div> -->
 
     <!-- Text--> 
-    <p>Thanks to the generous support of Prince Sultan University, the CDMA2022 Conference attendees are waived from paying the registrations fees!</p>
+    <p class="text-center">Thanks to the generous support of Prince Sultan University, the CDMA2022 Conference attendees are waived from paying the registrations fees!</p>
 
     <div class="container mt-3">
   <div class="container">
