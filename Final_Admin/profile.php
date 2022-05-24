@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
+<?php
+include_once("dbconnect.php");
+session_start();
 
+
+?>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -92,11 +97,10 @@
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
                         <li>
-                            <a class="profile-pic" href="#">
-                                <span class="text-white font-medium">Ibrahim</span></a>
+                            
                                 
-                            <li class="nav-item dropdown text-white">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><?php echo $_SESSION['name'] ?></a>
+                            <li class="nav-item dropdown ">
+                                <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" ><?php echo $_SESSION['name'] ?></a>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="">Settings</a></li>
                                      <li><a class="dropdown-item" href="logout.php">Logout</a></li>
