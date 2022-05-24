@@ -166,10 +166,10 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="blank.php"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="Add_Corusel.php"
                                 aria-expanded="false">
                                 <i class="fa fa-columns" aria-hidden="true"></i>
-                                <span class="hide-menu">Blank_Carousel Page</span>
+                                <span class="hide-menu">Add Carousel</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
