@@ -1287,6 +1287,16 @@ gallery[i].onclick = () =>{
         </div>
         <p class="text-center wow fadeInUp" data-wow-delay="0.5s">Thanks to the generous support of Prince Sultan University, all participants are waived from the CDMA2022 Conference registration fees.</p>
     </div>
+    <div class="container mt-3">
+  <div class="container">
+        <div class="col-md-12 text-center">
+            <button type="button" class="btn btn-primary  btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;"> <a href="LogIn.php"
+                class="text-white">Register</a></button>
+            
+        </div>      
+</div>
+            
+            </div>
     <!-- Author registration End-->
 
     <!-- Contact Us Start-->
