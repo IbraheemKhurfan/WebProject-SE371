@@ -177,42 +177,44 @@ session_start();
 
                             <!-- Indicators/dots -->
                             <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#about-carousel" data-bs-slide-to="0" class="active"></button>
-                            <button type="button" data-bs-target="#about-carousel" data-bs-slide-to="1"></button>
-                            <button type="button" data-bs-target="#about-carousel" data-bs-slide-to="2"></button>
+                                <button type="button" data-bs-target="#about-carousel" data-bs-slide-to="0" class="active"></button>
+                                <!-- Repeating  -->
+                                <?php
+                                $counter=0;
+                                $sql = "select * from carousel limit 5"; //Limit is 5 because carousel won't work well after 5 images
+                                $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+                                while ($row = mysqli_fetch_array($result)) : //Start of the loop
+                                    $counter+=1;
+                                    ?>
+                                    <!-- getting the button  -->
+                                    <button type="button" data-bs-target="#about-carousel" data-bs-slide-to=<?php echo $counter?> ></button>
+
+                                <?php endwhile; ?>
                             </div>
                         
                             <!-- The slideshow/carousel -->
                             <div class="carousel-inner">
                             <div class="carousel-item active">
-                            <section class="gallery" id="gallery">
-                                    <div class="accordian">
-                                        <ul>
-                                            <?php 
-                                            
-                                            $counter=0;
-                                            
-                                            $sql = "select * from carousel limit 5"; //Limit is 5 because carousel won't work well after 5 images
-                                            $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
-                                            while ($row = mysqli_fetch_array($result)) : //Start of the loop
-                                            $counter+=1;
-                                            ?>
-                                            <button type="button" data-bs-target="#about-carousel" data-bs-slide-to=<?php echo $counter?> ></button>
+                                <img  src="img/GroupPhoto.jpeg" alt="GroupPhoto" class="d-block w-100 " style="height: 400px; border-radius: 50px 20px;">
+                            </div>
+                            <div class="carousel-item">  
+                                <?php
+                                $counter=0;
+                                $sql = "select * from carousel limit 5"; //Limit is 5 because carousel won't work well after 5 images
+                                $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+                                while ($row = mysqli_fetch_array($result)) : //Start of the loop
+                                    $counter+=1;
+                                    ?>
+                                    <!-- getting the image  -->
+                                    <?php echo '<img style="width: 190px; height:160px;"  src="data:image/'.';base64,'.base64_encode($row['carousel_image']).'"/>'?>; 
+                                     <!-- bring the image from the database, it will display image from anywhere, no need to be in the same folder as project-->
+                                     <!-- Here we print the path from the database -->         
+                                <?php endwhile; ?>            
+                            </div>
+                         
 
-                                            <a>
-                                                <?php echo '<img style="width: 190px; height:160px;"  src="data:image/'.';base64,'.base64_encode($row['carousel_image']).'"/>'?>; 
-                                                <!-- bring the image from the database, it will display image from anywhere, no need to be in the same folder as project-->
-                                                <!-- Here we print the path from the database -->
-                                            </a>
-                                            
-                                            <?php endwhile; ?>
-                        <!-- End of loop -->
-                                        </ul>
-                                    </div>
-                            </div>
-                            </section>
-                            </div>
-                        
+
+
                             <!-- Left and right controls/icons -->
                             <button class="carousel-control-prev" type="button" data-bs-target="#about-carousel" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon"></span>
