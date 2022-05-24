@@ -3,9 +3,15 @@
 <?php
 include_once("dbconnect.php");
 session_start();
+function test_input($data) {
+	$data = trim($data);
+	$data = stripslashes($data);
+	$data = htmlspecialchars($data);
+	return $data;
+  }
+  ?>
+  
 
-
-?>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -81,7 +87,7 @@ session_start();
                     <!-- Right side toggle and nav items -->
                     <!-- ============================================================== -->
                     <ul class="navbar-nav ms-auto d-flex align-items-center">
-
+                        
                         <!-- ============================================================== -->
                         <!-- Search -->
                         <!-- ============================================================== -->
@@ -102,7 +108,8 @@ session_start();
                             <li class="nav-item dropdown ">
                                 <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" ><?php echo $_SESSION['name'] ?></a>
                                 <ul class="dropdown-menu">
-                                     <li><a class="dropdown-item" href="logout.php">Logout</a></li>
+                                     <li><a class="dropdown-item" href="\GithubWebProject\WebProject\WebProject-SE371\indexAdmin.php">Home</a></li>
+                                     <li><a class="dropdown-item" href="\GithubWebProject\WebProject\WebProject-SE371\logout.php">Logout</a></li>
                                 </ul>
                             </li>
                         </li>
@@ -112,6 +119,9 @@ session_start();
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
+
+
+                        
                     </ul>
                 </div>
             </nav>
@@ -198,6 +208,95 @@ session_start();
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
+            <!-- checking for the input and updating it   -->
+            <?php
+            if(isset($_POST['update_information_button'])){
+                $name=test_input($_POST['name']);
+                $org_email=$_SESSION['email'];
+                $email=test_input($_POST['email']);
+                $phone=test_input($_POST['phone-number']);
+                $Query="UPDATE users SET name='$name', email='$email', phonenum='$phone' where email='$org_email' ";
+                if($result=$conn->query($Query)){?>
+                    <div class="alert  alert-success alert-dismissible " style="width: 50%; margin-left: 20%; margin-top: 2%;" >
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        <strong>All Set!</strong> Profile Updated!
+                    </div>
+                
+                <?php
+                $_SESSION['name']=$name;
+                $_SESSION['email']=$email;
+                $_SESSION['phonenum']=$phone;
+                //end of if statement 
+                }
+                
+                else{?>
+                
+                <div class="alert  alert-danger alert-dismissible mt-5">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" style="width: 50%; margin-left: 20%; margin-top: 2%;"></button>
+                    <strong>Error</strong> Something Went Wrong,please check your connection! 
+                </div>
+                
+                <?php
+                //end of else statement 
+                }
+                //end of if statement 
+            }
+
+            if(isset($_POST['update_password_button'])){
+                $old_password=md5(test_input($_POST['old_password']));
+                $new_password=md5(test_input($_POST['new_password']));
+                $new_password_repeat=md5(test_input($_POST['new_password_repeat']));
+                if($old_password==$_SESSION['password']){
+                    if($new_password==$new_password_repeat){
+                        // update password 
+                        $org_email=$_SESSION['email'];
+                        $Query="UPDATE users SET password='$new_password' where email='$org_email' ";
+                        if($result=$conn->query($Query)){?>
+                            <div class="alert  alert-success alert-dismissible " style="width: 50%; margin-left: 20%; margin-top: 2%;" >
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                                <strong>All Set!</strong> Password Updated!
+                            </div>
+                        
+                            <?php
+                            $_SESSION['password']=$new_password;
+                            //end of if statement 
+                            }
+                            
+                        else{?>
+                            
+                            <div class="alert  alert-danger alert-dismissible" style="width: 50%; margin-left: 20%; margin-top: 2%;">
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" ></button>
+                                <strong>Error</strong> Something Went Wrong,please check your connection! 
+                            </div>
+                            
+                            <?php
+                            //end of else statement 
+                        }
+
+                    }else{?>
+                    
+                    <div class="alert  alert-danger alert-dismissible " style="width: 50%; margin-left: 20%; margin-top: 2%;">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" > </button>
+                    <strong>Mismatch</strong> Please repeat same password correctly  
+                    </div>
+                    
+                    <?php
+
+                    }
+
+                }else{?>
+                
+                <div class="alert  alert-danger alert-dismissible " style="width: 50%; margin-left: 20%; margin-top: 2%;">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" > </button>
+                    <strong>Mismatch</strong> Old password is wrong  
+                </div>
+                
+                <?php
+
+                }
+
+            }
+            ?>
             <!-- ============================================================== -->
             <!-- End Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
@@ -213,11 +312,11 @@ session_start();
                     <!-- Column -->
                     <div class="col-lg-4 col-xlg-3 col-md-12">
                         <div class="white-box">
-                            <div class="user-bg"> <img width="100%" alt="user" src="plugins/images/large/img1.jpg">
+                            <div class="user-bg"> <img width="100%" alt="user" src="plugins/images/large/background.jpg">
                                 <div class="overlay-box">
                                     <div class="user-content">
                                         <!-- Admin info -->
-                                        <a href="javascript:void(0)"><img src="plugins/images/users/genu.jpg"
+                                        <a href="javascript:void(0)"><img src="plugins/images/users/user.jpg"
                                                 class="thumb-lg img-circle" alt="img"></a>
                                         <h4 class="text-white mt-2"><?php echo $_SESSION['name'] ?></h4>  
                                         <h5 class="text-white mt-2"><?php echo $_SESSION['email'] ?></h5>
@@ -231,49 +330,60 @@ session_start();
                     <div class="col-lg-8 col-xlg-9 col-md-12">
                         <div class="card">
                             <div class="card-body">
-                                <form class="form-horizontal form-material">
+                                <form class="form-horizontal form-material" method="post">
                                     <div class="form-group mb-4">
                                         <!-- put full name  -->
                                         <label class="col-md-12 p-0">Full Name</label>
                                         <div class="col-md-12 border-bottom p-0">
-                                            <input type="text" value="<?php echo $_SESSION['name'] ?>"
+                                            <input type="text" name="name" value="<?php echo $_SESSION['name'] ?>"
                                                 class="form-control p-0 border-0"> </div>
                                     </div>
+                                    <!-- put email  -->
                                     <div class="form-group mb-4">
                                         <label for="example-email" class="col-md-12 p-0">Email</label>
                                         <div class="col-md-12 border-bottom p-0">
-                                            <input type="email" value="<?php echo $_SESSION['email'] ?>"
+                                            <input type="email" name="email" value="<?php echo $_SESSION['email'] ?>"
                                                 class="form-control p-0 border-0" name="example-email"
                                                 id="example-email">
                                         </div>
                                     </div>
+                                    <!-- put phone number  -->
                                     <div class="form-group mb-4">
                                         <label class="col-md-12 p-0">Phone No</label>
                                         <div class="col-md-12 border-bottom p-0">
-                                            <input type="text" placeholder="123 456 7890"
-                                                class="form-control p-0 border-0">
+                                        <input type="tel" name="phone-number" id="phone-number" class="input-text" minlength="3"
+                                         maxlength="13" pattern="+9[1-9]{2}-[0-9]{3}-[0-9]{4}" value="+966" placeholder="Phone Number"  >
                                         </div>
                                     </div>
+                                    <!-- button for submitting  -->
                                     <div class="form-group mb-4">
-                                        <div class="col-sm-12" method="post">
+                                        <div class="col-sm-12" >
                                             <!-- Update Button -->
-                                            <button name="update_button" class="btn btn-success">Update Profile</button>
+                                            <input type="submit" name="update_information_button" class="btn btn-success" value="Update Profile">
+                                            
                                         </div>
                                     </div>
+
+
+
+
+                                    <!-- old password  -->
                                     <div class="form-group mb-4">
-                                        <label class="col-md-12 p-0">Password</label>
+                                        <label class="col-md-12 p-0">Your Old Password</label>
                                         <div class="col-md-12 border-bottom p-0">
                                             <input type="password" name="old_password" class="form-control p-0 border-0">
                                         </div>
                                     </div>
+                                    <!-- new password  -->
                                     <div class="form-group mb-4">
-                                        <label class="col-md-12 p-0">Password</label>
+                                        <label class="col-md-12 p-0">New Password</label>
                                         <div class="col-md-12 border-bottom p-0">
                                             <input type="password" name="new_password" class="form-control p-0 border-0">
                                         </div>
                                     </div>
+                                    <!-- new password repeat  -->
                                     <div class="form-group mb-4">
-                                        <label class="col-md-12 p-0">Password</label>
+                                        <label class="col-md-12 p-0">Repeat New Password</label>
                                         <div class="col-md-12 border-bottom p-0">
                                             <input type="password"  name="new_password_repeat" class="form-control p-0 border-0">
                                         </div>
@@ -282,7 +392,7 @@ session_start();
                                     <div class="form-group mb-4">
                                         <div class="col-sm-12" method="post">
                                             <!-- Update Button -->
-                                            <button name="update_button" class="btn btn-success">Update Profile</button>
+                                            <button type="submit" name="update_password_button" class="btn btn-success">Update Password</button>
                                         </div>
                                     </div>
                                 </form>
@@ -309,7 +419,7 @@ session_start();
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            <footer class="footer text-center"> 2022 © CDMA 
+            <footer class="footer text-center"><img src="\GithubWebProject\WebProject\WebProject-SE371\img\cdma2022_logo-removebg-preview.png" width="10%" alt="CDMA"><br> All rights are preserved for 2022 © CDMA  
             </footer>
             <!-- ============================================================== -->
             <!-- End footer -->

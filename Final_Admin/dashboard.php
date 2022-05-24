@@ -2,16 +2,39 @@
 include_once("dbconnect.php");
 session_start();
 
-// if(isset($_POST['submit'])){
-//     $name1= $_POST["name"];
-//     $phone= $_POST["phone"];
-//     $email= $_POST["email"];
-//     $password= $_POST["password"];
-//     $repassword= $_POST["repassword"];
 
-// }else{
-//     print("Connection Failed");
-// }
+function total_count($conn){
+//Count all Account 
+$Query="SELECT COUNT(*) as total FROM users";
+if($result=$conn->query($Query)){
+$result=$result->fetch_array();
+return  $result['total'];
+}else{
+   die("Query Failed");
+}
+}
+
+function total_count_users($conn){
+    //Count all Account 
+    $Query="SELECT COUNT(*) as total FROM users where Is_Admin='0' ";
+    if($result=$conn->query($Query)){
+    $result=$result->fetch_array();
+    return  $result['total'];
+    }else{
+       die("Query Failed");
+    }
+    }
+
+function total_count_register($conn){
+        //Count all Account 
+        $Query="SELECT COUNT(*) as total FROM users where registration='1' ";
+        if($result=$conn->query($Query)){
+        $result=$result->fetch_array();
+        return  $result['total'];
+        }else{
+           die("Query Failed");
+        }
+        }   
 
 ?>
 
@@ -110,7 +133,8 @@ session_start();
                             <li class="nav-item dropdown ">
                                 <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" ><?php echo $_SESSION['name'] ?></a>
                                 <ul class="dropdown-menu">
-                                     <li><a class="dropdown-item" href="logout.php">Logout</a></li>
+                                     <li><a class="dropdown-item" href="\GithubWebProject\WebProject\WebProject-SE371\indexAdmin.php">Home</a></li>
+                                     <li><a class="dropdown-item" href="\GithubWebProject\WebProject\WebProject-SE371\logout.php">Logout</a></li>
                                 </ul>
                             </li>
                         </li>
@@ -221,42 +245,42 @@ session_start();
                     <div class="col-lg-4 col-md-12">
                         <div class="white-box analytics-info">
                             <!-- Here are total visit  -->
-                            <h3 class="box-title">Total Visit</h3>
+                            <h3 class="box-title">Total Accounts</h3>
                             <ul class="list-inline two-part d-flex align-items-center mb-0">
                                 <li>
                                     <div id="sparklinedash"><canvas width="67" height="30"
                                             style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
                                     </div>
                                 </li>
-                                <li class="ms-auto"><span class="counter text-success">659</span></li>
+                                <li class="ms-auto"><span class="counter text-success"><?php print total_count($conn)?></span></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12">
                         <div class="white-box analytics-info">
                             <!-- Here are total page visit   -->
-                            <h3 class="box-title">Total Page Views</h3>
+                            <h3 class="box-title">Total Users</h3>
                             <ul class="list-inline two-part d-flex align-items-center mb-0">
                                 <li>
                                     <div id="sparklinedash2"><canvas width="67" height="30"
                                             style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
                                     </div>
                                 </li>
-                                <li class="ms-auto"><span class="counter text-purple">869</span></li>
+                                <li class="ms-auto"><span class="counter text-purple"><?php print total_count_users($conn)?></span></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12">
                         <div class="white-box analytics-info">
                             <!-- Here are unique visitor  -->
-                            <h3 class="box-title">Unique Visitor</h3>
+                            <h3 class="box-title">Total Registers</h3>
                             <ul class="list-inline two-part d-flex align-items-center mb-0">
                                 <li>
                                     <div id="sparklinedash3"><canvas width="67" height="30"
                                             style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
                                     </div>
                                 </li>
-                                <li class="ms-auto"><span class="counter text-info">911</span>
+                                <li class="ms-auto"><span class="counter text-info"><?php print total_count_register($conn)?></span>
                                 </li>
                             </ul>
                         </div>
@@ -362,7 +386,7 @@ session_start();
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            <footer class="footer text-center"> 2022 © CDMA 
+            <footer class="footer text-center"><img src="\GithubWebProject\WebProject\WebProject-SE371\img\cdma2022_logo-removebg-preview.png" width="10%" alt="CDMA"><br> All rights are preserved for 2022 © CDMA  
             </footer>
             <!-- ============================================================== -->
             <!-- End footer -->
