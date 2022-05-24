@@ -102,7 +102,6 @@ session_start();
                             <li class="nav-item dropdown ">
                                 <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" ><?php echo $_SESSION['name'] ?></a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="">Settings</a></li>
                                      <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                                 </ul>
                             </li>
@@ -166,13 +165,6 @@ session_start();
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="Add_Corusel.php"
-                                aria-expanded="false">
-                                <i class="fa fa-columns" aria-hidden="true"></i>
-                                <span class="hide-menu">Add Carousel</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="404.php"
                                 aria-expanded="false">
                                 <i class="fa fa-info-circle" aria-hidden="true"></i>
@@ -227,8 +219,8 @@ session_start();
                                         <!-- Admin info -->
                                         <a href="javascript:void(0)"><img src="plugins/images/users/genu.jpg"
                                                 class="thumb-lg img-circle" alt="img"></a>
-                                        <h4 class="text-white mt-2">User Name</h4>  
-                                        <h5 class="text-white mt-2">info@myadmin.com</h5>
+                                        <h4 class="text-white mt-2"><?php echo $_SESSION['name'] ?></h4>  
+                                        <h5 class="text-white mt-2"><?php echo $_SESSION['email'] ?></h5>
                                     </div>
                                 </div>
                             </div>
@@ -244,21 +236,15 @@ session_start();
                                         <!-- put full name  -->
                                         <label class="col-md-12 p-0">Full Name</label>
                                         <div class="col-md-12 border-bottom p-0">
-                                            <input type="text" placeholder="Johnathan Doe"
+                                            <input type="text" value="<?php echo $_SESSION['name'] ?>"
                                                 class="form-control p-0 border-0"> </div>
                                     </div>
                                     <div class="form-group mb-4">
                                         <label for="example-email" class="col-md-12 p-0">Email</label>
                                         <div class="col-md-12 border-bottom p-0">
-                                            <input type="email" placeholder="johnathan@admin.com"
+                                            <input type="email" value="<?php echo $_SESSION['email'] ?>"
                                                 class="form-control p-0 border-0" name="example-email"
                                                 id="example-email">
-                                        </div>
-                                    </div>
-                                    <div class="form-group mb-4">
-                                        <label class="col-md-12 p-0">Password</label>
-                                        <div class="col-md-12 border-bottom p-0">
-                                            <input type="password" value="password" class="form-control p-0 border-0">
                                         </div>
                                     </div>
                                     <div class="form-group mb-4">
@@ -268,6 +254,31 @@ session_start();
                                                 class="form-control p-0 border-0">
                                         </div>
                                     </div>
+                                    <div class="form-group mb-4">
+                                        <div class="col-sm-12" method="post">
+                                            <!-- Update Button -->
+                                            <button name="update_button" class="btn btn-success">Update Profile</button>
+                                        </div>
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label class="col-md-12 p-0">Password</label>
+                                        <div class="col-md-12 border-bottom p-0">
+                                            <input type="password" name="old_password" class="form-control p-0 border-0">
+                                        </div>
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label class="col-md-12 p-0">Password</label>
+                                        <div class="col-md-12 border-bottom p-0">
+                                            <input type="password" name="new_password" class="form-control p-0 border-0">
+                                        </div>
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label class="col-md-12 p-0">Password</label>
+                                        <div class="col-md-12 border-bottom p-0">
+                                            <input type="password"  name="new_password_repeat" class="form-control p-0 border-0">
+                                        </div>
+                                    </div>
+                                   
                                     <div class="form-group mb-4">
                                         <div class="col-sm-12" method="post">
                                             <!-- Update Button -->

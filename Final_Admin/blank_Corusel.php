@@ -11,7 +11,7 @@
     <meta name="description"
         content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
-    <title>Ample Admin Lite Template by WrapPixel</title>
+    <title>Add Carousel</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="plugins/images/favicon.png">
@@ -158,10 +158,10 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="Add_Corusel.php"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="blank.php"
                                 aria-expanded="false">
                                 <i class="fa fa-columns" aria-hidden="true"></i>
-                                <span class="hide-menu">Add Carousel</span>
+                                <span class="hide-menu">Blank_Carousel Page</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
