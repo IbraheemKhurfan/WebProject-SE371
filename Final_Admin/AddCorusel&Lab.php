@@ -118,7 +118,7 @@ function lessThanFive(){
             }
             label.colorSecond{
                 color: #edd9c7;
-                font-size: 100px:
+                font-size: 100px;
             }          
 
 </style>   

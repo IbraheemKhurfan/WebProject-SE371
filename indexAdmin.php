@@ -1,4 +1,5 @@
-<?php 
+<?php
+include_once("Final_Admin/dbconnect.php");
 session_start();
 ?>
 
@@ -183,15 +184,27 @@ session_start();
                         
                             <!-- The slideshow/carousel -->
                             <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img  src="img/GroupPhoto.jpeg" alt="GroupPhoto" class="d-block w-100 " style="height: 400px; border-radius: 50px 20px;">
-                            </div>
-                            <div class="carousel-item">
-                                <img  src="img/Auditorium-3.jpg" alt="Auditorium-1" class="d-block w-100 " style="height: 400px; border-radius: 50px 20px;">
-                            </div>
-                            <div class="carousel-item">
-                                <img  src="img/Auditorium-2.jpg" alt="Auditorium-2" class="d-block w-100 " style="height: 400px; border-radius: 50px 20px;">
-                            </div>
+                            <section class="gallery" id="gallery">
+                                <h1 class="heading"> our <span>gallery</span> </h1>
+                                    <div class="accordian">
+                                        <ul>
+                                            <?php $sql = "select * from carousel limit 5"; //Limit is 5 because carousel won't work well after 5 images
+                                            $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+                                            while ($row = mysqli_fetch_array($result)) : //Start of the loop
+                                            ?>
+
+                                            <li>
+                                                <a>
+                                                    <?php echo '<img  style="height: 400px; border-radius: 50px 20px;"  src="data:image/' . ';base64,' . base64_encode($row['carousel_image']) . '"/>' ?>;
+                                                    <!-- bring the image from the database, it will display image from anywhere, no need to be in the same folder as project| edited by abdullah -->
+                                                    <!-- Here we print the path from the database -->
+                                                </a>
+                                            </li>
+                                            <?php endwhile; ?>
+                        <!-- End of loop -->
+                                        </ul>
+                                    </div>
+                            </section>
                             </div>
                         
                             <!-- Left and right controls/icons -->
@@ -201,7 +214,8 @@ session_start();
                             <button class="carousel-control-next" type="button" data-bs-target="#about-carousel" data-bs-slide="next">
                             <span class="carousel-control-next-icon"></span>
                             </button>
-                        </div>
+                        </div> 
+
                         
                     </div>
                 </div>
