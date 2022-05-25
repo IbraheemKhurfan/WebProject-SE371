@@ -56,6 +56,11 @@ if(isset($_POST['SignUp'])){
 		if(!check_if_exist($email,$conn)){
 			$_SESSION['name']=$name;
 			$_SESSION['LogIn']=True;
+			$_SESSION['Is_Admin']='0';
+			$_SESSION['email']=$email;
+			$_SESSION['phonenum']=$phone;
+			$_SESSION['password']=$password;
+			$_SESSION['registration']='0';
 			$inst_query="INSERT INTO users (name,phonenum,email,password,Is_Admin) values ('$name','$phone','$email','$password',0)";
 			$conn->query($inst_query);
 			// relocate him to user page 
