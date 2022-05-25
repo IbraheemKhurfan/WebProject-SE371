@@ -1,4 +1,13 @@
 <!DOCTYPE html>
+
+<?php 
+
+    require_once("connection.php");
+    $query = "SELECT * FROM users";
+    $result = mysqli_query($conn,$query);
+
+?>
+
 <html dir="ltr" lang="en">
 
 <head>
@@ -184,16 +193,15 @@
         <!-- ============================================================== -->
         <!-- Page wrapper  -->
         <!-- ============================================================== -->
-        <div class="page-wrapper" style="min-height: 250px;">
+        <div class="page-wrapper">
             <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Blank Page</h4>
+                        <h4 class="page-title">Edit Users</h4>
                     </div>
-   
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -208,9 +216,51 @@
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-sm-12">
                         <div class="white-box">
-                            <h3 class="box-title">Blank Page</h3>
+                            <h3 class="box-title">Users Table</h3>
+                            <div class="table-responsive">
+                                <table class="table text-nowrap">
+                                    <thead>
+                                        <tr>
+                                            <th class="border-top-0">ID</th>
+                                            <th class="border-top-0">Name</th>
+                                            <th class="border-top-0">Phone Number</th>
+                                            <th class="border-top-0">Email</th>
+                                            <th class="border-top-0">Role</th>
+                                            <th class="border-top-0">Edit</th>
+                                            <th class="border-top-0">Delete</th>
+                                        </tr>
+                                    </thead>
+
+                                    
+                                    <?php 
+                                    while($row=mysqli_fetch_assoc($result))
+                                    {
+                                        $ID = $row['id'];
+                                        $Name = $row['name'];
+                                        $Phone = $row['phonenum'];
+                                        $Email = $row['email'];
+                                        $Role = $row['Is_Admin'];
+                                    ?>
+
+                                    <tbody>
+                                        <tr>
+                                            <td><?php echo $UserID ?></td>
+                                            <td><?php echo $UserName ?></td>
+                                            <td><?php echo $UserEmail ?></td>
+                                            <td><?php echo $UserAge ?></td>
+                                            <td><a href="edit.php?GetID=<?php echo $UserID ?>">Edit</a></td>
+                                            <td><a href="delete.php?Del=<?php echo $UserID ?>">Delete</a></td>
+                                        </tr>  
+                                    </tbody>
+
+                                    <?php 
+                                    }  //Closing the Loop
+                                    ?>
+                                    
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
