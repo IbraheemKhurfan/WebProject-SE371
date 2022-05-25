@@ -53,6 +53,7 @@ if(isset($_POST['Login'])){
 			$Query="SELECT * from users where email='$email' and password='$password'";
 			$result=$conn->query($Query);
 			$result=$result->fetch_array();
+			$_SESSION['LogIn']=True;
 			$_SESSION['Is_Admin']=$result['Is_Admin'];
 			$_SESSION['name']=$result['name'];
 			$_SESSION['email']=$result['email'];

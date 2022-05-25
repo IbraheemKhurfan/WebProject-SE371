@@ -1,5 +1,6 @@
 <?php 
-include("var.php");
+//include("var.php");
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -59,98 +60,33 @@ include("var.php");
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
-                        <a href="index.php" class="nav-item nav-link active">Home</a>
+                        <a href="index.php" class="nav-item nav-link ">Home</a>
+                        <a href="#about" class="nav-item nav-link">About</a>
+                        <a href="#Sponsors" class="nav-item nav-link">Sponsors</a>
+                        <a href="Speaker.php" class="nav-item nav-link">Speakers</a>
+                        <a href="#program" class="nav-item nav-link">Program</a>
+                        <a href="#committees" class="nav-item nav-link">Committees</a>
                         <a href="CAMERA-READY.php" class="nav-item nav-link">CameraReady</a>
-                    </div>
-                    <button class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">SignUp</button>
-                    <button class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Login</button>
-                    <!--=====================SIGNUP FORM START=====================-->
-                <div id="id01" class="modal">
-                    <form class="modal-content animate" action="indexAdmin.php "  onSubmit="return validate();"  method="post">
-                        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-                      <div class="container">
-                        <h1>Sign Up</h1>
-                        <p>Please fill in this form to create an account.</p>
-                        <hr>
-                        <!-- Name input -->
-                        <div class="form-outline mb-4">
-                            <label class="form-label" for="name">Full Name</label>
-                            <input type="text" id="name" name="name" class="form-control form-control-lg" placeholder="Full name" pattern="[A-Z , a-z]*" required/>      
-                        </div>
-                            
-                        <!-- Phone input -->
-                        <div class="form-outline mb-4">
-                            <label class="form-label" for="name">Phone No</label>
-                            <input type="text" id="number" name="phone" class="form-control form-control-lg" minlength="10" maxlength="10" placeholder="Phone No" pattern="[0-9]*" required/>
-                        </div>
-
-                        <!-- Email input -->
-                        <div class="form-outline mb-4">
-                            <label class="form-label" for="email">Email address</label>
-                            <input type="email" id="email" name="email" class="form-control form-control-lg"
-                            placeholder="Enter a valid email address" required/>
-                        </div>
-
-                        <!-- Password input -->
-                        <div class="form-outline mb-3">
-                            <label class="form-label" for="password">Password</label>
-                            <input type="password" id="password" name="password" class="form-control form-control-lg" minlength="4" maxlength="42" placeholder="Enter password" required/>
-                        </div>
-                        
-                        <!-- Repeat Password input--> 
-                        <div class="form-outline mb-3">
-                            <label class="form-label" for="repassword">Confirm Password</label>
-                            <input type="password" id="repassword"name="repassword" class="form-control form-control-lg" minlength="4" maxlength="42" placeholder="Confirm your password" required/>
-                        </div>
-                        
-                      <!--  <label>
-                          <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-                        </label> -->
-                  
-                        <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
-                  
-                        <div class="container">
-                          <button id="signup_cancel_btn" type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                          <button id="signup_btn" type="submit" class="signupbtn">Sign Up</button>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                <!--=====================SIGNUP FORM END=====================-->
-
-
-                <!--=====================LOGIN FORM START=====================-->
-                <div id="id02" class="modal">
-                    <form class="modal-content animate" action="indexAdmin.php " method="post">
-                        <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
-                      <div class="container">
-                        <h1>Login</h1>
-                        <!-- Email input -->
-                        <div class="form-outline mb-4">
-                          <label class="form-label" for="Email">Email address</label>
-                          <input type="email" id="email" class="form-control form-control-lg"placeholder="Enter a valid email address" required/>
-                        </div>
-
-                        <!-- Password input -->
-                        <div class="form-outline mb-3">
-                          <label class="form-label" for="password">Password</label>
-                          <input type="password" id="password" class="form-control form-control-lg" minlength="4" maxlength="42" placeholder="Enter password" required/>
-                        </div>
-                          
-                        <button id="Login_btn" type="submit">Login</button>
-                      <!--  <label>
-                          <input type="checkbox" checked="checked" name="remember"> Remember me
-                        </label> -->
-                      </div>
-                  
-                      <div class="container" style="background-color:#f1f1f1">
-                        <button id="login_cancel_btn" type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
-                       <!-- <span class="psw">Forgot <a href="#">password?</a></span> -->
-                      </div>
-                    </form>
-                  </div>
-                  <!--=====================LOGIN FORM END=====================-->
-
+                        <a href="#venue" class="nav-item nav-link">Venue</a>
+                        <a href="#hotels" class="nav-item nav-link">Hotels</a>
+                        <a href="#F.A.Qs" class="nav-item nav-link">F.A.Q's</a>
+                        <?php
+                           if(isset($_SESSION['LogIn'])){?>
+                    
+                            <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><?php echo $_SESSION['name'] ?></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="settings_redirector.php">Settings</a></li>
+                                        <li><a class="dropdown-item" href="logout.php">Logout</a></li>
+                                    </ul>
+                              </li>
+                              <?php }?>
+                       </div>
+                       <?php
+                     if(!isset($_SESSION['LogIn'])){?>            
+                    <button class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3" onclick="window.open('SignUp.php','_self');" style="width:auto;">SignUp</button>
+                    <button class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3"onclick="window.open('Login.php','_self');" style="width:auto;">Login</button>  
+                    <?php }?>                  
                 </div>
             </nav>
 

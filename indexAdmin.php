@@ -67,7 +67,7 @@ session_start();
                         <a href="indexAdmin.php" class="nav-item nav-link ">Home</a>
                         <a href="#about" class="nav-item nav-link">About</a>
                         <a href="#Sponsors" class="nav-item nav-link">Sponsors</a>
-                        <a href="SpeakerAdmin.php" class="nav-item nav-link">Speakers</a>
+                        <a href="Speaker.php" class="nav-item nav-link">Speakers</a>
                         <a href="#program" class="nav-item nav-link">Program</a>
                         <a href="#committees" class="nav-item nav-link">Committees</a>
                         <a href="CAMERA-READYAdmin.php" class="nav-item nav-link">CameraReady</a>
@@ -197,7 +197,7 @@ session_start();
                             <div class="carousel-item active">
                                 <img  src="img/GroupPhoto.jpeg" alt="GroupPhoto" class="d-block w-100 " style="height: 400px; border-radius: 50px 20px;">
                             </div>
-                            
+
                             <?php
                                 $counter=0;
                                 $sql = "select * from carousel limit 5"; //Limit is 5 because carousel won't work well after 5 images
