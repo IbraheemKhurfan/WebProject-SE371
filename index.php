@@ -100,6 +100,36 @@ session_start();
             </nav>
 
             <div class="container-xxl py-5 bg-primary hero-header mb-5">
+            <?php
+
+                if(isset($_POST['Register'])){
+                //checking passwords are registration
+                if(isset($_SESSION['LogIn'])){
+                    if($_SESSION['registration']!='1'){
+                        $email=$_SESSION['email'];
+                        $Query="UPDATE users SET registration ='1' where email='$email' ";
+                        $result=$conn->query($Query);
+                        $_SESSION['registration']='1';?>
+                        <div class="alert  alert-success alert-dismissible mt-5">
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                            <strong>All Set!</strong> You are have been registered successfully to CDMA 2022
+                        </div>
+                        <?php
+                    }else{?>
+                        <div class="alert  alert-danger alert-dismissible mt-5">
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                            <strong>Error</strong> You are already register in the evnt
+                        </div>
+                <?php 
+                    //else closing
+                    }
+                    }
+                    else{
+                        header('Location:LogIn.php');
+                    }
+                }
+                
+                ?>
                 <div class="container my-5 py-5 px-lg-5">
                     <div class="row g-5 py-5">
                         <div class="col-lg-6 text-center text-lg-start">
@@ -1321,26 +1351,17 @@ gallery[i].onclick = () =>{
             <h6 class="position-relative d-inline text-primary ps-4">Fees</h6>
             <h2 class="mt-2">AUTHOR REGISTRATION</h2>
         </div>
-     <!-- Button for Form submittion--> 
-        <!-- <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-        <button type="button" class="btn btn-Primary  "><a href="https://forms.gle/cvftTLsQPyYGWt6u9" class="text-white"> Resgistration Fees</a></button>
-        </div> -->
-
-    <!-- Text--> 
-    <p class="text-center">Thanks to the generous support of Prince Sultan University, the CDMA2022 Conference attendees are waived from paying the registrations fees!</p>
-
-    <div class="container mt-3">
-  <div class="container">
-        <div class="col-md-12 text-center">
-            <button type="button" class="btn btn-primary  btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;"> <a href="LogIn.php"
-                class="text-white">Register</a></button>
-            
-        </div>      
-</div>
-            
-            </div>
-
+        <p class="text-center wow fadeInUp" data-wow-delay="0.5s">Thanks to the generous support of Prince Sultan University, all participants are waived from the CDMA2022 Conference registration fees.</p>
     </div>
+    <form class="container mt-3" action=""  method="post">
+  <div class="container" >
+        <div class="form col-md-12 text-center">
+        <button type="submit" name="Register" class="btn btn-primary text-white  btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;"> Register</button>
+        </div>  
+        
+     </div >
+            
+    </form>
     <!-- Author registration End-->
 
     <!-- Contact Us Start-->
