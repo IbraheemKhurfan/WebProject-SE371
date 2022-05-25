@@ -1,5 +1,7 @@
 <?php 
-include("var.php");
+//include("var.php");
+include_once('dbconnect.php');
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -77,10 +79,23 @@ include("var.php");
                         <a href="#venue" class="nav-item nav-link">Venue</a>
                         <a href="#hotels" class="nav-item nav-link">Hotels</a>
                         <a href="#F.A.Qs" class="nav-item nav-link">F.A.Q's</a>
-                    </div>
+                        <?php
+                           if(isset($_SESSION['LogIn'])){?>
+                    
+                            <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><?php echo $_SESSION['name'] ?></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="settings_redirector.php">Settings</a></li>
+                                        <li><a class="dropdown-item" href="logout.php">Logout</a></li>
+                                    </ul>
+                              </li>
+                              <?php }?>
+                       </div>
+                       <?php
+                     if(!isset($_SESSION['LogIn'])){?>            
                     <button class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3" onclick="window.open('SignUp.php','_self');" style="width:auto;">SignUp</button>
-                    <button class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3"onclick="window.open('Login.php','_self');" style="width:auto;">Login</button>
-                    <!--=====================SIGNUP FORM START=====================-->
+                    <button class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3"onclick="window.open('Login.php','_self');" style="width:auto;">Login</button>  
+                    <?php }?>                  
                 </div>
             </nav>
 
@@ -172,13 +187,23 @@ include("var.php");
                         <!-- <img class="img-fluid wow zoomIn" data-wow-delay="0.5s" src="img/GroupPhoto.jpeg"> -->
 
                         <!-- Carousel -->
-                        <div id="about-carousel" class="carousel slide" data-bs-ride="carousel">
+                     <div id="about-carousel" class="carousel slide" data-bs-ride="carousel">
 
                             <!-- Indicators/dots -->
                             <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#about-carousel" data-bs-slide-to="0" class="active"></button>
-                            <button type="button" data-bs-target="#about-carousel" data-bs-slide-to="1"></button>
-                            <button type="button" data-bs-target="#about-carousel" data-bs-slide-to="2"></button>
+                                <button type="button" data-bs-target="#about-carousel" data-bs-slide-to="0" class="active"></button>
+                                <!-- Repeating  -->
+                                <?php
+                                $counter=0;
+                                $sql = "select * from carousel limit 5"; //Limit is 5 because carousel won't work well after 5 images
+                                $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+                                while ($row = mysqli_fetch_array($result)) : //Start of the loop
+                                    $counter+=1;
+                                    ?>
+                                    <!-- getting the button  -->
+                                    <button type="button" data-bs-target="#about-carousel" data-bs-slide-to=<?php echo $counter?> ></button>
+
+                                <?php endwhile; ?>
                             </div>
                         
                             <!-- The slideshow/carousel -->
@@ -186,14 +211,25 @@ include("var.php");
                             <div class="carousel-item active">
                                 <img  src="img/GroupPhoto.jpeg" alt="GroupPhoto" class="d-block w-100 " style="height: 400px; border-radius: 50px 20px;">
                             </div>
-                            <div class="carousel-item">
-                                <img  src="img/Auditorium-3.jpg" alt="Auditorium-1" class="d-block w-100 " style="height: 400px; border-radius: 50px 20px;">
+
+                            <?php
+                                $counter=0;
+                                $sql = "select * from carousel limit 5"; //Limit is 5 because carousel won't work well after 5 images
+                                $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+                                while ($row = mysqli_fetch_array($result)) : //Start of the loop
+                                    $counter+=1;
+                                    ?>
+                            <div class="carousel-item">  
+                                    <!-- getting the image  -->
+                                    <?php echo '<img style="height: 400px; border-radius: 50px 20px;" class="d-block w-100 "  src="data:image/'.';base64,'.base64_encode($row['carousel_image']).'"/>'?>; 
+                                     <!-- bring the image from the database, it will display image from anywhere, no need to be in the same folder as project-->
+                                     <!-- Here we print the path from the database -->         
+                                          
                             </div>
-                            <div class="carousel-item">
-                                <img  src="img/Auditorium-2.jpg" alt="Auditorium-2" class="d-block w-100 " style="height: 400px; border-radius: 50px 20px;">
-                            </div>
-                            </div>
-                        
+                            <?php endwhile; ?>         
+
+
+
                             <!-- Left and right controls/icons -->
                             <button class="carousel-control-prev" type="button" data-bs-target="#about-carousel" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon"></span>
@@ -201,7 +237,7 @@ include("var.php");
                             <button class="carousel-control-next" type="button" data-bs-target="#about-carousel" data-bs-slide="next">
                             <span class="carousel-control-next-icon"></span>
                             </button>
-                        </div>
+                        </div> 
                         
                     </div>
                 </div>

@@ -62,9 +62,9 @@ if(isset($_POST['Login'])){
 			$_SESSION['registration']=$result['registration'];
 			// relocate him to user page 
 			if($_SESSION['Is_Admin']==1){
-			header('Location:indexAdmin.php');
+			header('Location:index.php');
 			}else{
-			header('Location:indexUser.php');
+			header('Location:index.php');
 		}
 		}else{?>
 			<div class="alert alert-danger alert-dismissible">
