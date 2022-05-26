@@ -242,9 +242,9 @@
                                         $Phone = $row['phonenum'];
                                         $Email = $row['email'];
                                         if($row['Is_Admin'] == 1){
-                                            $Role = 'Admin';
-                                        }esle{
-                                            $Role = 'User';
+                                            $Role = "Admin";
+                                        }else{
+                                            $Role = "User";
                                         }
                                         
                                     ?>
