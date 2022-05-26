@@ -20,7 +20,7 @@
        if($result){
            header("location:view_Users.php");
        }else{
-           echo 'CHECK YOUR QUERY U BLOODY BASTARD';
+           echo 'CHECK YOUR QUERY';
        }
     }
 ?>
