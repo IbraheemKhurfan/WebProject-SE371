@@ -10,6 +10,11 @@
         $Name = $row['name'];
         $Phone = $row['phonenum'];
         $Email = $row['email'];
+        if($row['registration'] == 1){
+            $Registered = "Registered";
+        }else{
+            $Registered = "Not Registered";
+        }
         if($row['Is_Admin'] == 1){
             $Role = 'Admin';
         }else{
@@ -242,6 +247,10 @@
                                 <div class="mb-3 mt-3">
                                   <label for="email">Email:</label>
                                   <input type="email" class="form-control" id="email" name="email" value ="<?php echo $Email ?>">
+                                </div>
+                                <div class="mb-3 mt-3">
+                                  <label for="role">Register:</label>
+                                  <input type="text" class="form-control" id="reg" name="reg" value ="<?php echo $Registered ?>">
                                 </div>
                                 <div class="mb-3 mt-3">
                                   <label for="role">Role:</label>

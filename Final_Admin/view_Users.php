@@ -227,6 +227,7 @@
                                             <th class="border-top-0">Name</th>
                                             <th class="border-top-0">Phone Number</th>
                                             <th class="border-top-0">Email</th>
+                                            <th class="border-top-0">Register</th>
                                             <th class="border-top-0">Role</th>
                                             <th class="border-top-0">Edit</th>
                                             <th class="border-top-0">Delete</th>
@@ -241,6 +242,11 @@
                                         $Name = $row['name'];
                                         $Phone = $row['phonenum'];
                                         $Email = $row['email'];
+                                        if($row['registration'] == 1){
+                                            $Registered = "Registered";
+                                        }else{
+                                            $Registered = "Not Registered";
+                                        }
                                         if($row['Is_Admin'] == 1){
                                             $Role = "Admin";
                                         }else{
@@ -255,6 +261,7 @@
                                             <td><?php echo $Name ?></td>
                                             <td><?php echo $Phone ?></td>
                                             <td><?php echo $Email ?></td>
+                                            <td><?php echo $Registered ?></td>
                                             <td><?php echo $Role ?></td>
                                             <td><a href="edit.php?GetID=<?php echo $ID ?>">Edit</a></td>
                                             <td><a href="delete.php?Del=<?php echo $ID ?>">Delete</a></td>
