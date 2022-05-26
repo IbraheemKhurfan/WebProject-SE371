@@ -1,5 +1,5 @@
 <?php
-    require_once("connection.php");
+    include_once("dbconnect.php");
 
     if(isset($_POST['save']))
     {
@@ -14,7 +14,7 @@
            $IsAdmin = 0;
        }
 
-       $query = "UPDATE users SET id = '".$UpdatedID."', name = '".$UpdatedName."', phonenum = '".$UpdatedPhone."', email = '".$UpdatedEmail."', Is_Admin = '".$IsAdmin."' WHERE id = '".$UpdatedID."' "
+       $query = "UPDATE users SET id = '".$UpdatedID."', name = '".$UpdatedName."', phonenum = '".$UpdatedPhone."', email = '".$UpdatedEmail."', Is_Admin = '".$IsAdmin."' WHERE id = '".$UpdatedID."' ";
        $result = mysqli_query($conn,$query);
 
        if($result){

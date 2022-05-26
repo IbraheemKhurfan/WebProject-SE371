@@ -2,7 +2,7 @@
 
 <?php 
 
-    require_once("connection.php");
+    include_once("dbconnect.php");
     $query = "SELECT * FROM users";
     $result = mysqli_query($conn,$query);
 

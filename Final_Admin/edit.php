@@ -1,5 +1,5 @@
 <?php
-    require_once("connection.php");
+    include_once("dbconnect.php");
     $ID = $_GET['GetID'];
     $query = "SELECT * FROM users WHERE id ='".$ID."'";
     $result = mysqli_query($conn,$query);
@@ -12,7 +12,7 @@
         $Email = $row['email'];
         if($row['Is_Admin'] == 1){
             $Role = 'Admin';
-        }esle{
+        }else{
             $Role = 'User';
         }
     }
