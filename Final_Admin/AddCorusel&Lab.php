@@ -248,10 +248,10 @@ function lessThanFive(){
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="blank.php"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="view_Users.php"
                                 aria-expanded="false">
                                 <i class="fa fa-columns" aria-hidden="true"></i>
-                                <span class="hide-menu">Blank Page</span>
+                                <span class="hide-menu">Edit Users</span>
                             </a>
                         </li>
                         <li class="sidebar-item">

@@ -1,13 +1,24 @@
-<!DOCTYPE html>
-
-<?php 
-
+<?php
     require_once("connection.php");
-    $query = "SELECT * FROM users";
+    $ID = $_GET['GetID'];
+    $query = "SELECT * FROM users WHERE id ='".$ID."'";
     $result = mysqli_query($conn,$query);
-
+    
+    while($row=mysqli_fetch_assoc($result))
+    {
+        $ID = $row['id'];
+        $Name = $row['name'];
+        $Phone = $row['phonenum'];
+        $Email = $row['email'];
+        if($row['Is_Admin'] == 1){
+            $Role = 'Admin';
+        }esle{
+            $Role = 'User';
+        }
+    }
 ?>
 
+<!DOCTYPE html>
 <html dir="ltr" lang="en">
 
 <head>
@@ -20,7 +31,7 @@
     <meta name="description"
         content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
-    <title>Edit Users</title>
+    <title>Edit User</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="plugins/images/favicon.png">
@@ -160,10 +171,10 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="blank.php"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="view_Users.php"
                                 aria-expanded="false">
                                 <i class="fa fa-columns" aria-hidden="true"></i>
-                                <span class="hide-menu">Blank Page</span>
+                                <span class="hide-menu">Edit Users</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
@@ -193,15 +204,16 @@
         <!-- ============================================================== -->
         <!-- Page wrapper  -->
         <!-- ============================================================== -->
-        <div class="page-wrapper">
+        <div class="page-wrapper" style="min-height: 250px;">
             <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Edit Users</h4>
+                        <h4 class="page-title">Edit User</h4>
                     </div>
+   
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -216,51 +228,27 @@
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <div class="row">
-                    <div class="col-sm-12">
+                    <div class="col-md-12">
                         <div class="white-box">
-                            <h3 class="box-title">Users Table</h3>
-                            <div class="table table-responsive table-hover">
-                                <table class="table text-nowrap">
-                                    <thead>
-                                        <tr>
-                                            <th class="border-top-0">ID</th>
-                                            <th class="border-top-0">Name</th>
-                                            <th class="border-top-0">Phone Number</th>
-                                            <th class="border-top-0">Email</th>
-                                            <th class="border-top-0">Role</th>
-                                            <th class="border-top-0">Edit</th>
-                                            <th class="border-top-0">Delete</th>
-                                        </tr>
-                                    </thead>
-
-                                    
-                                    <?php 
-                                    while($row=mysqli_fetch_assoc($result))
-                                    {
-                                        $ID = $row['id'];
-                                        $Name = $row['name'];
-                                        $Phone = $row['phonenum'];
-                                        $Email = $row['email'];
-                                        $Role = $row['Is_Admin'];
-                                    ?>
-
-                                    <tbody>
-                                        <tr>
-                                            <td><?php echo $UserID ?></td>
-                                            <td><?php echo $UserName ?></td>
-                                            <td><?php echo $UserEmail ?></td>
-                                            <td><?php echo $UserAge ?></td>
-                                            <td><a href="edit.php?GetID=<?php echo $UserID ?>">Edit</a></td>
-                                            <td><a href="delete.php?Del=<?php echo $UserID ?>">Delete</a></td>
-                                        </tr>  
-                                    </tbody>
-
-                                    <?php 
-                                    }  //Closing the Loop
-                                    ?>
-                                    
-                                </table>
-                            </div>
+                            <form action="update.php?id=<?php echo $ID?>" method="post">
+                                <div class="mb-3 mt-3">
+                                  <label for="name">Name:</label>
+                                  <input type="name" class="form-control" id="name" name="name" value ="<?php echo $Name ?>">
+                                </div>
+                                <div class="mb-3 mt-3">
+                                  <label for="phone">Phone Number:</label>
+                                  <input type="text" class="form-control" id="phone" name="phone" value ="<?php echo $Phone ?>">
+                                </div>
+                                <div class="mb-3 mt-3">
+                                  <label for="email">Email:</label>
+                                  <input type="email" class="form-control" id="email" name="email" value ="<?php echo $Email ?>">
+                                </div>
+                                <div class="mb-3 mt-3">
+                                  <label for="role">Role:</label>
+                                  <input type="text" class="form-control" id="role" name="role" value ="<?php echo $Role ?>">
+                                </div>
+                                <button class="btn btn-primary" name="save">Save</button>
+                            </form>
                         </div>
                     </div>
                 </div>
