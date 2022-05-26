@@ -219,7 +219,7 @@
                     <div class="col-sm-12">
                         <div class="white-box">
                             <h3 class="box-title">Users Table</h3>
-                            <div class="table-responsive">
+                            <div class="table table-responsive table-hover">
                                 <table class="table text-nowrap">
                                     <thead>
                                         <tr>
