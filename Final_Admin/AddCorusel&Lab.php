@@ -308,10 +308,10 @@ function lessThanFive(){
                             
      <!---------------------------- Starting of the Form---------------------------------->
                     <div class="container text-white">
-                        <h2 style="font-size: 2vw;" class="colorMain text-dark">Add Picture in Carouesel</h2>
+                        <h1 style="font-size: 2vw; background-color: lightblue;" class="colorMain text-dark text-center">Add Picture in Carousel</h1>
                         <form action="" method="post" enctype="multipart/form-data">
                             <div class="mb-5 mt-3">
-                                    <label for="text" class="colorSecond" style="font-size: 1vw;">Photo Tag:</label>
+                                    <label for="text" class="colorSecond text-dark" style="font-size: 1vw; "><strong>Photo Tag:</strong></label>
                                     <input type="text" class="form-control colorSecond"  name="tag" placeholder="Enter Photo Tag" required>
                             </div>
                                 <div class="mb-5 mt-3">

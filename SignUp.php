@@ -89,7 +89,7 @@ if(isset($_POST['SignUp'])){
 			
 		<div class="form-v6-content">
 			<div class="form-left me-5">
-				<img src="SignUp-Login/images/hand.jpg"  width="484px" height="860px" alt="form">
+				<img src="SignUp-Login/images/hand.jpg"  width="484px" height="99.4%" alt="form">
 			</div>
 			
 			<form class="form-detail" action=""   method="post">
