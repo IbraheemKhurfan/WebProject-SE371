@@ -815,61 +815,29 @@ session_start();
                     <h2 class="mt-2">Prince Sultan University Labs</h2>
                 </div>
                 <div class="row g-4">
-                    <!-- Security Engineering Lab  -->
-                    <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.1s">
-                        <div class="service-item d-flex flex-column justify-content-center text-center rounded">
-                            <div class="service-icon flex-shrink-0">
-                                <img src="img/Labs/sel-removebg-preview.png" alt="SEL LAB">
-                            </div>
-                            <h5 class="mb-3">Security Engineering Lab</h5>
-                            <p>A research lab at Prince Sultan University. Aims to contribute significantly to providing educational, research, outreach, and partnering security services nationally and internationally.</p>
-                            <a class="btn px-3 mt-auto mx-auto" href="https://ric.psu.edu.sa/sel-lab.php">Read More</a>
-                        </div>
-                    </div>
-                    <!-- Artificial Intelligence And Data Analytics Lab  -->
-                    <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.3s">
-                        <div class="service-item d-flex flex-column justify-content-center text-center rounded">
-                            <div class="service-icon flex-shrink-0">
-                                <img src="img/Labs/aida-lab_1630216442-removebg-preview.png" alt="AIDA LAB">
-                            </div>
-                            <h5 class="mb-3">Artificial Intelligence And Data Analytics Lab</h5>
-                            <p>First Interdisciplinary & Multidisciplinary Research Lab at Prince Sultan University,Riyadh,KSA</p>
-                            <a class="btn px-3 mt-auto mx-auto" href="https://ric.psu.edu.sa/aida-lab.php">Read More</a>
-                        </div>
-                    </div>
-                    <!-- EMERGING INTELLIGENT AUTONOMOUS SYSTEMS LAB  -->
-                    <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.6s">
-                        <div class="service-item d-flex flex-column justify-content-center text-center rounded">
-                            <div class="service-icon flex-shrink-0">
-                                <img src="img/Labs/eias-lab_1630216559-removebg-preview.png" alt="EIAS LAB">
-                            </div>
-                            <h5 class="mb-3">EMERGING INTELLIGENT AUTONOMOUS SYSTEMS LAB</h5>
-                            <p>A research lab at Prince Sultan University. Areas of interest include emerging intelligent autonomous systems data science and blockchain.</p>
-                            <a class="btn px-3 mt-auto mx-auto" href="https://ric.psu.edu.sa/eias-lab.php">Read More</a>
-                        </div>
-                    </div>
-                    <!-- ROBOTICS & INTERNET of THINGS LAB -->
-                    <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.1s">
-                        <div class="service-item d-flex flex-column justify-content-center text-center rounded">
-                            <div class="service-icon flex-shrink-0">
-                                <img src="img/Labs/riotu-lab_1630215836-removebg-preview.png" alt="RIOT LAB">
-                            </div>
-                            <h5 class="mb-3">ROBOTICS & INTERNET of THINGS LAB</h5>
-                            <p>A research lab at Prince Sultan University. Areas of interest include Internet-of-Things, Drones, and Deep Learning.</p>
-                            <a class="btn px-3 mt-auto mx-auto" href="https://ric.psu.edu.sa/riotu-lab.php">Read More</a>
-                        </div>
-                    </div>
-                    <!-- AUTOMATED SYSTEMS & SOFT COMPUTING LAB -->
-                    <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.3s">
-                        <div class="service-item d-flex flex-column justify-content-center text-center rounded">
-                            <div class="service-icon flex-shrink-0">
-                                <img src="img/Labs/asscl7-removebg-preview.png" width="40%" alt="RIOT LAB">
-                            </div>
-                            <h5 class="mb-1">AUTOMATED SYSTEMS & SOFT COMPUTING LAB</h5>
-                            <p>A research lab at Prince Sultan University. Aims to promote applied research on automated systems, as well as providing solutions to any specific problems within its scope.</p>
-                            <a class="btn px-3 mt-auto mx-auto" href="https://ric.psu.edu.sa/asscl-lab.php">Read More</a>
-                        </div>
-                    </div>
+                    <!-- Adding Labs   -->
+                    <?php          
+                                $sql = "select * from labs_info"; //Limit is 5 because carousel won't work well after 5 images
+                                $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+                                while ($row = mysqli_fetch_array($result)) : //Start of the loop
+                                    
+                                    $name=$row['lab_name'];
+                                    ?>
+                                    <!-- getting the button  -->
+                                    <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.3s">
+                                        <div class="service-item d-flex flex-column justify-content-center text-center rounded">
+                                            <div class="service-icon flex-shrink-0">
+                                                <?php echo '<img  src="data:image/'.';base64,'.base64_encode($row['lab_image']).'" alt="'.$name.'"/>'?> 
+                                            </div>
+                                            <h5 class="mb-3"><?php print $name ?></h5>
+                                            <p><?php print $row['lab_desc'] ?></p>
+                                            <a class="btn px-3 mt-auto mx-auto" href="<?php echo $row['lab_link'] ?>">Read More</a>
+
+                                        </div>
+                                    </div>
+                                <?php endwhile; ?>        
+               
+             
                    
                 </div>
             </div>

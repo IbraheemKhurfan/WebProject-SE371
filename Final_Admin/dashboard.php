@@ -214,6 +214,13 @@ function total_count_register($conn){
                                 <span class="hide-menu">Edit Carousel</span>
                             </a>
                         </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="Lab_form.php"
+                                aria-expanded="false">
+                                <i class="fa fa-table" aria-hidden="true"></i>
+                                <span class="hide-menu">Lab Add</span>
+                            </a>
+                        </li>
                     </ul>
 
                 </nav>
