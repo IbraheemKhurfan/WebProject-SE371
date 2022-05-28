@@ -1,5 +1,5 @@
 <?php 
-include("var.php");
+//include("var.php");
 session_start();
 ?>
 
