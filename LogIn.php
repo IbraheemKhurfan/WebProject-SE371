@@ -82,7 +82,7 @@ if(isset($_POST['Login'])){
 		
 		<div class="form-v6-content">
 			<div class="form-left">
-				<img src="SignUp-Login/images/nasa-Q1p7bh3SHj8-unsplash.jpg" width="484px" height="575px" alt="form">
+				<img src="SignUp-Login/images/nasa-Q1p7bh3SHj8-unsplash.jpg" width="484px" height="99%" alt="form">
 			</div>
 			<form class="form-detail" action="#" method="post">
 				<h2>Login <br> <br><a href="index.php"><img src="SignUp-Login/images/cdma2022_logo-removebg-preview.png " width="50%"></a></h2>

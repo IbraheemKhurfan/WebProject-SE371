@@ -27,6 +27,8 @@
     <link rel="icon" type="image/png" sizes="16x16" href="plugins/images/favicon.png">
     <!-- Custom CSS -->
    <link href="css/style.min.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -89,11 +91,24 @@
                     <ul class="navbar-nav ms-auto d-flex align-items-center">
 
                         <!-- ============================================================== -->
-                        <!-- Search -->
+                        <!-- Search Script --> 
+                        <!-- ============================================================== -->
+                        <script>
+                            $(document).ready(function(){
+                            $("#myInput").on("keyup", function() {
+                                var value = $(this).val().toLowerCase();
+                                $("#myTable tr").filter(function() {
+                                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                                });
+                            });
+                            });
+                        </script>
+                        <!-- ============================================================== -->
+                        <!-- Search --> 
                         <!-- ============================================================== -->
                         <li class=" in">
                             <form role="search" class="app-search d-none d-md-block me-3">
-                                <input type="text" placeholder="Search..." class="form-control mt-0">
+                                <input type="text" placeholder="Search..." id="myInput" class="form-control mt-0">
                                 <a href="" class="active">
                                     <i class="fa fa-search"></i>
                                 </a>
@@ -219,18 +234,18 @@
                     <div class="col-sm-12">
                         <div class="white-box">
                             <h3 class="box-title">Users Table</h3>
-                            <div class="table table-responsive table-hover">
+                            <div class="table table-responsive table-hover ">
                                 <table class="table text-nowrap">
                                     <thead>
                                         <tr>
-                                            <th class="border-top-0">ID</th>
-                                            <th class="border-top-0">Name</th>
-                                            <th class="border-top-0">Phone Number</th>
-                                            <th class="border-top-0">Email</th>
-                                            <th class="border-top-0">Register</th>
-                                            <th class="border-top-0">Role</th>
-                                            <th class="border-top-0">Edit</th>
-                                            <th class="border-top-0">Delete</th>
+                                            <th class="border-top-0"><strong>ID</strong></th>
+                                            <th class="border-top-0"><strong>Name</strong></th>
+                                            <th class="border-top-0"><strong>Phone Number</strong></th>
+                                            <th class="border-top-0"><strong>Email</strong></th>
+                                            <th class="border-top-0"><strong>Register</strong></th>
+                                            <th class="border-top-0"><strong>Role</strong></th>
+                                            <th class="border-top-0"><strong>Edit</strong></th>
+                                            <th class="border-top-0"><strong>Delete</strong></th>
                                         </tr>
                                     </thead>
 
@@ -255,7 +270,7 @@
                                         
                                     ?>
 
-                                    <tbody>
+                                    <tbody id="myTable">
                                         <tr>
                                             <td><?php echo $ID ?></td>
                                             <td><?php echo $Name ?></td>

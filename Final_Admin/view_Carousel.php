@@ -1,11 +1,84 @@
 <!DOCTYPE html>
 
-<?php 
+<?php
+session_start();
+include_once('dbconnect.php');
+include_once('checkExstension.php');
+# to keep track of errors we have these two variables: 
 
-    include_once("dbconnect.php");
-    session_start();
-    $query = "SELECT * FROM carousel";
-    $result = mysqli_query($conn,$query);
+    $error= false; 
+    $msg= "";
+if (isset($_POST['submit'])){
+
+    #mysqli_real_escape_string --> prevents sql injection attacks 
+    $tag = mysqli_real_escape_string($conn, $_POST['tag']);
+    #getting the image data
+    $carouselImage = mysqli_real_escape_string($conn, file_get_contents($_FILES["image"]["tmp_name"]));
+    $path = mysqli_real_escape_string($conn, $_FILES["image"]["name"]); 
+    $msg = "";   
+    #check if the ducome already exist
+    if(!exist($path,$tag)){
+        #we check if there is less than 5 reviews already
+        if (lessThanFive()) {
+            #we check if the extension was valid or not
+           if (substr_compare(checkExtension ($path),"valid",0)===0){
+            $sql = "INSERT INTO carousel (carousel_path, carousel_tag, carousel_image) VALUES ('$path', '$tag', '$carouselImage')";
+            $query = $conn->query($sql) or die(mysqli_error($conn)); 
+            $msg="Inserted Correctly! "; 
+        }
+        #if the extension is not valid
+        else{
+            $error = true; 
+            $msg =  checkExtension ($path); 
+        } 
+        }
+        else {
+            $error = true; 
+        $msg="The carousel has the maximum number of photos (5). Please delete some in admin page.";
+        }
+        
+
+
+    }
+    # if the recrd already exist we say an error. 
+    else {
+        $error = true; 
+        $msg="The photo already exists";
+    }
+    
+}
+
+
+function exist($path,$tag){
+    $sql = "select * from carousel where carousel_path ='$path' AND carousel_tag='$tag'"; 
+    $query = $GLOBALS['conn']->query($sql) or die(mysqli_error($GLOBALS['conn']));
+    $msg = ""; 
+    if (mysqli_num_rows($query)>0){
+        return true;  
+    }
+    else{
+        return false;
+    }
+
+}
+function lessThanFive(){
+    $sql = "select * from carousel"; 
+    $query = $GLOBALS['conn']->query($sql) or die(mysqli_error($GLOBALS['conn']));
+    $msg = ""; 
+    if (mysqli_num_rows($query)<5){
+        return true;  
+    }
+    else{
+        return false;
+    }
+
+}
+?>
+
+<?php 
+    // Query to display images
+    $query1 = "SELECT * FROM carousel";
+    $result1 = mysqli_query($conn,$query1);
 
 ?>
 
@@ -224,23 +297,24 @@
                                     <thead>
                                         <tr>
                                             <th class="border-top-0">Image</th>
-                                            <th class="border-top-0">Edit</th>
                                             <th class="border-top-0">Delete</th>
                                         </tr>
                                     </thead>
 
                                     
                                     <?php 
-                                    while($row=mysqli_fetch_assoc($result))
+                                    $Image_Count=0;
+                                    while($row=mysqli_fetch_assoc($result1))
                                     {
+                                        $Image_Count++;
                                         $ID = $row['carousel_id'];
-                                        // $Image = $row['carousel_image'];
+                                        $Path = $row['carousel_path'];
+                                        $Tag = $row['carousel_tag'];
                                     ?>
 
                                     <tbody>
                                         <tr>
-                                            <td><?php echo "Me is Image"//echo $Image ?></td>
-                                            <td><a href="edit_carousel.php?GetID=<?php echo $ID ?>">Edit</a></td>
+                                            <td><?php echo '<img style=" height: 150px; width: 150px; " class="d-block" src="data:image/'.';base64,'.base64_encode($row['carousel_image']).'"/>'?> </td>
                                             <td><a href="delete_carousel.php?Del=<?php echo $ID ?>">Delete</a></td>
                                         </tr>  
                                     </tbody>
@@ -248,12 +322,44 @@
                                     <?php 
                                     }  //Closing the Loop
                                     ?>
-                                    
                                 </table>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="container text-white">
+
+                            <?php 
+                                if($Image_Count >= 5){
+                                    $value = "You Cannot Add More Than 5 Images!";
+                                    $disable = "disabled";
+                                }else{
+                                    $value = "Enter Photo Tag";
+                                    $disable = "";
+                                }
+                            ?>
+
+                                <h2 style="font-size: 2vw;" class="colorMain text-dark">Add Picture in Carouesel</h2>
+                                <form action="" method="post" enctype="multipart/form-data">
+                                    <div class="mb-5 mt-3">
+                                            <label for="text" class="colorSecond" style="font-size: 1vw;">Photo Tag:</label>
+                                            <input type="text" class="form-control colorSecond"  name="tag" placeholder="<?php echo $value?>" required <?php echo $disable?>>
+                                    </div>
+                                        <div class="mb-5 mt-3">
+                                        <label for="myfile" class="text-dark">Select a photo:</label>
+                                        <input type="file" id="image" name="image" required <?php echo $disable?>>
+                                    </div>
+                                    <div class="mb-5 mt-3">
+                                        <p style="font-size: 0.8vw; " class="text-dark"> <?php if($error) echo $msg ?></p>
+                                        <p style="font-size: 0.8vw; " class="text-dark"> <?php if(!$error) echo $msg ?></p>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary" name="submit" value="submit" id="submit" <?php echo $disable?>>Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->
