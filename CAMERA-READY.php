@@ -1,5 +1,5 @@
 <?php 
-include("var.php");
+
 session_start();
 ?>
 
@@ -66,7 +66,7 @@ session_start();
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
                         <a href="index.php" class="nav-item nav-link ">Home</a>
-                        <a href="#about" class="nav-item nav-link">About</a>
+                        <a href="index.php #about" class="nav-item nav-link">About</a>
                         <a href="#Sponsors" class="nav-item nav-link">Sponsors</a>
                         <a href="Speaker.php" class="nav-item nav-link">Speakers</a>
                         <a href="#program" class="nav-item nav-link">Program</a>
