@@ -114,13 +114,13 @@ session_start();
                         $_SESSION['registration']='1';?>
                         <div class="alert  alert-success alert-dismissible mt-5">
                             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                            <strong>All Set!</strong> You are have been registered successfully to CDMA 2022
+                            <strong>All Set!</strong> You have been registered successfully to CDMA 2022
                         </div>
                         <?php
                     }else{?>
                         <div class="alert  alert-danger alert-dismissible mt-5">
                             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                            <strong>Error</strong> You are already register in the evnt
+                            <strong>Error</strong> You are already register in the event
                         </div>
                 <?php 
                     //else closing
@@ -747,11 +747,40 @@ session_start();
         </div>
       <!-- Venue End  -->
 
+                    <!-- Checking for Newsletter Subscrivtion  -->
+                    <?php
+                        if(isset($_POST['submit'])){
+                        //checking passwords are registration
+                        if(isset($_SESSION['LogIn'])){
+                            if($_SESSION['news_sub']!='1'){
+                                $email=$_SESSION['email'];
+                                $Query="UPDATE users SET news_sub ='1' where email='$email' ";
+                                $result=$conn->query($Query);
+                                $_SESSION['news_sub']='1';?>
+                                <div class="alert  alert-success alert-dismissible mt-5">
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                                    <strong>All Set!</strong> You have successfully subscribed to CDMA News Letter
+                                </div>
+                                <?php
+                            }else{?>
+                                <div class="alert  alert-danger alert-dismissible mt-5">
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                                    <strong>Error</strong> You are already Subscribed to CDMA News Letter
+                                </div>
+                        <?php 
+                            //else closing
+                            }
+                            }
+                            else{
+                                header('Location:LogIn.php');
+                            }
+                        }
+                        ?>
 
         <!-- Newsletter Start -->
         <div class="container-xxl py-5">
             <div class="section-title position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="position-relative d-inline text-primary ps-4">Keep Your Slef Updated</h6>
+                <h6 class="position-relative d-inline text-primary ps-4">Keep Your Self Updated</h6>
                 <h2 class="mt-2">Subscribe to CDMA2022 PROGRAM Newsletter</h2>
             </div>
             <div class="container-xxl bg-primary newsletter my-5 wow fadeInUp" data-wow-delay="0.1s">
@@ -762,8 +791,10 @@ session_start();
                             <h3 class="text-white">Subscribe to Our Newsletter</h3>
                             <small class="text-white">CDMA2022</small>
                             <div class="position-relative w-100 mt-3">
-                                <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="text" placeholder="Enter Your Email" style="height: 48px;">
-                                <button type="button" class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i class="fa fa-paper-plane pt-2 text-primary fs-4"></i></button>
+                                <form action="" method="post">
+                                    <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="text" placeholder="Enter Your Email" name="SubEmail" style="height: 48px;">
+                                    <button type="submit" name="submit" class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i class="fa fa-paper-plane pt-2 text-primary fs-4"></i></button>
+                                </form>
                             </div>
                         </div>
                         <div class="col-md-6 text-center mb-n5 d-none d-md-block">
@@ -1042,7 +1073,7 @@ session_start();
                         <div class="d-flex align-items-center">
                             <img class="img-fluid flex-shrink-0 rounded-circle" src="img/testimonial-3.jpg" style="width: 50px; height: 50px;">
                             <div class="ps-3">
-                                <h6 class="text-white mb-1">Mohanned Rizk</h6>
+                                <h6 class="text-white mb-1">Mohanad Rezek</h6>
                                 <small>Software Engineer </small>
                             </div>
                         </div>
