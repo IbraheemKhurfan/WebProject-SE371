@@ -67,14 +67,14 @@ session_start();
                     <div class="navbar-nav ms-auto py-0">
                         <a href="index.php" class="nav-item nav-link ">Home</a>
                         <a href="index.php #about" class="nav-item nav-link">About</a>
-                        <a href="#Sponsors" class="nav-item nav-link">Sponsors</a>
+                        <a href="index.php #Sponsors" class="nav-item nav-link">Sponsors</a>
                         <a href="Speaker.php" class="nav-item nav-link">Speakers</a>
-                        <a href="#program" class="nav-item nav-link">Program</a>
-                        <a href="#committees" class="nav-item nav-link">Committees</a>
+                        <a href="index.php #program" class="nav-item nav-link">Program</a>
+                        <a href=" index.php #committees" class="nav-item nav-link">Committees</a>
                         <a href="CAMERA-READY.php" class="nav-item nav-link">CameraReady</a>
-                        <a href="#venue" class="nav-item nav-link">Venue</a>
-                        <a href="#hotels" class="nav-item nav-link">Hotels</a>
-                        <a href="#F.A.Qs" class="nav-item nav-link">F.A.Q's</a>
+                        <a href="index.php #venue" class="nav-item nav-link">Venue</a>
+                        <a href="index.php #hotels" class="nav-item nav-link">Hotels</a>
+                        <a href="index.php #F.A.Qs" class="nav-item nav-link">F.A.Q's</a>
                         <?php
                            if(isset($_SESSION['LogIn'])){?>
                     
