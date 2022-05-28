@@ -63,8 +63,11 @@ include("var.php");
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
+                        
                         <a href="index.php" class="nav-item nav-link ">Home</a>
                         <a href="Speaker.php" class="nav-item nav-link">Speakers</a>
+                        <a href="CAMERA-READY.php" class="nav-item nav-link">CameraReady</a>
+
                     </div>
                     <button class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">SignUp</button>
                     <button class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Login</button>
