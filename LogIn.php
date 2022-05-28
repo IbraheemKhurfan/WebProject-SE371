@@ -60,6 +60,7 @@ if(isset($_POST['Login'])){
 			$_SESSION['phonenum']=$result['phonenum'];
 			$_SESSION['password']=$result['password'];
 			$_SESSION['registration']=$result['registration'];
+			$_SESSION['news_sub']=$result['news_sub'];
 			// relocate him to user page 
 			if($_SESSION['Is_Admin']==1){
 			header('Location:index.php');
