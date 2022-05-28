@@ -1,6 +1,5 @@
 <?php 
 //include("var.php");
-include_once("Final_Admin/dbconnect.php");
 session_start();
 ?>
 
@@ -53,6 +52,7 @@ session_start();
         <div class="container-fluid position-relative p-0">
             <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
                 <a href="" class="navbar-brand p-0">
+                    <?php $name="CDMA" ?>
                     <h1 class="m-0"></i>CDMA<span class="fs-5 text-danger">2022</span></h1>
                     <!-- <img src="img/logo.png" alt="Logo"> -->
                 </a>
@@ -62,8 +62,15 @@ session_start();
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
                         <a href="index.php" class="nav-item nav-link ">Home</a>
+                        <a href="#about" class="nav-item nav-link">About</a>
+                        <a href="#Sponsors" class="nav-item nav-link">Sponsors</a>
                         <a href="Speaker.php" class="nav-item nav-link">Speakers</a>
+                        <a href="#program" class="nav-item nav-link">Program</a>
+                        <a href="#committees" class="nav-item nav-link">Committees</a>
                         <a href="CAMERA-READY.php" class="nav-item nav-link">CameraReady</a>
+                        <a href="#venue" class="nav-item nav-link">Venue</a>
+                        <a href="#hotels" class="nav-item nav-link">Hotels</a>
+                        <a href="#F.A.Qs" class="nav-item nav-link">F.A.Q's</a>
                         <?php
                            if(isset($_SESSION['LogIn'])){?>
                     
@@ -85,13 +92,47 @@ session_start();
             </nav>
 
             <div class="container-xxl py-5 bg-primary hero-header mb-5">
+
+            <!-- Checking for registration  -->
+            <?php
+
+                if(isset($_POST['Register'])){
+                //checking passwords are registration
+                if(isset($_SESSION['LogIn'])){
+                    if($_SESSION['registration']!='1'){
+                        $email=$_SESSION['email'];
+                        $Query="UPDATE users SET registration ='1' where email='$email' ";
+                        $result=$conn->query($Query);
+                        $_SESSION['registration']='1';?>
+                        <div class="alert  alert-success alert-dismissible mt-5">
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                            <strong>All Set!</strong> You are have been registered successfully to CDMA 2022
+                        </div>
+                        <?php
+                    }else{?>
+                        <div class="alert  alert-danger alert-dismissible mt-5">
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                            <strong>Error</strong> You are already register in the evnt
+                        </div>
+                <?php 
+                    //else closing
+                    }
+                    }
+                    else{
+                        header('Location:LogIn.php');
+                    }
+                }
+                
+                ?>
                 <div class="container my-5 py-5 px-lg-5">
                     <div class="row g-5 py-5">
                         <div class="col-lg-6 text-center text-lg-start">
                             <h1 class="text-white mb-4 animated zoomIn">7<sup>TH</sup> INTERNATIONAL CONFERENCE ON
                                 DATA SCIENCE AND MACHINE LEARNING APPLICATIONS</h1>
                             <p class="text-white pb-3 animated zoomIn">01-03 March 2022, Prince Sultan University, Riyadh, KSA</p>
-                             </div>
+                            <a href="#registration" class="btn btn-light py-sm-3 px-sm-5 rounded-pill me-3 animated slideInLeft">Register</a>
+                            <a href="#Contact Us" class="btn btn-outline-light py-sm-3 px-sm-5 rounded-pill animated slideInRight">Contact Us</a>
+                        </div>
                         <div class="col-lg-6 text-center text-lg-start">
                             <img class="img-fluid bg-transparent animated zoomIn " src="img/cdma2022_logo-removebg-preview.png" alt="">
                         </div>
