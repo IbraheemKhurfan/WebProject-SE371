@@ -234,12 +234,12 @@
                                     while($row=mysqli_fetch_assoc($result))
                                     {
                                         $ID = $row['carousel_id'];
-                                        $Image = $row['carousel_image'];
+                                        // $Image = $row['carousel_image'];
                                     ?>
 
                                     <tbody>
                                         <tr>
-                                            <td><?php echo $Image ?></td>
+                                            <td><?php echo "Me is Image"//echo $Image ?></td>
                                             <td><a href="edit_carousel.php?GetID=<?php echo $ID ?>">Edit</a></td>
                                             <td><a href="delete_carousel.php?Del=<?php echo $ID ?>">Delete</a></td>
                                         </tr>  
