@@ -103,8 +103,8 @@ session_start();
                         <li class="nav-item dropdown ">
                                 <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" ><?php echo $_SESSION['name'] ?></a>
                                 <ul class="dropdown-menu">
-                                     <li><a class="dropdown-item" href="\GithubWebProject\WebProject\WebProject-SE371\indexUser.php">Home</a></li>
-                                     <li><a class="dropdown-item" href="\GithubWebProject\WebProject\WebProject-SE371\logout.php">Logout</a></li>
+                                     <li><a class="dropdown-item" href="\WebProject-SE371\indexUser.php">Home</a></li>
+                                     <li><a class="dropdown-item" href="\WebProject-SE371\logout.php">Logout</a></li>
                                 </ul>
                             </li>
                         </li>
@@ -261,7 +261,7 @@ session_start();
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            <footer class="footer text-center"><img src="\GithubWebProject\WebProject\WebProject-SE371\img\cdma2022_logo-removebg-preview.png" width="10%" alt="CDMA"><br> All rights are preserved for 2022 © CDMA  
+            <footer class="footer text-center"><img src="\WebProject-SE371\img\cdma2022_logo-removebg-preview.png" width="10%" alt="CDMA"><br> All rights are preserved for 2022 © CDMA  
             </footer>
             <!-- ============================================================== -->
             <!-- End footer -->
