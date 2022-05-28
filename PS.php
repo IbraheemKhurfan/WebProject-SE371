@@ -1,5 +1,6 @@
 <?php 
 include("var.php");
+include_once("Final_Admin/dbconnect.php");
 ?>
 
 <!DOCTYPE html>
@@ -59,7 +60,7 @@ include("var.php");
               </button>
               <div class="collapse navbar-collapse" id="navbarCollapse">
                   <div class="navbar-nav ms-auto py-0">
-                    
+
                       <a href="index.php" class="nav-item nav-link ">Home</a>
                       <a href="Speaker.php" class="nav-item nav-link">Speakers</a>
                       <a href="CAMERA-READY.php" class="nav-item nav-link">CameraReady</a>

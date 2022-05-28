@@ -1,5 +1,6 @@
 <?php 
 //include("var.php");
+include_once("Final_Admin/dbconnect.php");
 session_start();
 ?>
 
