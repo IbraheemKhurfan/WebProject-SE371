@@ -3,6 +3,7 @@
 <?php 
 
     include_once("dbconnect.php");
+    session_start();
     $query = "SELECT * FROM users";
     $result = mysqli_query($conn,$query);
 
@@ -58,7 +59,7 @@
                     <!-- ============================================================== -->
                     <!-- Logo -->
                     <!-- ============================================================== -->
-                    <a class="navbar-brand" href="dashboard.php">
+                    <a class="navbar-brand" href="/WebProject-SE371/">
                         <!-- Logo icon -->
                         <b class="logo-icon">
                             <!-- Dark Logo icon -->
@@ -66,7 +67,7 @@
                         </b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
-                      
+                       
                     </a>
                     <!-- ============================================================== -->
                     <!-- End Logo -->
@@ -81,12 +82,7 @@
                 <!-- End Logo -->
                 <!-- ============================================================== -->
                 <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
-                    <ul class="navbar-nav d-none d-md-block d-lg-none">
-                        <li class="nav-item">
-                            <a class="nav-toggler nav-link waves-effect waves-light text-white"
-                                href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
-                        </li>
-                    </ul>
+                   
                     <!-- ============================================================== -->
                     <!-- Right side toggle and nav items -->
                     <!-- ============================================================== -->
@@ -107,9 +103,13 @@
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
                         <li>
-                            <a class="profile-pic" href="#">
-                                <img src="plugins/images/users/varun.jpg" alt="user-img" width="36"
-                                    class="img-circle"><span class="text-white font-medium">Steave</span></a>
+                            <li class="nav-item dropdown ">
+                                <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" ><?php echo $_SESSION['name'] ?></a>
+                                <ul class="dropdown-menu">
+                                     <li><a class="dropdown-item" href="\WebProject-SE371\index.php">Home</a></li>
+                                     <li><a class="dropdown-item" href="\WebProject-SE371\logout.php">Logout</a></li>
+                                </ul>
+                            </li>
                         </li>
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
