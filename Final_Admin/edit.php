@@ -22,6 +22,11 @@
         }else{
             $Role = 'User';
         }
+        if($row['news_sub'] == 1){
+            $Sub = "Subscribed";
+        }else{
+            $Sub = "Not Subscribed";
+        }
     }
 ?>
 
@@ -270,6 +275,10 @@
                                 <div class="mb-3 mt-3">
                                   <label for="role">Role:</label>
                                   <input type="text" class="form-control" id="role" name="role" value ="<?php echo $Role ?>">
+                                </div>
+                                <div class="mb-3 mt-3">
+                                  <label for="sub">News Letter Subscribtion:</label>
+                                  <input type="text" class="form-control" id="sub" name="sub" value ="<?php echo $Sub ?>">
                                 </div>
                                 <button class="btn btn-primary" name="save">Save</button>
                             </form>
