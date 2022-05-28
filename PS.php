@@ -1,5 +1,6 @@
 <?php 
 include("var.php");
+session_start();
 ?>
 
 <!DOCTYPE html>
