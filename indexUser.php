@@ -92,7 +92,6 @@ session_start();
             
             <div class="container-xxl py-5 bg-primary hero-header mb-5">
             <?php
-
                 if(isset($_POST['Register'])){
                 //checking passwords are registration
                     if($_SESSION['registration']!='1'){
