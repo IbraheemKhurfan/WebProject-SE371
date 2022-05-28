@@ -1,44 +1,13 @@
+<!DOCTYPE html>
+
 <?php 
-include_once("dbconnect.php");
-session_start();
 
-
-function total_count($conn){
-//Count all Account 
-$Query="SELECT COUNT(*) as total FROM users";
-if($result=$conn->query($Query)){
-$result=$result->fetch_array();
-return  $result['total'];
-}else{
-   die("Query Failed");
-}
-}
-
-function total_count_users($conn){
-    //Count all Account 
-    $Query="SELECT COUNT(*) as total FROM users where Is_Admin='0' ";
-    if($result=$conn->query($Query)){
-    $result=$result->fetch_array();
-    return  $result['total'];
-    }else{
-       die("Query Failed");
-    }
-    }
-
-function total_count_register($conn){
-        //Count all Account 
-        $Query="SELECT COUNT(*) as total FROM users where registration='1' ";
-        if($result=$conn->query($Query)){
-        $result=$result->fetch_array();
-        return  $result['total'];
-        }else{
-           die("Query Failed");
-        }
-        }   
+    include_once("dbconnect.php");
+    $query = "SELECT * FROM carousel";
+    $result = mysqli_query($conn,$query);
 
 ?>
 
-<!DOCTYPE html>
 <html dir="ltr" lang="en">
 
 <head>
@@ -51,15 +20,18 @@ function total_count_register($conn){
     <meta name="description"
         content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
-    <title>Admin Page</title>
+    <title>Edit Users</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="plugins/images/favicon.png">
     <!-- Custom CSS -->
-    <link href="plugins/bower_components/chartist/dist/chartist.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css">
-    <!-- Custom CSS -->
-    <link href="css/style.min.css" rel="stylesheet">
+   <link href="css/style.min.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
 </head>
 
 <body>
@@ -86,7 +58,7 @@ function total_count_register($conn){
                     <!-- ============================================================== -->
                     <!-- Logo -->
                     <!-- ============================================================== -->
-                    <a class="navbar-brand" href="/WebProject-SE371/">
+                    <a class="navbar-brand" href="dashboard.php">
                         <!-- Logo icon -->
                         <b class="logo-icon">
                             <!-- Dark Logo icon -->
@@ -94,7 +66,7 @@ function total_count_register($conn){
                         </b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
-                       
+                      
                     </a>
                     <!-- ============================================================== -->
                     <!-- End Logo -->
@@ -109,7 +81,12 @@ function total_count_register($conn){
                 <!-- End Logo -->
                 <!-- ============================================================== -->
                 <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
-                   
+                    <ul class="navbar-nav d-none d-md-block d-lg-none">
+                        <li class="nav-item">
+                            <a class="nav-toggler nav-link waves-effect waves-light text-white"
+                                href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
+                        </li>
+                    </ul>
                     <!-- ============================================================== -->
                     <!-- Right side toggle and nav items -->
                     <!-- ============================================================== -->
@@ -130,13 +107,9 @@ function total_count_register($conn){
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
                         <li>
-                            <li class="nav-item dropdown ">
-                                <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" ><?php echo $_SESSION['name'] ?></a>
-                                <ul class="dropdown-menu">
-                                     <li><a class="dropdown-item" href="\WebProject\WebProject-SE371\index.php">Home</a></li>
-                                     <li><a class="dropdown-item" href="\GithubWebProject\WebProject\WebProject-SE371\logout.php">Logout</a></li>
-                                </ul>
-                            </li>
+                            <a class="profile-pic" href="#">
+                                <img src="plugins/images/users/varun.jpg" alt="user-img" width="36"
+                                    class="img-circle"><span class="text-white font-medium">Steave</span></a>
                         </li>
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
@@ -188,7 +161,7 @@ function total_count_register($conn){
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="view_Users.php"
-                                aria-expanded="false">
+                                aria-expanded="false"> 
                                 <i class="fa fa-columns" aria-hidden="true"></i>
                                 <span class="hide-menu">Edit Users</span>
                             </a>
@@ -205,13 +178,6 @@ function total_count_register($conn){
                                 aria-expanded="false">
                                 <i class="fa fa-info-circle" aria-hidden="true"></i>
                                 <span class="hide-menu">Error 404</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="view_Carousel.php"
-                                aria-expanded="false">
-                                <i class="fa fa-table" aria-hidden="true"></i>
-                                <span class="hide-menu">Edit Carousel</span>
                             </a>
                         </li>
                     </ul>
@@ -234,8 +200,9 @@ function total_count_register($conn){
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Dashboard</h4>
+                        <h4 class="page-title">Edit Carousel</h4>
                     </div>
+                </div>
                 <!-- /.col-lg-12 -->
             </div>
             <!-- ============================================================== -->
@@ -246,146 +213,57 @@ function total_count_register($conn){
             <!-- ============================================================== -->
             <div class="container-fluid">
                 <!-- ============================================================== -->
-                <!-- Three charts -->
-                <!-- ============================================================== -->
-                <div class="row justify-content-center">
-                    <div class="col-lg-4 col-md-12">
-                        <div class="white-box analytics-info">
-                            <!-- Here are total visit  -->
-                            <h3 class="box-title">Total Accounts</h3>
-                            <ul class="list-inline two-part d-flex align-items-center mb-0">
-                                <li>
-                                    <div id="sparklinedash"><canvas width="67" height="30"
-                                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
-                                    </div>
-                                </li>
-                                <li class="ms-auto"><span class="counter text-success"><?php print total_count($conn)?></span></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-12">
-                        <div class="white-box analytics-info">
-                            <!-- Here are total page visit   -->
-                            <h3 class="box-title">Total Users</h3>
-                            <ul class="list-inline two-part d-flex align-items-center mb-0">
-                                <li>
-                                    <div id="sparklinedash2"><canvas width="67" height="30"
-                                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
-                                    </div>
-                                </li>
-                                <li class="ms-auto"><span class="counter text-purple"><?php print total_count_users($conn)?></span></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-12">
-                        <div class="white-box analytics-info">
-                            <!-- Here are unique visitor  -->
-                            <h3 class="box-title">Total Registers</h3>
-                            <ul class="list-inline two-part d-flex align-items-center mb-0">
-                                <li>
-                                    <div id="sparklinedash3"><canvas width="67" height="30"
-                                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
-                                    </div>
-                                </li>
-                                <li class="ms-auto"><span class="counter text-info"><?php print total_count_register($conn)?></span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- ============================================================== -->
-                <!-- PRODUCTS YEARLY SALES -->
-                <!-- ============================================================== -->
-
-                <!-- ============================================================== -->
-                <!-- RECENT SALES -->
+                <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <div class="row">
-                    <div class="col-md-12 col-lg-12 col-sm-12">
+                    <div class="col-sm-12">
                         <div class="white-box">
-                            <div class="d-md-flex mb-3">
-                                <h3 class="box-title mb-0">Recent sales</h3>
-                                <div class="col-md-3 col-sm-4 col-xs-6 ms-auto">
-                                    <select class="form-select shadow-none row border-top">
-                                        <option>March 2021</option>
-                                        <option>April 2021</option>
-                                        <option>May 2021</option>
-                                        <option>June 2021</option>
-                                        <option>July 2021</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="table-responsive">
-                                <table class="table no-wrap">
+                            <h3 class="box-title">Carousels Table</h3>
+                            <div class="table table-responsive table-hover">
+                                <table class="table text-nowrap">
                                     <thead>
                                         <tr>
-                                            <th class="border-top-0">#</th>
-                                            <th class="border-top-0">Name</th>
-                                            <th class="border-top-0">Status</th>
-                                            <th class="border-top-0">Date</th>
-                                            <th class="border-top-0">Price</th>
+                                            <th class="border-top-0">Image</th>
+                                            <th class="border-top-0">Edit</th>
+                                            <th class="border-top-0">Delete</th>
                                         </tr>
                                     </thead>
+
+                                    
+                                    <?php 
+                                    while($row=mysqli_fetch_assoc($result))
+                                    {
+                                        $ID = $row['carousel_id'];
+                                        $Image = $row['carousel_image'];
+                                    ?>
+
                                     <tbody>
                                         <tr>
-                                            <td>1</td>
-                                            <td class="txt-oflo">Elite admin</td>
-                                            <td>SALE</td>
-                                            <td class="txt-oflo">April 18, 2021</td>
-                                            <td><span class="text-success">$24</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td class="txt-oflo">Real Homes WP Theme</td>
-                                            <td>EXTENDED</td>
-                                            <td class="txt-oflo">April 19, 2021</td>
-                                            <td><span class="text-info">$1250</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td class="txt-oflo">Ample Admin</td>
-                                            <td>EXTENDED</td>
-                                            <td class="txt-oflo">April 19, 2021</td>
-                                            <td><span class="text-info">$1250</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td class="txt-oflo">Medical Pro WP Theme</td>
-                                            <td>TAX</td>
-                                            <td class="txt-oflo">April 20, 2021</td>
-                                            <td><span class="text-danger">-$24</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>5</td>
-                                            <td class="txt-oflo">Hosting press html</td>
-                                            <td>SALE</td>
-                                            <td class="txt-oflo">April 21, 2021</td>
-                                            <td><span class="text-success">$24</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>6</td>
-                                            <td class="txt-oflo">Digital Agency PSD</td>
-                                            <td>SALE</td>
-                                            <td class="txt-oflo">April 23, 2021</td>
-                                            <td><span class="text-danger">-$14</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>7</td>
-                                            <td class="txt-oflo">Helping Hands WP Theme</td>
-                                            <td>MEMBER</td>
-                                            <td class="txt-oflo">April 22, 2021</td>
-                                            <td><span class="text-success">$64</span></td>
-                                        </tr>
+                                            <td><?php echo $Image ?></td>
+                                            <td><a href="edit_carousel.php?GetID=<?php echo $ID ?>">Edit</a></td>
+                                            <td><a href="delete_carousel.php?Del=<?php echo $ID ?>">Delete</a></td>
+                                        </tr>  
                                     </tbody>
+
+                                    <?php 
+                                    }  //Closing the Loop
+                                    ?>
+                                    
                                 </table>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- ============================================================== -->
-                <!-- Recent Comments -->
+                <!-- End PAge Content -->
                 <!-- ============================================================== -->
-            
+                <!-- ============================================================== -->
+                <!-- Right sidebar -->
+                <!-- ============================================================== -->
+                <!-- .right-sidebar -->
+                <!-- ============================================================== -->
+                <!-- End Right sidebar -->
+                <!-- ============================================================== -->
             </div>
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
@@ -393,7 +271,7 @@ function total_count_register($conn){
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            <footer class="footer text-center"><img src="\GithubWebProject\WebProject\WebProject-SE371\img\cdma2022_logo-removebg-preview.png" width="10%" alt="CDMA"><br> All rights are preserved for 2022 © CDMA  
+            <footer class="footer text-center"> 2022 © CDMA
             </footer>
             <!-- ============================================================== -->
             <!-- End footer -->
@@ -413,18 +291,12 @@ function total_count_register($conn){
     <!-- Bootstrap tether Core JavaScript -->
     <script src="bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/app-style-switcher.js"></script>
-    <script src="plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
     <!--Wave Effects -->
     <script src="js/waves.js"></script>
     <!--Menu sidebar -->
     <script src="js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="js/custom.js"></script>
-    <!--This page JavaScript -->
-    <!--chartis chart-->
-    <script src="plugins/bower_components/chartist/dist/chartist.min.js"></script>
-    <script src="plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
-    <script src="js/pages/dashboards/dashboard1.js"></script>
 </body>
 
 </html>
