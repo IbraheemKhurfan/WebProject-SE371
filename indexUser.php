@@ -80,7 +80,7 @@ session_start();
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><?php echo $_SESSION['name'] ?></a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="\GithubWebProject\WebProject\WebProject-SE371\Final_Admin copy\profile_user.php">Settings</a></li>
+                                <li><a class="dropdown-item" href="\WebProject-SE371\Final_user\profile_user.php">Settings</a></li>
                                 <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                             </ul>
                         </li>
