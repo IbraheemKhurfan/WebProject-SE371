@@ -87,13 +87,7 @@ function exist($path,$lab_name){
 
     
 ?>
-<?php 
 
-
-$query1 = "SELECT * FROM users";
-$result1 = mysqli_query($conn,$query1);
-
-?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -293,7 +287,6 @@ $result1 = mysqli_query($conn,$query1);
         <!-- ============================================================== -->
         <!-- Page wrapper  -->
         <!-- ============================================================== -->
-        
         <div class="page-wrapper" style="min-height: 250px;">
             <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
@@ -301,7 +294,7 @@ $result1 = mysqli_query($conn,$query1);
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Add Lab</h4>
+                        <h4 class="page-title">Edit User</h4>
                     </div>
    
                 </div>
@@ -314,89 +307,9 @@ $result1 = mysqli_query($conn,$query1);
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">
-                    <!-- ============================================================== -->
-                    <!-- Start Page Content -->
-                    <!-- ============================================================== -->
-        
-                    <div class="container-fluid">
-                    <!-- ============================================================== -->
-                    <!-- Start Page Content -->
-                    <!-- ============================================================== -->
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="white-box">
-                                <h3 class="box-title">Users Table</h3>
-                                <div class="table table-responsive table-hover ">
-                                    <table class="table text-nowrap">
-                                        <thead>
-                                            <tr>
-                                                <th class="border-top-0"><strong>ID</strong></th>
-                                                <th class="border-top-0"><strong>Name</strong></th>
-                                                <th class="border-top-0"><strong>Phone Number</strong></th>
-                                                <th class="border-top-0"><strong>Email</strong></th>
-                                                <th class="border-top-0"><strong>Register</strong></th>
-                                                <th class="border-top-0"><strong>Role</strong></th>
-                                                <th class="border-top-0"><strong>Edit</strong></th>
-                                                <th class="border-top-0"><strong>Delete</strong></th>
-                                            </tr>
-                                        </thead>
-        
-                                        
-                                        <?php 
-                                        while($row=mysqli_fetch_assoc($result1))
-                                        {
-                                            $ID = $row['id'];
-                                            $Name = $row['name'];
-                                            $Phone = $row['phonenum'];
-                                            $Email = $row['email'];
-                                            if($row['registration'] == 1){
-                                                $Registered = "Registered";
-                                            }else{
-                                                $Registered = "Not Registered";
-                                            }
-                                            if($row['Is_Admin'] == 1){
-                                                $Role = "Admin";
-                                            }else{
-                                                $Role = "User";
-                                            }
-                                            
-                                        ?>
-    
-                                        <tbody id="myTable">
-                                            <tr>
-                                                <td><?php echo $ID ?></td>
-                                                <td><?php echo $Name ?></td>
-                                                <td><?php echo $Phone ?></td>
-                                                <td><?php echo $Email ?></td>
-                                                <td><?php echo $Registered ?></td>
-                                                <td><?php echo $Role ?></td>
-                                                <td><a href="edit.php?GetID=<?php echo $ID ?>">Edit</a></td>
-                                                <td><a href="delete.php?Del=<?php echo $ID ?>">Delete</a></td>
-                                            </tr>  
-                                        </tbody>
-                                        
-                                        <?php 
-                                        }  //Closing the Loop
-                                        ?>
-                                        
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- ============================================================== -->
-                    <!-- End PAge Content -->
-                    <!-- ============================================================== -->
-                    <!-- ============================================================== -->
-                    <!-- Right sidebar -->
-                    <!-- ============================================================== -->
-                    <!-- .right-sidebar -->
-                    <!-- ============================================================== -->
-                    <!-- End Right sidebar -->
-                    <!-- ============================================================== -->
-            </div>
-
-
+                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
                 <div class="row">
                     <div class="col-md-12">
                         <div class="white-box">
