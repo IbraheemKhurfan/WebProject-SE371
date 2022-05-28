@@ -64,7 +64,7 @@ if(isset($_POST['SignUp'])){
 			$inst_query="INSERT INTO users (name,phonenum,email,password,Is_Admin) values ('$name','$phone','$email','$password',0)";
 			$conn->query($inst_query);
 			// relocate him to user page 
-			header('Location:indexUser.php');
+			header('Location:index.php');
 		}else{?>
 			<div class="alert alert-danger alert-dismissible">
 				<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
