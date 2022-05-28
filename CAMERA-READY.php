@@ -70,7 +70,7 @@ session_start();
                         <a href="index.php #Sponsors" class="nav-item nav-link">Sponsors</a>
                         <a href="Speaker.php" class="nav-item nav-link">Speakers</a>
                         <a href="index.php #program" class="nav-item nav-link">Program</a>
-                        <a href=" index.php #committees" class="nav-item nav-link">Committees</a>
+                        <a href="index.php #committees" class="nav-item nav-link">Committees</a>
                         <a href="CAMERA-READY.php" class="nav-item nav-link">CameraReady</a>
                         <a href="index.php #venue" class="nav-item nav-link">Venue</a>
                         <a href="index.php #hotels" class="nav-item nav-link">Hotels</a>
