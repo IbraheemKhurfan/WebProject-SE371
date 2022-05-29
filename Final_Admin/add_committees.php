@@ -3,7 +3,6 @@
 
     if(isset($_POST['submit']))
     {
-       $ID = $_GET['id'];
        $Name = $_POST['name'];
        $University = $_POST['university'];
        $Country = $_POST['country'];
