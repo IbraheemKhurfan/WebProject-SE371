@@ -1057,49 +1057,38 @@ session_start();
                     <h6 class="position-relative d-inline text-primary ps-4">Our Team</h6>
                     <h2 class="mt-2">Meet Our Team Members</h2>
                 </div>
-                <div class="row g-4">
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="team-item">
-                            <div class="d-flex">
-                                <div class="flex-shrink-0 d-flex flex-column align-items-center mt-4 pt-5" style="width: 75px;">
-                                    <a class="btn btn-square text-primary bg-white my-1" href="https://www.linkedin.com/in/dr-lahouari-ghouti"><i class="fab fa-linkedin-in"></i></a>
-                                </div>
-                                <img class="img-fluid rounded w-100" src="img/Team/Dr.LahoriGhouti .jpg" alt="">
-                            </div>
-                            <div class="px-4 py-3">
-                                <h5 class="fw-bold m-0">DR. LAHOUARI GHOUTI</h5>
-                                <small>Associate Professor</small>
-                            </div>
-                        </div>
+                
+            
+                    <div class="row g-4">
+                        <?php          
+                                    $sql = "select * from team_members"; //Limit is 5 because carousel won't work well after 5 images
+                                    $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+                                    while ($row = mysqli_fetch_array($result)) : //Start of the loop
+                                        
+                                        $name=$row['member_name'];
+                                        ?>
+                                        <!-- getting the button  -->
+                                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                                        <div class="team-item">
+                                            <div class="d-flex">
+                                                <div class="flex-shrink-0 d-flex flex-column align-items-center mt-4 pt-5" style="width: 75px;">
+                                                    <a class="btn btn-square text-primary bg-white my-1" href="<?php echo $row['member_link']?>"><i class="fab fa-linkedin-in"></i></a>
+                                                </div>
+                                                <?php echo '<img class="img-fluid rounded w-100" src="data:image/'.';base64,'.base64_encode($row['member_image']).'" alt="'.$name.'"/>'?>
+                                            </div>
+                                            <div class="px-4 py-3">
+                                                <h5 class="fw-bold m-0"><?php  print $name?></h5>
+                                                <small><?php print $row['member_desc'] ?></small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <?php endwhile; ?>
+                        
+                    
                     </div>
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="team-item">
-                            <div class="d-flex">
-                                <div class="flex-shrink-0 d-flex flex-column align-items-center mt-4 pt-5" style="width: 75px;">
-                                    <a class="btn btn-square text-primary bg-white my-1" href="https://www.linkedin.com/in/dr-yasir-javed-629b72194"><i class="fab fa-linkedin-in"></i></a>
-                                </div>
-                                <img class="img-fluid rounded w-100" src="img/Team/Dr.yasir javeed.jpg" alt="">
-                            </div>
-                            <div class="px-4 py-3">
-                                <h5 class="fw-bold m-0">Dr. Yasir Javed </h5>
-                                <small>Lecturer</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
-                        <div class="team-item">
-                            <div class="d-flex">
-                                <div class="flex-shrink-0 d-flex flex-column align-items-center mt-4 pt-5" style="width: 75px;">
-                                    <a class=" btn btn-square text-primary bg-white my-1" href="https://www.psu.edu.sa/en/faculty-details/809"><i class="fab fa-linkedin-in "></i></a>
-                                </div>
-                                <img class="img-fluid rounded w-100" src="img/Team/Dr.Suliman jaber.jpg" alt="">
-                            </div>
-                            <div class="px-4 py-3">
-                                <h5 class="fw-bold m-0">DR. SULIMAN MOHAMED FATI</h5>
-                                <small>Assistant Professor</small>
-                            </div>
-                        </div>
-                    </div>
+
+                                
+                    
                 </div>
             </div>
         </div>

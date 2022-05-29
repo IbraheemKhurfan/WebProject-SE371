@@ -1,7 +1,7 @@
 <?php
 function checkExtension ($menuName){
     # an array of supported image extensions 
-    $arrType = array("png", "jpeg", "svg", "webp", "jpg");
+    $arrType = array("png", "jpeg", "svg", "webp", "jpg","jfif");
     #checks if the name of the file contains ., 
     # also returns the position of "." 
     if(!is_null(($pos=strpos($menuName,".")))){

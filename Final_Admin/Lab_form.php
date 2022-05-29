@@ -408,6 +408,8 @@ $result1 = mysqli_query($conn, $query1) or die(mysqli_error($conn));
                                 </div>
                                 <div class="mb-3 mt-3">
                                   <label for="logo">Lab Logo:</label>
+                                  <p for="image">Please make sure the name of file has no (<span class="text-danger display-5">.</span>) <br> <span class="text-danger">Allowed types: "png", "jpeg", "svg", "webp", "jpg","jfif"</span></p>
+                                  
                                   <br>
                                   <input type="file" id="image" name="image" required>
                                   <br>
