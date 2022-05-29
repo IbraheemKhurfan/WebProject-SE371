@@ -251,7 +251,7 @@ session_start();
                             <!-- The slideshow/carousel -->
                             <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img  src="img/GroupPhoto.jpeg" alt="GroupPhoto" class="d-block w-100 " style="height: 400px; border-radius: 50px 20px;">
+                                <img  src="img/Slide Show/GroupPhoto.jpeg" alt="GroupPhoto" class="d-block w-100 " style="height: 400px; border-radius: 50px 20px;">
                             </div>
 
                             <?php
