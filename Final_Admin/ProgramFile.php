@@ -1,53 +1,41 @@
-<?php 
-include_once("dbconnect.php");
-session_start();
+<?php
+    include_once("dbconnect.php");
+    include_once('checkExstension.php');
+    session_start();
 
 
-function total_count($conn){
-//Count all Account 
-$Query="SELECT COUNT(*) as total FROM users";
-if($result=$conn->query($Query)){
-$result=$result->fetch_array();
-return  $result['total'];
-}else{
-   die("Query Failed");
-}
-}
-
-function total_count_users($conn){
-    //Count all Account 
-    $Query="SELECT COUNT(*) as total FROM users where Is_Admin='0' ";
-    if($result=$conn->query($Query)){
-    $result=$result->fetch_array();
-    return  $result['total'];
-    }else{
-       die("Query Failed");
-    }
-    }
-
-function total_count_register($conn){
-        //Count all Account 
-        $Query="SELECT COUNT(*) as total FROM users where registration='1' ";
-        if($result=$conn->query($Query)){
-        $result=$result->fetch_array();
-        return  $result['total'];
+    $statusMsg = '';
+    
+    //file upload path
+    
+    $targetDir = "C:/xampp/htdocs/WebProject-SE371/Program_Files/";
+    // $fileName = basename($_FILES["file"]["name"]);
+    $fileName= "ProgramFile.pdf";
+    $targetFilePath = $targetDir . $fileName;
+    $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
+    
+    if(isset($_POST["submit"]) && !empty($_FILES["file"]["name"])) {
+        //allow certain file formats
+        $allowTypes = array('pdf');
+        if(in_array($fileType, $allowTypes)){
+            //upload file to server
+            if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){
+                $statusMsg = "The file ".$fileName. " has been uploaded.";
+                $sql = "INSERT INTO add_program(Program_Name,Program_file) VALUES ('$fileName','$targetFilePath')"; 
+                $query = $conn->query($sql) or die(mysqli_error($conn)); 
+            }else{
+                $statusMsg = "Sorry, there was an error uploading your file.";
+            }
         }else{
-           die("Query Failed");
+            $statusMsg = 'Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.';
         }
-        }
-function total_subs($conn){
-    //Count all Account 
-    $Query="SELECT COUNT(*) as total FROM users where news_sub='1' ";
-    if($result=$conn->query($Query)){
-    $result=$result->fetch_array();
-    return  $result['total'];
     }else{
-     die("Query Failed");
+        $statusMsg = 'Please select a file to upload.';
     }
-            }     
+    
 
+    
 ?>
-
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -61,20 +49,25 @@ function total_subs($conn){
     <meta name="description"
         content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
-    <title>Admin Page</title>
+    <title>Edit User</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="plugins/images/favicon.png">
     <!-- Custom CSS -->
-    <link href="plugins/bower_components/chartist/dist/chartist.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css">
-    
+   <link href="css/style.min.css" rel="stylesheet">
 
-    <!-- Custom CSS -->
-    <link href="css/style.min.css" rel="stylesheet">
-    
-    
-   
+
+  <!--Search Script --> 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
 </head>
 
 <body>
@@ -129,18 +122,30 @@ function total_subs($conn){
                     <!-- Right side toggle and nav items -->
                     <!-- ============================================================== -->
                     <ul class="navbar-nav ms-auto d-flex align-items-center">
-
+                        <!-- ============================================================== -->
+                        <!-- Search Script --> 
+                        <!-- ============================================================== -->
+                        <script>
+                            $(document).ready(function(){
+                            $("#myInput").on("keyup", function() {
+                                var value = $(this).val().toLowerCase();
+                                $("#myTable tr").filter(function() {
+                                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                                });
+                            });
+                            });
+                        </script>
                         <!-- ============================================================== -->
                         <!-- Search -->
                         <!-- ============================================================== -->
-                        <!-- <li class=" in">
+                        <li class=" in">
                             <form role="search" class="app-search d-none d-md-block me-3">
-                                <input type="text" placeholder="Search..." class="form-control mt-0">
+                                <input type="text" placeholder="Search..." id="myInput" class="form-control mt-0">
                                 <a href="" class="active">
                                     <i class="fa fa-search"></i>
                                 </a>
                             </form>
-                        </li> -->
+                        </li>
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
@@ -253,15 +258,18 @@ function total_subs($conn){
         <!-- ============================================================== -->
         <!-- Page wrapper  -->
         <!-- ============================================================== -->
-        <div class="page-wrapper">
+        
+        <div class="page-wrapper" style="min-height: 250px;">
             <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Dashboard</h4>
+                        <h4 class="page-title">Add Program </h4>
                     </div>
+   
+                </div>
                 <!-- /.col-lg-12 -->
             </div>
             <!-- ============================================================== -->
@@ -271,90 +279,57 @@ function total_subs($conn){
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">
-                <!-- ============================================================== -->
-                <!-- Three charts -->
-                <!-- ============================================================== -->
-                <div class="row justify-content-center">
-                    <div class="col-lg-4 col-md-12">
-                        <div class="white-box analytics-info">
-                            <!-- Here are total visit  -->
-                            <h3 class="box-title">Total Accounts</h3>
-                            <ul class="list-inline two-part d-flex align-items-center mb-0">
-                                <li>
-                                    <div id="sparklinedash"><canvas width="67" height="30"
-                                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
-                                    </div>
-                                </li>
-                                <li class="ms-auto"><span class="counter text-success"><?php print total_count($conn)?></span></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-12">
-                        <div class="white-box analytics-info">
-                            <!-- Here are total page visit   -->
-                            <h3 class="box-title">Total Users</h3>
-                            <ul class="list-inline two-part d-flex align-items-center mb-0">
-                                <li>
-                                    <div id="sparklinedash2"><canvas width="67" height="30"
-                                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
-                                    </div>
-                                </li>
-                                <li class="ms-auto"><span class="counter text-purple"><?php print total_count_users($conn)?></span></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-12">
-                        <div class="white-box analytics-info">
-                            <!-- Here are unique visitor  -->
-                            <h3 class="box-title">Total Registers</h3>
-                            <ul class="list-inline two-part d-flex align-items-center mb-0">
-                                <li>
-                                    <div id="sparklinedash3"><canvas width="67" height="30"
-                                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
-                                    </div>
-                                </li>
-                                <li class="ms-auto"><span class="counter text-info"><?php print total_count_register($conn)?></span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-12">
-                        <div class="white-box analytics-info">
-                            <!-- Here are unique visitor  -->
-                            <h3 class="box-title">Total NewsLetter Subscribers </h3>
-                            <ul class="list-inline two-part d-flex align-items-center mb-0">
-                                <li>
-                                    <div id="sparklinedash4"><canvas width="67" height="30"
-                                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
-                                    </div>
-                                </li>
-                                <li class="ms-auto"><span class="counter text-danger"><?php print total_subs($conn)?></span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                    <!-- ============================================================== -->
+                    <!-- Start Page Content -->
+                    <!-- ============================================================== -->
+        
+                    <div class="container-fluid">
+                    <!-- ============================================================== -->
+                    <!-- Start Page Content -->
+                    <!-- ============================================================== -->
 
-                </div>
-                <div>
-                <img src="/WebProject-SE371/img/AI_Gif.gif" >
-                </div>
-                
-                
-                
-             
-            
-              
-            
+                    <!-- ============================================================== -->
+                    <!-- End PAge Content -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- Right sidebar -->
+                    <!-- ============================================================== -->
+                    <!-- .right-sidebar -->
+                    <!-- ============================================================== -->
+                    <!-- End Right sidebar -->
+                    <!-- ============================================================== -->
             </div>
-            
+
+           
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="white-box">
+                            <form action="" method="post" enctype="multipart/form-data">
+                                <div class="mb-3 mt-3">
+                                <input type="file" name="file"> <br><br><br>
+                                <input type="submit" name="submit" value="Upload The Program">
+                                  <p for="image">Please make sure the name of file has no (<span class="text-danger display-5">.</span>) <br> <span class="text-danger">Allowed types: "pdf"</span></p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End PAge Content -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Right sidebar -->
+                <!-- ============================================================== -->
+                <!-- .right-sidebar -->
+                <!-- ============================================================== -->
+                <!-- End Right sidebar -->
+                <!-- ============================================================== -->
+            </div>
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
             <!-- ============================================================== -->
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            
             <footer class="footer text-center"><img src="\WebProject-SE371\img\cdma2022_logo-removebg-preview.png" width="10%" alt="CDMA"><br> All rights are preserved for 2022 © CDMA  
             </footer>
             <!-- ============================================================== -->
@@ -365,7 +340,6 @@ function total_subs($conn){
         <!-- End Page wrapper  -->
         <!-- ============================================================== -->
     </div>
-    
     <!-- ============================================================== -->
     <!-- End Wrapper -->
     <!-- ============================================================== -->
@@ -376,19 +350,12 @@ function total_subs($conn){
     <!-- Bootstrap tether Core JavaScript -->
     <script src="bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/app-style-switcher.js"></script>
-    <script src="plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
     <!--Wave Effects -->
     <script src="js/waves.js"></script>
     <!--Menu sidebar -->
     <script src="js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="js/custom.js"></script>
-    <!--This page JavaScript -->
-    <!--chartis chart-->
-    <script src="plugins/bower_components/chartist/dist/chartist.min.js"></script>
-    <script src="plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
-    <script src="js/pages/dashboards/dashboard1.js"></script>
-    
 </body>
 
 </html>
