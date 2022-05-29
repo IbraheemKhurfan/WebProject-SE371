@@ -321,7 +321,7 @@ function test_input($data) {
                                         <label class="col-md-12 p-0">Phone No</label>
                                         <div class="col-md-12 border-bottom p-0">
                                         <input type="tel" name="phone-number" id="phone-number" class="input-text" minlength="3"
-                                         maxlength="13" pattern="+9[1-9]{2}-[0-9]{3}-[0-9]{4}" value="+966" placeholder="Phone Number"  >
+                                         maxlength="13" pattern="+9[1-9]{2}-[0-9]{3}-[0-9]{4}" value="<?php print $_SESSION['phonenum']?>" placeholder="Phone Number"  >
                                         </div>
                                     </div>
                                     <!-- button for submitting  -->
