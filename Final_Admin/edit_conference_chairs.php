@@ -10,14 +10,17 @@
     {
         $ID = $row['id'];
         $Name = $row['name'];
+        $Position = $row['position'];
         if(strtolower($row['university']) == 'NULL'){
             $University = '';
         }else{
            $University = $row['university']; 
         }
-        
-        $Country = $row['country'];
-        $Position = $row['position'];
+        if(strtolower($row['country']) == 'NULL'){
+            $Country = '';
+        }else{
+            $Country = $row['country']; 
+        }
     }
 ?>
 
@@ -261,7 +264,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="white-box">
-                            <form action="update_committees.php?id=<?php echo $ID?>" method="post">
+                            <form action="update_conference_chairs.php?id=<?php echo $ID?>" method="post">
                                 <div class="mb-3 mt-3">
                                   <label for="name">Name:</label>
                                   <input type="name" class="form-control" id="name" name="name" value ="<?php echo $Name ?>">
