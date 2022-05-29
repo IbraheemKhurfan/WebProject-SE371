@@ -347,14 +347,14 @@ function test_input($data) {
                                     <div class="form-group mb-4">
                                         <label class="col-md-12 p-0">New Password</label>
                                         <div class="col-md-12 border-bottom p-0">
-                                            <input type="password" name="new_password" class="form-control p-0 border-0">
+                                            <input type="password" name="new_password" minlength="4" class="form-control p-0 border-0">
                                         </div>
                                     </div>
                                     <!-- new password repeat  -->
                                     <div class="form-group mb-4">
                                         <label class="col-md-12 p-0">Repeat New Password</label>
                                         <div class="col-md-12 border-bottom p-0">
-                                            <input type="password"  name="new_password_repeat" class="form-control p-0 border-0">
+                                            <input type="password"  name="new_password_repeat" minlength="4" class="form-control p-0 border-0">
                                         </div>
                                     </div>
                                    

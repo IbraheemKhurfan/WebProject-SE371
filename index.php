@@ -94,8 +94,8 @@ session_start();
                        <?php
                      if(!isset($_SESSION['LogIn'])){
                          ?>            
-                    <button class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3" onclick="window.open('SignUp.php')" style="width:auto;">SignUp</button>
-                    <button class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3" onclick="window.open('LogIn.php')" style="width:auto;">Login</button>  
+                    <button class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3" onclick="window.open('SignUp.php','_self')" style="width:auto;">SignUp</button>
+                    <button class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3" onclick="window.open('LogIn.php','_self')" style="width:auto;">Login</button>  
                     <?php  }
                     ?>                  
                 </div>
