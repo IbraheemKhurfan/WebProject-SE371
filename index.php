@@ -405,17 +405,20 @@ session_start();
                                         $Position = $row_pos['position'];
                                         $query_chair = "SELECT * FROM conference_chairs where position='$Position'";
                                         $result_chair = mysqli_query($conn,$query_chair);
+                                        ?>
+                        <p class="text-dark wow fadeInUp" data-wow-delay="0.5s">
+                                        <b><?php print $Position ?></b><br>
+                                        <?php
                                         while($row_chair=mysqli_fetch_assoc($result_chair)){
                                         $Name = $row_chair['name'];
                                         $University = $row_chair['university'];
                                         $Country = $row_chair['country'];
-                            ?>
-                            <p class="text-dark wow fadeInUp" data-wow-delay="0.5s">
-                            <?php if($University=="" && $Country==""){?>
-                                <b><?php print $Position ?></b><br><?php print $Name?><br> 
+                            
+                                        if($University=="" && $Country==""){?>
+                                        <?php print $Name?><br> 
                                 
-                                <?php }else{?>
-                                    <b><?php print $Position ?></b><br><?php print $Name.",".$University." ".$Country ?><br> 
+                                        <?php }else{?>
+                                        <?php print $Name.",".$University." ".$Country ?><br> 
                                     
                                     <?php } ?>
                          </p>
