@@ -669,7 +669,7 @@ session_start();
     <div class="row justify-content-center ">
       <div class="col-11 col-lg-8">
         <h3 class="text-center text-Black">Prince Sultan University, Riyadh, Saudi Arabia</h3>
-        <p class="text-center text-white">Conference will be held at PSU premises.</p>
+        <p class="text-center text-black">Conference will be held at PSU premises.</p>
       </div>
     </div>
   </div>
@@ -1162,7 +1162,7 @@ session_start();
         </div>
         <!-- Hotels End -->
         
-         <!-- FQA Start  -->
+         <!-- FAQ Start  -->
          <div  class="container-xxl py-5 wow zoomIn " data-wow-delay="0.5s" id="F.A.Qs">
             <div class="section-title position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
                 <h6 class="position-relative d-inline text-primary ps-4">Questions Asked</h6>
@@ -1289,7 +1289,7 @@ session_start();
                                     <p><strong>Visa</strong></p>
                                     
                                     <p>Authors are required to Register and present their paper in the event. Paper not presented would be removed from the proceedings.
-                                    The authors would have to bear all expenses related to visa, travel etc. Support for visa is available, authors of accepted papers are expected to fill a <br> <br> <a class="text-danger" href="assets/Doc/VISA_FORM_CDMA2022.docx" target="_blank">visa request form</a> <br> <br> along with required documents and email to visa liaison office before February 01, 2022 for visa processing.</p>
+                                    The authors would have to bear all expenses related to visa, travel etc. Support for visa is available, authors of accepted papers are expected to fill a <br> <br> <a class="text-danger" href="VISA_FORM_CDMA2022.docx" target="_blank">visa request form</a> <br> <br> along with required documents and email to visa liaison office before February 01, 2022 for visa processing.</p>
                                     
                                     <p></p>
                                     
@@ -1329,7 +1329,7 @@ session_start();
                     </div>     
             </div>    
       </div>   
-    <!-- FQA End  -->
+    <!-- FAQ End  -->
 
 
 
@@ -1418,7 +1418,7 @@ session_start();
                         <div class="col-md-6 text-center text-md-end">
                             <div class="footer-menu">
                                 <a href="index.php">Home</a>
-                                <a href="#F.A.Qs">FQAs</a>
+                                <a href="#F.A.Qs">FAQs</a>
                             </div>
                         </div>
                     </div>
