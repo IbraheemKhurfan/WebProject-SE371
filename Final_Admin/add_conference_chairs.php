@@ -3,7 +3,6 @@
 
     if(isset($_POST['submit']))
     {
-       $ID = $_GET['id'];
        $Name = $_POST['name'];
        $University = $_POST['university'];
        $Country = $_POST['country'];
@@ -13,7 +12,7 @@
        $result = mysqli_query($conn,$query);
 
        if($result){
-           header("view_conference_chairs.php");
+           header("location:view_conference_chairs.php");
        }else{
            echo 'CHECK YOUR QUERY';
        }

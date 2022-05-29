@@ -341,7 +341,7 @@
                                     </div>
                                     <div class="mb-1 mt-3">
                                             <label for="country" class="text-dark" style="font-size: 1vw;">Position:</label>
-                                            <input type="text" class="form-control colorSecond"  name="position" placeholder="Enter Country" required >
+                                            <input type="text" class="form-control colorSecond"  name="position" placeholder="Enter Position" required >
                                     </div>
                                     <br>
                                     <button type="submit" class="btn btn-primary" name="submit" value="submit" id="submit">Submit</button>
