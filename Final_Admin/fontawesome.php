@@ -26,7 +26,13 @@ session_start();
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
+    
 <![endif]-->
+
+  <!--Search Script --> 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -81,13 +87,25 @@ session_start();
                     <!-- Right side toggle and nav items -->
                     <!-- ============================================================== -->
                     <ul class="navbar-nav ms-auto d-flex align-items-center">
-
+                        <!-- ============================================================== -->
+                        <!-- Search Script --> 
+                        <!-- ============================================================== -->
+                        <script>
+                            $(document).ready(function(){
+                            $("#myInput").on("keyup", function() {
+                                var value = $(this).val().toLowerCase();
+                                $("#mylist div").filter(function() {
+                                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                                });
+                            });
+                            });
+                        </script>
                         <!-- ============================================================== -->
                         <!-- Search -->
                         <!-- ============================================================== -->
                         <li class=" in">
                             <form role="search" class="app-search d-none d-md-block me-3">
-                                <input type="text" placeholder="Search..." class="form-control mt-0">
+                                <input type="text" placeholder="Search..." id="myInput"  class="form-control mt-0">
                                 <a href="" class="active">
                                     <i class="fa fa-search"></i>
                                 </a>
@@ -209,15 +227,16 @@ session_start();
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
+                <div class="row" id="mylist" >
+                    <div class="col-12" >
+                        <div class="card" >
+                            <div class="card-body" >
                                 <h4 class="card-title">Solid Icons</h4>
                                 <h6 class="card-subtitle">use the icon by just put class
-                                    <code>fas fa-address-book</code> in i tag </h6>
+                                    <!--<code>fas fa-address-book</code>-->
+                                     in i tag </h6>
                                 <section>
-                                    <div class="icon-list-demo row">
+                                    <div class="icon-list-demo row" >
                                         <div class="col-sm-6 col-md-6 col-lg-3 f-icon"><i
                                                 class="fas fa-address-book"></i> fas
                                             fa-address-book</div>
@@ -1576,11 +1595,11 @@ session_start();
                                 </section>
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="card" >
                             <div class="card-body">
                                 <h4 class="card-title">Regular Icons</h4>
                                 <h6 class="card-subtitle">use the icon by just put class
-                                    <code>far fa-address-card</code> in i tag </h6>
+                                     in i tag </h6>
                                 <div class="icon-list-demo row">
                                     <div class="col-sm-6 col-md-6 col-lg-3 f-icon"><i
                                             class="far fa-address-book"></i><span> far
