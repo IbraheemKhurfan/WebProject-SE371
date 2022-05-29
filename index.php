@@ -320,7 +320,24 @@ session_start();
         </div>
         </div>
         <!--=====================PROGRAM END=====================-->
-
+        <!-- Author registration Start-->
+        <div id="registration" class="container-fluid p-5">
+            <div class="section-title position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="position-relative d-inline text-primary ps-4">Fees</h6>
+                <h2 class="mt-2">AUTHOR REGISTRATION</h2>
+            </div>
+            <p class="text-center wow fadeInUp" data-wow-delay="0.5s">Thanks to the generous support of Prince Sultan University, all participants are waived from the CDMA2022 Conference registration fees.</p>
+        </div>
+        <form class="container mt-3 mb-3" action=""  method="post">
+    <div class="container" >
+            <div class="form col-md-12 text-center">
+            <button type="submit" name="Register" class="btn btn-primary text-white  btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;"> Register</button>
+            </div>  
+            
+        </div >
+                
+        </form>
+        <!-- Author registration End-->
         
        <!--=====================COMMITTEES START=====================-->
        <div id="committees" class="container-fluid bg-light mb-5 ">
@@ -746,7 +763,12 @@ session_start();
     </div>
         </div>
       <!-- Venue End  -->
+                        <!-- ******************************************************* -->
+                         <!-- ******************************************************* --> <!-- ******************************************************* -->
 
+                    <!-- Please make sure to put it above so the message shows up , also make sure it is done on email -->
+
+                     <!-- ******************************************************* --> <!-- ******************************************************* -->
                     <!-- Checking for Newsletter Subscrivtion  -->
                     <?php
                         if(isset($_POST['submit'])){
@@ -939,65 +961,7 @@ session_start();
         </div> -->
         <!-- Portfolio End -->
         
-         <!-- Gallery Start-->
-         <div class="container-fluid mb-5">
-            <div class="section-title position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="position-relative d-inline text-primary ps-4">GALLERY</h6>
-                <h2 class="mt-2">Check our gallery from the recent events</h2>
-            </div>
-            <!-- Carousel -->
-            <div id="GroupPhoto" class="carousel slide col-lg-12 wow fadeInUp" data-wow-delay="0.5s" data-bs-ride="carousel">
 
-                <!-- Indicators/dots -->
-                <div class="carousel-indicators">
-                <button type="button" data-bs-target="#GroupPhoto" data-bs-slide-to="0" class="active"></button>
-                <button type="button" data-bs-target="#GroupPhoto" data-bs-slide-to="1"></button>
-                <button type="button" data-bs-target="#GroupPhoto" data-bs-slide-to="2"></button>
-                <button type="button" data-bs-target="#GroupPhoto" data-bs-slide-to="3"></button>
-                <button type="button" data-bs-target="#GroupPhoto" data-bs-slide-to="4"></button>
-                <button type="button" data-bs-target="#GroupPhoto" data-bs-slide-to="5"></button>
-                <button type="button" data-bs-target="#GroupPhoto" data-bs-slide-to="6"></button>
-                <button type="button" data-bs-target="#GroupPhoto" data-bs-slide-to="7"></button>
-                </div>
-            
-                <!-- The slideshow/carousel -->
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img  src="img/Gallery/4.jpg" alt="GroupPhoto" class="d-block w-100 " style="height:450px ;width:150px ; border-radius: 50px 20px;">
-                    </div>
-                    <div class="carousel-item ">
-                        <img  src="img/Gallery/5.jpg" alt="GroupPhoto" class="d-block w-100 " style="height:450px ;width:150px ; border-radius: 50px 20px;">
-                    </div>
-                    <div class="carousel-item ">
-                        <img  src="img/Gallery/6.jpg" alt="GroupPhoto" class="d-block w-100 " style="height:450px ;width:150px ; border-radius: 50px 20px;">
-                    </div>
-                    <div class="carousel-item ">
-                        <img  src="img/Gallery/7.jpg" alt="GroupPhoto" class="d-block w-100 " style="height:450px ;width:150px ; border-radius: 50px 20px;">
-                    </div>
-                    <div class="carousel-item ">
-                        <img  src="img/Gallery/8.jpg" alt="GroupPhoto" class="d-block w-100 " style="height:450px ;width:150px ; border-radius: 50px 20px;">
-                    </div>
-                    <div class="carousel-item ">
-                        <img  src="img/Gallery/9.jpg" alt="GroupPhoto" class="d-block w-100 " style="height:450px ;width:150px ; border-radius: 50px 20px;">
-                    </div>
-                    <div class="carousel-item ">
-                        <img  src="img/Gallery/10.jpg" alt="GroupPhoto" class="d-block w-100 " style="height:450px ;width:150px ; border-radius: 50px 20px;">
-                    </div>
-                    <div class="carousel-item ">
-                        <img  src="img/Gallery/11.jpg" alt="GroupPhoto" class="d-block w-100 " style="height:450px ;width:150px ; border-radius: 50px 20px;">
-                    </div>
-                </div>
-            
-                <!-- Left and right controls/icons -->
-                <button class="carousel-control-prev" type="button" data-bs-target="#GroupPhoto" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#GroupPhoto" data-bs-slide="next">
-                <span class="carousel-control-next-icon"></span>
-                </button>
-            </div>
-        </div>
-        <!-- Gallery End-->
 
         <!-- Testimonial Start -->
       <div class="container mt-5">
@@ -1346,24 +1310,7 @@ session_start();
       </div>   
     <!-- FQA End  -->
 
-    <!-- Author registration Start-->
-    <div id="registration" class="container-fluid p-5">
-        <div class="section-title position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
-            <h6 class="position-relative d-inline text-primary ps-4">Fees</h6>
-            <h2 class="mt-2">AUTHOR REGISTRATION</h2>
-        </div>
-        <p class="text-center wow fadeInUp" data-wow-delay="0.5s">Thanks to the generous support of Prince Sultan University, all participants are waived from the CDMA2022 Conference registration fees.</p>
-    </div>
-    <form class="container mt-3" action=""  method="post">
-  <div class="container" >
-        <div class="form col-md-12 text-center">
-        <button type="submit" name="Register" class="btn btn-primary text-white  btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;"> Register</button>
-        </div>  
-        
-     </div >
-            
-    </form>
-    <!-- Author registration End-->
+
 
     <!-- Contact Us Start-->
     <div id="Contact Us" class="container-fluid p-5 wow fadeInUp" data-wow-delay="0.1s">
