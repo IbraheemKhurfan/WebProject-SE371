@@ -259,6 +259,10 @@ function lessThanFive(){
                                 aria-expanded="false">
                                 <i class="fa fa-table" aria-hidden="true"></i>
                                 <span class="hide-menu">Sponsors</span>
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="view_committees.php"
+                                aria-expanded="false">
+                                <i class="fas fa-users" aria-hidden="true"></i>
+                                <span class="hide-menu">Committees</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
