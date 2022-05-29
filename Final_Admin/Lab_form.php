@@ -90,8 +90,8 @@ function exist($path,$lab_name){
 <?php 
 
 
-$query1 = "SELECT * FROM users";
-$result1 = mysqli_query($conn,$query1);
+$query1 = "select * from labs_info";
+$result1 = mysqli_query($conn, $query1) or die(mysqli_error($conn));
 
 ?>
 <!DOCTYPE html>
@@ -325,17 +325,16 @@ $result1 = mysqli_query($conn,$query1);
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="white-box">
-                                <h3 class="box-title">Users Table</h3>
+                                <h3 class="box-title">Lab Table</h3>
                                 <div class="table table-responsive table-hover ">
                                     <table class="table text-nowrap">
                                         <thead>
                                             <tr>
                                                 <th class="border-top-0"><strong>ID</strong></th>
                                                 <th class="border-top-0"><strong>Name</strong></th>
-                                                <th class="border-top-0"><strong>Phone Number</strong></th>
-                                                <th class="border-top-0"><strong>Email</strong></th>
-                                                <th class="border-top-0"><strong>Register</strong></th>
-                                                <th class="border-top-0"><strong>Role</strong></th>
+                                                <th class="border-top-0"><strong>Description</strong></th>
+                                                <th class="border-top-0"><strong>Link</strong></th>
+                                                <th class="border-top-0"><strong>Logo</strong></th>
                                                 <th class="border-top-0"><strong>Edit</strong></th>
                                                 <th class="border-top-0"><strong>Delete</strong></th>
                                             </tr>
@@ -345,33 +344,22 @@ $result1 = mysqli_query($conn,$query1);
                                         <?php 
                                         while($row=mysqli_fetch_assoc($result1))
                                         {
-                                            $ID = $row['id'];
-                                            $Name = $row['name'];
-                                            $Phone = $row['phonenum'];
-                                            $Email = $row['email'];
-                                            if($row['registration'] == 1){
-                                                $Registered = "Registered";
-                                            }else{
-                                                $Registered = "Not Registered";
-                                            }
-                                            if($row['Is_Admin'] == 1){
-                                                $Role = "Admin";
-                                            }else{
-                                                $Role = "User";
-                                            }
-                                            
+                                            $ID = $row['lab_id'];
+                                            $Name = $row['lab_name'];
+                                            $Description = $row['lab_desc'];
+                                            $Link = $row['lab_link'];
+                                            $Path = $row['lab_path'];
                                         ?>
     
                                         <tbody id="myTable">
-                                            <tr>
+                                            <tr style="height:200px">
                                                 <td><?php echo $ID ?></td>
-                                                <td><?php echo $Name ?></td>
-                                                <td><?php echo $Phone ?></td>
-                                                <td><?php echo $Email ?></td>
-                                                <td><?php echo $Registered ?></td>
-                                                <td><?php echo $Role ?></td>
-                                                <td><a href="edit.php?GetID=<?php echo $ID ?>">Edit</a></td>
-                                                <td><a href="delete.php?Del=<?php echo $ID ?>">Delete</a></td>
+                                                <td ><?php echo $Name ?></td>
+                                                <td ><textarea name="" id="" disabled cols="30" rows="6"><?php echo $Description?></textarea></td>
+                                                <td><?php echo $Link ?></td>
+                                                <td><?php echo '<img style=" height: 150px; width: 150px; " class="d-block" src="data:image/'.';base64,'.base64_encode($row['lab_image']).'"/>'?> </td>
+                                                <td><a href="Lab_form_update.php?GetID=<?php echo $ID ?>">Edit</a></td>
+                                                <td><a href="delete_lab.php?Del=<?php echo $ID ?>">Delete</a></td>
                                             </tr>  
                                         </tbody>
                                         

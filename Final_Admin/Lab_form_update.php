@@ -3,7 +3,20 @@
     include_once('checkExstension.php');
     session_start();
 
-
+    $ID = $_GET['GetID'];
+    $query = "SELECT * FROM labs_info WHERE lab_id ='$ID'";
+    $result = mysqli_query($conn,$query);
+    
+    while($row=mysqli_fetch_assoc($result))
+    {
+        $ID = $row['lab_id'];
+        $Path_lab=$row['lab_path'];
+        $Name = $row['lab_name'];
+        $Description = $row['lab_desc'];
+        $Link = $row['lab_link'];
+        $Image=$row['lab_image'];
+        
+    }
 
     # to keep track of errors we have these two variables: 
 
@@ -16,73 +29,58 @@ if (isset($_POST['submit'])){
     $lab_desc = mysqli_real_escape_string($conn, $_POST['lab-desc']);
     $lab_link =$_POST['link'];
     #getting the image data
-    $lab_Image = mysqli_real_escape_string($conn, file_get_contents($_FILES["image"]["tmp_name"]));
-    $path = mysqli_real_escape_string($conn, $_FILES["image"]["name"]); 
-    $msg = "";   
-    #check if the ducome already exist
-    if(!exist($path,$lab_name)){
-        #we check if there is less than 5 reviews already
-        
+    //checking if he is adding a photo or not 
+    if(is_uploaded_file($_FILES["image"]["tmp_name"])){  
+        $Image = mysqli_real_escape_string($conn, file_get_contents($_FILES["image"]["tmp_name"]));
+        $Path_lab = mysqli_real_escape_string($conn, $_FILES["image"]["name"]);     
+        $msg = "";   
+        #check if the ducome already exist
            #we check if the extension was valid or not
-           if (substr_compare(checkExtension ($path),"valid",0)===0){
-            $sql = "INSERT INTO labs_info (lab_path, lab_name,lab_desc,lab_link, lab_image) VALUES ('$path', '$lab_name','$lab_desc','$lab_link', '$lab_Image')";
+           if (substr_compare(checkExtension ($Path_lab),"valid",0)===0){
+                  
+            $sql = "UPDATE labs_info SET  lab_name = '$lab_name', lab_path='$Path_lab' ,lab_desc = '$lab_desc', lab_link = '$lab_link', lab_image = '$Image' WHERE lab_id  = '".$ID."' ";
             $query = $conn->query($sql) or die(mysqli_error($conn)); 
-            $msg="Inserted Correctly! "; 
+            $msg="Inserted Correctly! ";
+           header("location:Lab_form.php");
         }
         #if the extension is not valid
         else{
             $error = true; 
             $msg =  checkExtension ($path); 
         } 
-        
+    }else{
+        $msg = "";   
+        #check if the ducome already exist
+               #we check if the extension was valid or not
+               if (substr_compare(checkExtension ($Path_lab),"valid",0)===0){
+                      
+                $sql = "UPDATE labs_info SET  lab_name = '$lab_name' ,lab_desc = '$lab_desc', lab_link = '$lab_link' WHERE lab_id  = '".$ID."' ";
+                $query = $conn->query($sql) or die(mysqli_error($conn)); 
+                $msg="Inserted Correctly! ";
+               header("location:Lab_form.php");
+            }
+            #if the extension is not valid
+            else{
+                $error = true; 
+                $msg =  checkExtension ($path); 
+            } 
+            
+    }
+     
+   
         
 
 
-    }
-    # if the recrd already exist we say an error. 
-    else {
-        $error = true; 
-        $msg="The photo already exists";
-    }
+    
+   
     
 }
 
 
-function exist($path,$lab_name){
-    $sql = "select * from labs_info where lab_path ='$path' AND lab_name='$lab_name'"; 
-    $query = $GLOBALS['conn']->query($sql) or die(mysqli_error($GLOBALS['conn']));
-    $msg = ""; 
-    if (mysqli_num_rows($query)>0){
-        return true;  
-    }
-    else{
-        return false;
-    }
-
-}
 
 
-    // $ID = $_GET['GetID'];
-    // $query = "SELECT * FROM users WHERE id ='".$ID."'";
-    // $result = mysqli_query($conn,$query);
-    
-    // while($row=mysqli_fetch_assoc($result))
-    // {
-    //     $ID = $row['id'];
-    //     $Name = $row['name'];
-    //     $Phone = $row['phonenum'];
-    //     $Email = $row['email'];
-    //     if($row['registration'] == 1){
-    //         $Registered = "Registered";
-    //     }else{
-    //         $Registered = "Not Registered";
-    //     }
-    //     if($row['Is_Admin'] == 1){
-    //         $Role = 'Admin';
-    //     }else{
-    //         $Role = 'User';
-    //     }
-    // }
+
+
 
 
     
@@ -274,6 +272,7 @@ function exist($path,$lab_name){
                                 <span class="hide-menu">Lab Add</span>
                             </a>
                         </li>
+                        
                     </ul>
 
                 </nav>
@@ -316,20 +315,23 @@ function exist($path,$lab_name){
                             <form action="" method="post" enctype="multipart/form-data">
                                 <div class="mb-3 mt-3">
                                   <label for="name">Lab Name:</label>
-                                  <input type="name" class="form-control" id="name" name="name" placeholder="Please provide the lab name" value ="">
+                                  <input type="name" class="form-control" id="name" name="name" placeholder="Please provide the lab name" value ="<?php echo $Name ?>">
                                 </div>
                                 <div class="mb-3 mt-3">
                                   <label for="lab-desc">Lab brief description:</label>
-                                  <textarea class="form-control" rows="5" id="lab-desc" name="lab-desc" placeholder="Please provide a brief description" value =""></textarea>
+                                  <textarea class="form-control" rows="5" cols="20" id="lab-desc" name="lab-desc" placeholder="Please provide a brief description" ><?php echo $Description ?></textarea>
                                   </div>
                                 <div class="mb-3 mt-3">
                                   <label for="link">Lab website link</label>
-                                  <input type="url" class="form-control" id="link" name="link" placeholder="Please provide the link for the lab website " value ="https://www.psu.edu.sa/en">
+                                  <input type="url" class="form-control" id="link" name="link" placeholder="Please provide the link for the lab website " value ="<?php echo $Link ?>">
                                 </div>
                                 <div class="mb-3 mt-3">
                                   <label for="logo">Lab Logo:</label>
                                   <br>
-                                  <input type="file" id="image" name="image" required>
+                                  <br>
+                                  <?php echo '<img style=" height: 150px; width: 150px; " class="d-block" src="data:image/'.';base64,'.base64_encode($Image).'"/>'?> 
+                                  <br>
+                                  <input type="file" id="image" name="image" >
                                   <br>
                                   <br>
                                 </div>
