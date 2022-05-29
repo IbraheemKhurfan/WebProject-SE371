@@ -142,7 +142,7 @@ function test_input($data) {
                         <!-- User Profile-->
                        
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="profile.php"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="profile_user.php"
                                 aria-expanded="false">
                                 <i class="fa fa-user" aria-hidden="true"></i>
                                 <span class="hide-menu">Profile</span>
