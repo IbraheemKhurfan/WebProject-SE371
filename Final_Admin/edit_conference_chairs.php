@@ -10,7 +10,12 @@
     {
         $ID = $row['id'];
         $Name = $row['name'];
-        $University = $row['university'];
+        if(strtolower($row['university']) == 'NULL'){
+            $University = '';
+        }else{
+           $University = $row['university']; 
+        }
+        
         $Country = $row['country'];
         $Position = $row['position'];
     }
