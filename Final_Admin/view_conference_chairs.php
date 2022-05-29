@@ -289,9 +289,17 @@
                                     {
                                         $ID = $row['id'];
                                         $Name = $row['name'];
-                                        $University = $row['university'];
-                                        $Country = $row['country'];
                                         $Position = $row['position'];
+                                        if(strtolower($row['university']) == 'NULL'){
+                                            $University = '';
+                                        }else{
+                                           $University = $row['university']; 
+                                        }
+                                        if(strtolower($row['country']) == 'NULL'){
+                                            $Country = '';
+                                        }else{
+                                            $Country = $row['country']; 
+                                        }
                                     ?>
 
                                     <tbody id="myTable">
@@ -318,18 +326,18 @@
                     <div class="col-sm-12">
                         <div class="container text-white">
                                 <h2 style="font-size: 2vw;" class="colorMain text-dark">Add a Conference Chairs</h2>
-                                <form action="add_committees.php" method="post">
+                                <form action="add_conference_chairs.php" method="post">
                                     <div class="mb-1 mt-3">
                                             <label for="name" class="text-dark" style="font-size: 1vw;">Name:</label>
                                             <input type="text" class="form-control colorSecond"  name="name" placeholder="Enter Committee Name" required >
                                     </div>
                                     <div class="mb-1 mt-3">
                                             <label for="university" class="text-dark" style="font-size: 1vw;">University:</label>
-                                            <input type="text" class="form-control colorSecond"  name="university" placeholder="Enter University" required >
+                                            <input type="text" class="form-control colorSecond"  name="university" placeholder="Enter University">
                                     </div>
                                     <div class="mb-1 mt-3">
                                             <label for="country" class="text-dark" style="font-size: 1vw;">Country:</label>
-                                            <input type="text" class="form-control colorSecond"  name="country" placeholder="Enter Country" required >
+                                            <input type="text" class="form-control colorSecond"  name="country" placeholder="Enter Country">
                                     </div>
                                     <div class="mb-1 mt-3">
                                             <label for="country" class="text-dark" style="font-size: 1vw;">Position:</label>
