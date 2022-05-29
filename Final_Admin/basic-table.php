@@ -303,7 +303,7 @@ session_start();?>
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            <footer class="footer text-center"> 2022 © CDMA
+            <footer class="footer text-center"><img src="\WebProject-SE371\img\cdma2022_logo-removebg-preview.png" width="10%" alt="CDMA"><br> All rights are preserved for 2022 © CDMA  
             </footer>
             <!-- ============================================================== -->
             <!-- End footer -->
