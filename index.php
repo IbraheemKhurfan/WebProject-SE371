@@ -261,7 +261,7 @@ session_start();
                                 while ($row = mysqli_fetch_array($result)) : //Start of the loop
                                     $counter+=1;
                                     ?>
-                            <div class="carousel-item">  
+                            <div class="carousel-item ">  
                                     <!-- getting the image  -->
                                     <?php echo '<img style="height: 400px; border-radius: 50px 20px;" class="d-block w-100 "  src="data:image/'.';base64,'.base64_encode($row['carousel_image']).'"/>'?>; 
                                      <!-- bring the image from the database, it will display image from anywhere, no need to be in the same folder as project-->

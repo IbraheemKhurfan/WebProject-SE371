@@ -225,7 +225,9 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="white-box">
-                            <h3 class="box-title">Blank Page</h3>
+                        <?php
+                         include_once 'chart.php' ;
+                        ?>
                         </div>
                     </div>
                 </div>
@@ -272,6 +274,7 @@
     <script src="js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="js/custom.js"></script>
+    
 </body>
 
 </html>

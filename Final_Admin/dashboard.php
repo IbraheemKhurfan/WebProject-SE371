@@ -34,7 +34,17 @@ function total_count_register($conn){
         }else{
            die("Query Failed");
         }
-        }   
+        }
+function total_subs($conn){
+    //Count all Account 
+    $Query="SELECT COUNT(*) as total FROM users where news_sub='1' ";
+    if($result=$conn->query($Query)){
+    $result=$result->fetch_array();
+    return  $result['total'];
+    }else{
+     die("Query Failed");
+    }
+            }     
 
 ?>
 
@@ -58,6 +68,8 @@ function total_count_register($conn){
     <!-- Custom CSS -->
     <link href="plugins/bower_components/chartist/dist/chartist.min.css" rel="stylesheet">
     <link rel="stylesheet" href="plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css">
+    
+
     <!-- Custom CSS -->
     <link href="css/style.min.css" rel="stylesheet">
 </head>
@@ -286,10 +298,30 @@ function total_count_register($conn){
                         </div>
                     </div>
                 </div>
-
+                <div class="col-lg-4 col-md-12">
+                        <div class="white-box analytics-info">
+                            <!-- Here are unique visitor  -->
+                            <h3 class="box-title">Total NewsLetter Subscribers </h3>
+                            <ul class="list-inline two-part d-flex align-items-center mb-0">
+                                <li>
+                                    <div id="sparklinedash4"><canvas width="67" height="30"
+                                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
+                                    </div>
+                                </li>
+                                <li class="ms-auto"><span class="counter text-danger"><?php print total_subs($conn)?></span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                <img src="/WebProject-SE371/img/AI_Gif.gif" >
+                </div>
+                
+                
                 
              
-
+            
               
             
             </div>
@@ -300,6 +332,7 @@ function total_count_register($conn){
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
+            
             <footer class="footer text-center"><img src="\WebProject-SE371\img\cdma2022_logo-removebg-preview.png" width="10%" alt="CDMA"><br> All rights are preserved for 2022 © CDMA  
             </footer>
             <!-- ============================================================== -->
@@ -310,6 +343,7 @@ function total_count_register($conn){
         <!-- End Page wrapper  -->
         <!-- ============================================================== -->
     </div>
+    
     <!-- ============================================================== -->
     <!-- End Wrapper -->
     <!-- ============================================================== -->
@@ -332,6 +366,7 @@ function total_count_register($conn){
     <script src="plugins/bower_components/chartist/dist/chartist.min.js"></script>
     <script src="plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
     <script src="js/pages/dashboards/dashboard1.js"></script>
+    
 </body>
 
 </html>
