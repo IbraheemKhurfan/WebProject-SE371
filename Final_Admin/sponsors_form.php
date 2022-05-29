@@ -293,6 +293,13 @@ $result1 = mysqli_query($conn, $query1) or die(mysqli_error($conn));
                             </a>
                         </li>
                         <li class="sidebar-item">
+                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="view_conference_chairs.php"
+                                aria-expanded="false">
+                                <i class="fas fa-users" aria-hidden="true"></i>
+                                <span class="hide-menu">Conference Chairs</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
                         <a class="sidebar-link waves-effect waves-dark sidebar-link" href="ProgramFile.php"
                                 aria-expanded="false">
                                 <i class="fas fa-file" aria-hidden="true"></i>
