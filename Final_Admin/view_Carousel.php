@@ -360,7 +360,7 @@ function lessThanFive(){
                                 }
                             ?>
 
-                                <h2 style="font-size: 2vw;" class="colorMain text-dark">Add Picture in Carouesel</h2>
+                                <h2 style="font-size: 2vw;" class="colorMain text-dark">Add Picture in Carousel</h2>
                                 <form action="" method="post" enctype="multipart/form-data">
                                     <div class="mb-5 mt-3">
                                             <label for="text" class="text-dark" style="font-size: 1vw;">Photo Tag:</label>
