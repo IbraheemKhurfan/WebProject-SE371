@@ -1,84 +1,11 @@
 <!DOCTYPE html>
 
-<?php
-session_start();
-include_once('dbconnect.php');
-include_once('checkExstension.php');
-# to keep track of errors we have these two variables: 
-
-    $error= false; 
-    $msg= "";
-if (isset($_POST['submit'])){
-
-    #mysqli_real_escape_string --> prevents sql injection attacks 
-    $tag = mysqli_real_escape_string($conn, $_POST['tag']);
-    #getting the image data
-    $carouselImage = mysqli_real_escape_string($conn, file_get_contents($_FILES["image"]["tmp_name"]));
-    $path = mysqli_real_escape_string($conn, $_FILES["image"]["name"]); 
-    $msg = "";   
-    #check if the ducome already exist
-    if(!exist($path,$tag)){
-        #we check if there is less than 5 reviews already
-        if (lessThanFive()) {
-            #we check if the extension was valid or not
-           if (substr_compare(checkExtension ($path),"valid",0)===0){
-            $sql = "INSERT INTO carousel (carousel_path, carousel_tag, carousel_image) VALUES ('$path', '$tag', '$carouselImage')";
-            $query = $conn->query($sql) or die(mysqli_error($conn)); 
-            $msg="Inserted Correctly! "; 
-        }
-        #if the extension is not valid
-        else{
-            $error = true; 
-            $msg =  checkExtension ($path); 
-        } 
-        }
-        else {
-            $error = true; 
-        $msg="The carousel has the maximum number of photos (5). Please delete some in admin page.";
-        }
-        
-
-
-    }
-    # if the recrd already exist we say an error. 
-    else {
-        $error = true; 
-        $msg="The photo already exists";
-    }
-    
-}
-
-
-function exist($path,$tag){
-    $sql = "select * from carousel where carousel_path ='$path' AND carousel_tag='$tag'"; 
-    $query = $GLOBALS['conn']->query($sql) or die(mysqli_error($GLOBALS['conn']));
-    $msg = ""; 
-    if (mysqli_num_rows($query)>0){
-        return true;  
-    }
-    else{
-        return false;
-    }
-
-}
-function lessThanFive(){
-    $sql = "select * from carousel"; 
-    $query = $GLOBALS['conn']->query($sql) or die(mysqli_error($GLOBALS['conn']));
-    $msg = ""; 
-    if (mysqli_num_rows($query)<5){
-        return true;  
-    }
-    else{
-        return false;
-    }
-
-}
-?>
-
 <?php 
-    // Query to display images
-    $query1 = "SELECT * FROM carousel";
-    $result1 = mysqli_query($conn,$query1);
+
+    include_once("dbconnect.php");
+    session_start();
+    $query = "SELECT * FROM committees";
+    $result = mysqli_query($conn,$query);
 
 ?>
 
@@ -100,12 +27,21 @@ function lessThanFive(){
     <link rel="icon" type="image/png" sizes="16x16" href="plugins/images/favicon.png">
     <!-- Custom CSS -->
    <link href="css/style.min.css" rel="stylesheet">
+
+  <!--Search Script --> 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+
+
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
+
 
 </head>
 
@@ -163,16 +99,29 @@ function lessThanFive(){
                     <ul class="navbar-nav ms-auto d-flex align-items-center">
 
                         <!-- ============================================================== -->
-                        <!-- Search -->
+                        <!-- Search Script --> 
                         <!-- ============================================================== -->
-                        <!-- <li class=" in">
+                        <script>
+                            $(document).ready(function(){
+                            $("#myInput").on("keyup", function() {
+                                var value = $(this).val().toLowerCase();
+                                $("#myTable tr").filter(function() {
+                                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                                });
+                            });
+                            });
+                        </script>
+                        <!-- ============================================================== -->
+                        <!-- Search --> 
+                        <!-- ============================================================== -->
+                        <li class=" in">
                             <form role="search" class="app-search d-none d-md-block me-3">
-                                <input type="text" placeholder="Search..." class="form-control mt-0">
+                                <input type="text" placeholder="Search..." id="myInput" class="form-control mt-0">
                                 <a href="" class="active">
                                     <i class="fa fa-search"></i>
                                 </a>
                             </form>
-                        </li> -->
+                        </li>
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
@@ -281,7 +230,7 @@ function lessThanFive(){
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Edit Carousel</h4>
+                        <h4 class="page-title">Edit Committees</h4>
                     </div>
                 </div>
                 <!-- /.col-lg-12 -->
@@ -299,37 +248,43 @@ function lessThanFive(){
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="white-box">
-                            <h3 class="box-title">Carousels Table</h3>
-                            <div class="table table-responsive table-hover">
+                            <h3 class="box-title">Committees Table</h3>
+                            <div class="table table-responsive table-hover ">
                                 <table class="table text-nowrap">
                                     <thead>
                                         <tr>
-                                            <th class="border-top-0">Image</th>
-                                            <th class="border-top-0">Delete</th>
+                                            <th class="border-top-0"><strong>Name</strong></th>
+                                            <th class="border-top-0"><strong>University</strong></th>
+                                            <th class="border-top-0"><strong>Country</strong></th>
+                                            <th class="border-top-0"><strong>Edit</strong></th>
+                                            <th class="border-top-0"><strong>Delete</strong></th>
                                         </tr>
                                     </thead>
 
                                     
                                     <?php 
-                                    $Image_Count=0;
-                                    while($row=mysqli_fetch_assoc($result1))
+                                    while($row=mysqli_fetch_assoc($result))
                                     {
-                                        $Image_Count++;
-                                        $ID = $row['carousel_id'];
-                                        $Path = $row['carousel_path'];
-                                        $Tag = $row['carousel_tag'];
+                                        $ID = $row['id'];
+                                        $Name = $row['name'];
+                                        $University = $row['university'];
+                                        $Country = $row['country'];
                                     ?>
 
-                                    <tbody>
+                                    <tbody id="myTable">
                                         <tr>
-                                            <td><?php echo '<img style=" height: 150px; width: 150px; " class="d-block" src="data:image/'.';base64,'.base64_encode($row['carousel_image']).'"/>'?> </td>
-                                            <td><a href="delete_carousel.php?Del=<?php echo $ID ?>">Delete</a></td>
+                                            <td><?php echo $Name ?></td>
+                                            <td><?php echo $University ?></td>
+                                            <td><?php echo $Country ?></td>
+                                            <td><a href="edit_committees.php?GetID=<?php echo $ID ?>">Edit</a></td>
+                                            <td><a href="delete_committees.php?Del=<?php echo $ID ?>">Delete</a></td>
                                         </tr>  
                                     </tbody>
 
                                     <?php 
                                     }  //Closing the Loop
                                     ?>
+                                    
                                 </table>
                             </div>
                         </div>
@@ -338,36 +293,25 @@ function lessThanFive(){
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="container text-white">
-
-                            <?php 
-                                if($Image_Count >= 5){
-                                    $value = "You Cannot Add More Than 5 Images!";
-                                    $disable = "disabled";
-                                }else{
-                                    $value = "Enter Photo Tag";
-                                    $disable = "";
-                                }
-                            ?>
-
-                                <h2 style="font-size: 2vw;" class="colorMain text-dark">Add Picture in Carouesel</h2>
-                                <form action="" method="post" enctype="multipart/form-data">
-                                    <div class="mb-5 mt-3">
-                                            <label for="text" class="text-dark" style="font-size: 1vw;">Photo Tag:</label>
-                                            <input type="text" class="form-control colorSecond"  name="tag" placeholder="<?php echo $value?>" required <?php echo $disable?>>
+                                <h2 style="font-size: 2vw;" class="colorMain text-dark">Add a Committee</h2>
+                                <form action="add_committees.php" method="post">
+                                    <div class="mb-1 mt-3">
+                                            <label for="name" class="text-dark" style="font-size: 1vw;">Name:</label>
+                                            <input type="text" class="form-control colorSecond"  name="name" placeholder="Enter Committee Name" required >
                                     </div>
-                                        <div class="mb-5 mt-3">
-                                        <label for="myfile" class="text-dark">Select a photo:</label>
-                                        <input type="file" id="image" name="image" required <?php echo $disable?>>
+                                    <div class="mb-1 mt-3">
+                                            <label for="university" class="text-dark" style="font-size: 1vw;">University:</label>
+                                            <input type="text" class="form-control colorSecond"  name="university" placeholder="Enter University" required >
                                     </div>
-                                    <div class="mb-5 mt-3">
-                                        <p style="font-size: 0.8vw; " class="text-dark"> <?php if($error) echo $msg ?></p>
-                                        <p style="font-size: 0.8vw; " class="text-dark"> <?php if(!$error) echo $msg ?></p>
+                                    <div class="mb-1 mt-3">
+                                            <label for="country" class="text-dark" style="font-size: 1vw;">Country:</label>
+                                            <input type="text" class="form-control colorSecond"  name="country" placeholder="Enter Country" required >
                                     </div>
-                                    <button type="submit" class="btn btn-primary" name="submit" value="submit" id="submit" <?php echo $disable?>>Submit</button>
+                                    <button type="submit" class="btn btn-primary" name="submit" value="submit" id="submit">Submit</button>
                                 </form>
-                            </div>
                         </div>
                     </div>
+                </div>
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->

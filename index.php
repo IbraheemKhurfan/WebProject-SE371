@@ -350,6 +350,13 @@ session_start();
         <!-- Author registration End-->
         
        <!--=====================COMMITTEES START=====================-->
+        <?php 
+            //Database Connection to committees table
+            include_once("dbconnect.php");
+            $query_com = "SELECT * FROM committees";
+            $result_com = mysqli_query($conn,$query_com);
+        ?>
+
        <div id="committees" class="container-fluid bg-light mb-5 ">
         <div class="container-fluid px-lg-5 p-3">
             <div class="row g-5 ">
@@ -363,86 +370,23 @@ session_start();
                         <div class="col-lg-8 text-lg-start wow fadeInUp" data-wow-delay="0.2s">
                             <h4 id="C_Technical " >Technical Program Committee</h4>
                             <br><br>
-                            <p class="text-dark wow fadeInUp" data-wow-delay="0.5s">
-                                Aafaque Khan, University of Toronto, Canada  <br>
-                                AbdulKarim Doufene, Massachusetts Institute of Technology, USA <br>
-                                Abdulrahman Abu Elkhail, Michigan University at Dearborn, USA <br>
-                                Adel Ammar, Prince Sultan University, Saudi Arabia <br>
-                                Ahmad Taher Azar, Prince Sultan University, Saudi Arabia  <br>
-                                Ahmed Reda Mahlous, Prince Sultan University, Saudi Arabia  <br>
-                                Alam Noor, Polytechnic of Porto, Portugal <br>
-                                Alexander Gelbukh, Instituto Politécnico Nacional, Mexico <br>
-                                Ali Hassani, Michigan University at Dearborn, USA <br>
-                                Ali Javed, Taxila University, Pakistan <br>
-                                Alireza Mohammadi, Michigan University at Dearborn, USA <br>
-                                Amjad Rehman, Prince Sultan University, Saudi Arabia  <br>
-                                Anis Koubaa, Prince Sultan University, Saudi Arabia  <br>
-                                Atif Shah, Oulu University, Finland <br>
-                                Aun Irtaza, Taxila University, Pakistan <br>
-                                Azzedine Zerguine, King Fahd University of Petroleum and Minerals, Saudi Arabia <br>
-                                Basit Qureshi, Prince Sultan University, Saudi Arabia  <br>
-                                Bilel Benjdira, Prince Sultan University, Saudi Arabia  <br>
-                                Fahad Alruwaili, Shaqra University, Saudi Arabia  <br>
-                                Faisal Nawab, University of California at Irvine, USA<br>
-                                Fatos Xhafa, Technical University of Catalonia, Spain <br>
-                                Fikret Gurgen, BoGhazi Univesrity, Turkey <br>
-                                Francesco Folino, ICAR-CNR, Italy <br>
-                                Galal Bin Makhashen, KFUPM, Saudi Arabia  <br>
-                                Hafiz Malik, University of Michigan-Dearborn, USA <br>
-                                Hamdi Aljamimi, King Fahd University of Petroleum and Minerals, Saudi Arabia <br>
-                                Hammad Dilpazir, Michigan University at Dearborn, USA <br>
-                                Hamzah Luqman, KFUPM, Saudi Arabia  <br>
-                                Hashim Ali, Michigan University at Dearborn, USA <br>
-                                Hassan Abbas, King Saud University, Saudi Arabia  <br>
-                                Imad Rida, Compiegne University, France <br>
-                                Imane Boudellioua, King Fahd University of Petroleum and Minerals, Saudi Arabia <br>
-                                Ingrid Fischer, University of Konstanz, Germany <br>
-                                Iqbal H. Sarker, International AIQT Foundation, Switzerland <br>
-                                Irfan Ahmad, KFUPM, Saudi Arabia  <br>
-                                Issam H. Laradji, ServiceNow Inc., Canada <br>
-                                Junaid Farooq, Michigan University at Dearborn, USA <br>
-                                Khaled Alotaibi, King Fahd University of Petroleum and Minerals, Saudi Arabia <br>
-                                Khalid Mahmood, Oaklan University, USA
-                                Lahouari Ghouti, Prince Sultan University, Saudi Arabia  <br>
-                                Liyakathunisa Syed, Taibah University, Saudi Arabia  <br>
-                                Louai Al-Awami, King Fahd University of Petroleum and Minerals, Saudi Arabia <br>
-                                Majed Aljefri, LearningBranch Inc., Canada <br>
-                                Mashaan Alshammari, University of Hail, Saudi Arabia <br>
-                                Moataz Ahmed, King Fahd University of Petroleum and Minerals, Saudi Arabia <br>
-                                Moayad Alnammi, King Fahd University of Petroleum and Minerals, Saudi Arabia <br>
-                                Mohamed Al-Affendi, Prince Sultan University, Saudi Arabia  <br>
-                                Mohamed Alkanhal, Prince Sultan University, Saudi Arabia  <br>
-                                Mohamed Deriche, King Fahd University of Petroleum and Minerals, Saudi Arabia <br>
-                                Mohamed Elbadrashiny, Aixplain Inc., USA <br>
-                                Mohamed-Chaker Larabi: Université de Poitiers, France  <br>
-                                Mohamed-Rafik Bouguelia, Halmstad University, Sweden. <br>
-                                Muazzam Siddiqui, King Abdulaziz University, Saudi Arabia <br>
-                                Muhamad Felemban, King Fahd University of Petroleum and Minerals, Saudi Arabia <br>
-                                Muhammad Imam, King Fahd University of Petroleum and Minerals, Saudi Arabia <br>
-                                Muna Al-Razgan, King Saud University, Saudi Arabia  <br>
-                                Nada Lachtar, Michigan University at Dearborn, USA <br>
-                                Panos Kalnis, King Abdullah University of Science and Technology, Saudi Arabia  <br>
-                                Paul Watta, Michigan University at Dearborn, USA <br>
-                                Pedro Henriques Abreu, FCTUC-DEI/CISUC, Portugal <br>
-                                Rabeah Alzaidy, King Fahd University of Petroleum and Minerals, Saudi Arabia <br>
-                                Raed Seetan, Slippery Rock University of Pennsylvania, USA <br>
-                                Rafi Ud Daula Refat, Michigan University at Dearborn, USA <br>
-                                Raghavendar Raghu Changalvala, Michigan University at Dearborn, USA <br>
-                                Rami S. Alkhawaldeh, University of Jordan, Jordan <br>
-                                Rehman Khan, Prince Sultan University, Saudi Arabia  <br>
-                                Samir Rawashdeh, Michigan University at Dearborn, USA <br>
-                                Sarab Almuhaideb, King Saud University, Saudi Arabia <br>
-                                Sergio A Velastin, Universidad Carlos III de Madrid, Spain <br>
-                                Tanzila Saba, Prince Sultan University, Saudi Arabia  <br>
-                                Turgay Celik, University of the Witwatersand, South Africa <br>
-                                Usman Naseem, Sydney University, Australia <br>
-                                Uthman Baroudi, KFUPM, Saudi Arabia  <br>
-                                Wadii Boulila, Prince Sultan University, Saudi Arabia  <br>
-                                Yacine Rebahi, Fraunhofer Fokus, Germany <br>
-                                Yousef Elarian, Cambrian College, Canada <br>
-                                Zahid Khan, Prince Sultan University, Saudi Arabia  <br>
-                                Zaid El-Shair, Michigan University at Dearborn, USA <br>
+                            
+                            <?php
+                                while($row_com=mysqli_fetch_assoc($result_com))
+                                    {
+                                        $ID = $row_com['id'];
+                                        $Name = $row_com['name'];
+                                        $University = $row_com['university'];
+                                        $Country = $row_com['country'];
+
+                            ?>
+                            <p class="text-muted wow fadeInUp">
+                                <?php echo $Name?>, <?php echo $University?>, <?php echo $Country?> <br>
                             </p>
+                            <?php
+                                //closing While loop
+                                }
+                            ?>
                         </div>
               
                         <div class="col-lg-4 text-lg-start wow fadeInUp" data-wow-delay="0.2s">

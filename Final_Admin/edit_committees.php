@@ -1,87 +1,21 @@
-<!DOCTYPE html>
-
 <?php
-session_start();
-include_once('dbconnect.php');
-include_once('checkExstension.php');
-# to keep track of errors we have these two variables: 
+    include_once("dbconnect.php");
+    session_start();
 
-    $error= false; 
-    $msg= "";
-if (isset($_POST['submit'])){
-
-    #mysqli_real_escape_string --> prevents sql injection attacks 
-    $tag = mysqli_real_escape_string($conn, $_POST['tag']);
-    #getting the image data
-    $carouselImage = mysqli_real_escape_string($conn, file_get_contents($_FILES["image"]["tmp_name"]));
-    $path = mysqli_real_escape_string($conn, $_FILES["image"]["name"]); 
-    $msg = "";   
-    #check if the ducome already exist
-    if(!exist($path,$tag)){
-        #we check if there is less than 5 reviews already
-        if (lessThanFive()) {
-            #we check if the extension was valid or not
-           if (substr_compare(checkExtension ($path),"valid",0)===0){
-            $sql = "INSERT INTO carousel (carousel_path, carousel_tag, carousel_image) VALUES ('$path', '$tag', '$carouselImage')";
-            $query = $conn->query($sql) or die(mysqli_error($conn)); 
-            $msg="Inserted Correctly! "; 
-        }
-        #if the extension is not valid
-        else{
-            $error = true; 
-            $msg =  checkExtension ($path); 
-        } 
-        }
-        else {
-            $error = true; 
-        $msg="The carousel has the maximum number of photos (5). Please delete some in admin page.";
-        }
-        
-
-
-    }
-    # if the recrd already exist we say an error. 
-    else {
-        $error = true; 
-        $msg="The photo already exists";
-    }
+    $ID = $_GET['GetID'];
+    $query = "SELECT * FROM committees WHERE id ='".$ID."'";
+    $result = mysqli_query($conn,$query);
     
-}
-
-
-function exist($path,$tag){
-    $sql = "select * from carousel where carousel_path ='$path' AND carousel_tag='$tag'"; 
-    $query = $GLOBALS['conn']->query($sql) or die(mysqli_error($GLOBALS['conn']));
-    $msg = ""; 
-    if (mysqli_num_rows($query)>0){
-        return true;  
+    while($row=mysqli_fetch_assoc($result))
+    {
+        $ID = $row['id'];
+        $Name = $row['name'];
+        $University = $row['university'];
+        $Country = $row['country'];
     }
-    else{
-        return false;
-    }
-
-}
-function lessThanFive(){
-    $sql = "select * from carousel"; 
-    $query = $GLOBALS['conn']->query($sql) or die(mysqli_error($GLOBALS['conn']));
-    $msg = ""; 
-    if (mysqli_num_rows($query)<5){
-        return true;  
-    }
-    else{
-        return false;
-    }
-
-}
 ?>
 
-<?php 
-    // Query to display images
-    $query1 = "SELECT * FROM carousel";
-    $result1 = mysqli_query($conn,$query1);
-
-?>
-
+<!DOCTYPE html>
 <html dir="ltr" lang="en">
 
 <head>
@@ -94,7 +28,7 @@ function lessThanFive(){
     <meta name="description"
         content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
-    <title>Edit Users</title>
+    <title>Edit User</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="plugins/images/favicon.png">
@@ -165,14 +99,14 @@ function lessThanFive(){
                         <!-- ============================================================== -->
                         <!-- Search -->
                         <!-- ============================================================== -->
-                        <!-- <li class=" in">
+                        <li class=" in">
                             <form role="search" class="app-search d-none d-md-block me-3">
                                 <input type="text" placeholder="Search..." class="form-control mt-0">
                                 <a href="" class="active">
                                     <i class="fa fa-search"></i>
                                 </a>
                             </form>
-                        </li> -->
+                        </li>
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
@@ -248,13 +182,6 @@ function lessThanFive(){
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="view_committees.php"
-                                aria-expanded="false">
-                                <i class="fas fa-users" aria-hidden="true"></i>
-                                <span class="hide-menu">Committees</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="404.php"
                                 aria-expanded="false">
                                 <i class="fa fa-info-circle" aria-hidden="true"></i>
@@ -274,15 +201,16 @@ function lessThanFive(){
         <!-- ============================================================== -->
         <!-- Page wrapper  -->
         <!-- ============================================================== -->
-        <div class="page-wrapper">
+        <div class="page-wrapper" style="min-height: 250px;">
             <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Edit Carousel</h4>
+                        <h4 class="page-title">Edit User</h4>
                     </div>
+   
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -297,77 +225,26 @@ function lessThanFive(){
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <div class="row">
-                    <div class="col-sm-12">
+                    <div class="col-md-12">
                         <div class="white-box">
-                            <h3 class="box-title">Carousels Table</h3>
-                            <div class="table table-responsive table-hover">
-                                <table class="table text-nowrap">
-                                    <thead>
-                                        <tr>
-                                            <th class="border-top-0">Image</th>
-                                            <th class="border-top-0">Delete</th>
-                                        </tr>
-                                    </thead>
-
-                                    
-                                    <?php 
-                                    $Image_Count=0;
-                                    while($row=mysqli_fetch_assoc($result1))
-                                    {
-                                        $Image_Count++;
-                                        $ID = $row['carousel_id'];
-                                        $Path = $row['carousel_path'];
-                                        $Tag = $row['carousel_tag'];
-                                    ?>
-
-                                    <tbody>
-                                        <tr>
-                                            <td><?php echo '<img style=" height: 150px; width: 150px; " class="d-block" src="data:image/'.';base64,'.base64_encode($row['carousel_image']).'"/>'?> </td>
-                                            <td><a href="delete_carousel.php?Del=<?php echo $ID ?>">Delete</a></td>
-                                        </tr>  
-                                    </tbody>
-
-                                    <?php 
-                                    }  //Closing the Loop
-                                    ?>
-                                </table>
-                            </div>
+                            <form action="update_committees.php?id=<?php echo $ID?>" method="post">
+                                <div class="mb-3 mt-3">
+                                  <label for="name">Name:</label>
+                                  <input type="name" class="form-control" id="name" name="name" value ="<?php echo $Name ?>">
+                                </div>
+                                <div class="mb-3 mt-3">
+                                  <label for="university">University:</label>
+                                  <input type="text" class="form-control" id="university" name="university" value ="<?php echo $University ?>">
+                                </div>
+                                <div class="mb-3 mt-3">
+                                  <label for="country">Country:</label>
+                                  <input type="text" class="form-control" id="country" name="country" value ="<?php echo $Country ?>">
+                                </div>
+                                <button class="btn btn-primary" name="save">Save</button>
+                            </form>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="container text-white">
-
-                            <?php 
-                                if($Image_Count >= 5){
-                                    $value = "You Cannot Add More Than 5 Images!";
-                                    $disable = "disabled";
-                                }else{
-                                    $value = "Enter Photo Tag";
-                                    $disable = "";
-                                }
-                            ?>
-
-                                <h2 style="font-size: 2vw;" class="colorMain text-dark">Add Picture in Carouesel</h2>
-                                <form action="" method="post" enctype="multipart/form-data">
-                                    <div class="mb-5 mt-3">
-                                            <label for="text" class="text-dark" style="font-size: 1vw;">Photo Tag:</label>
-                                            <input type="text" class="form-control colorSecond"  name="tag" placeholder="<?php echo $value?>" required <?php echo $disable?>>
-                                    </div>
-                                        <div class="mb-5 mt-3">
-                                        <label for="myfile" class="text-dark">Select a photo:</label>
-                                        <input type="file" id="image" name="image" required <?php echo $disable?>>
-                                    </div>
-                                    <div class="mb-5 mt-3">
-                                        <p style="font-size: 0.8vw; " class="text-dark"> <?php if($error) echo $msg ?></p>
-                                        <p style="font-size: 0.8vw; " class="text-dark"> <?php if(!$error) echo $msg ?></p>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary" name="submit" value="submit" id="submit" <?php echo $disable?>>Submit</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->
