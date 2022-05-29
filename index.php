@@ -356,7 +356,7 @@ session_start();
             $query_com = "SELECT * FROM committees";
             $result_com = mysqli_query($conn,$query_com);
 
-            $query_position= "SELECT position FROM conference_chairs";
+            $query_position= "SELECT DISTINCT position FROM conference_chairs";
             $result_position = mysqli_query($conn,$query_position);
         ?>
 
