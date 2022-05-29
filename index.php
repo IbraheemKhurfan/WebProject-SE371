@@ -773,41 +773,7 @@ session_start();
     </div>
         </div>
       <!-- Venue End  -->
-                        <!-- ******************************************************* -->
-                         <!-- ******************************************************* --> <!-- ******************************************************* -->
-
-                    <!-- Please make sure to put it above so the message shows up , also make sure it is done on email  -->
-
-                     <!-- ******************************************************* --> <!-- ******************************************************* -->
-                    <!-- Checking for Newsletter Subscrivtion  -->
-                    <?php
-                        if(isset($_POST['submit'])){
-                        //checking passwords are registration
-                        if(isset($_SESSION['LogIn'])){
-                            if($_SESSION['news_sub']!='1'){
-                                $email=$_SESSION['email'];
-                                $Query="UPDATE users SET news_sub ='1' where email='$email' ";
-                                $result=$conn->query($Query);
-                                $_SESSION['news_sub']='1';?>
-                                <div class="alert  alert-success alert-dismissible mt-5">
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                                    <strong>All Set!</strong> You have successfully subscribed to CDMA News Letter
-                                </div>
-                                <?php
-                            }else{?>
-                                <div class="alert  alert-danger alert-dismissible mt-5">
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                                    <strong>Error</strong> You are already Subscribed to CDMA News Letter
-                                </div>
-                        <?php 
-                            //else closing
-                            }
-                            }
-                            else{
-                                header('Location:LogIn.php');
-                            }
-                        }
-                        ?>
+                        
 
         <!-- Newsletter Start -->
         <div class="container-xxl py-5">
@@ -823,9 +789,9 @@ session_start();
                             <h3 class="text-white">Subscribe to Our Newsletter</h3>
                             <small class="text-white">CDMA2022</small>
                             <div class="position-relative w-100 mt-3">
-                                <form action="" method="post">
-                                    <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="text" placeholder="Enter Your Email" name="SubEmail" style="height: 48px;">
-                                    <button type="submit" name="submit" class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i class="fa fa-paper-plane pt-2 text-primary fs-4"></i></button>
+                                <form action="Check_Subscribtion.php" method="post">
+                                    <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="email" placeholder="Enter Your Email" name="SubEmail" style="height: 48px;">
+                                    <button type="submit" name="submit1" class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i class="fa fa-paper-plane pt-2 text-primary fs-4"></i></button>
                                 </form>
                             </div>
                         </div>
