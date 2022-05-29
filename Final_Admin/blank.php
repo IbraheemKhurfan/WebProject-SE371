@@ -225,9 +225,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="white-box">
-                        <?php
-                         include_once 'chart.php' ;
-                        ?>
+                        
                         </div>
                     </div>
                 </div>

@@ -175,6 +175,34 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="team_members.php"
+                                aria-expanded="false">
+                                <i class="fa fa-users" aria-hidden="true"></i>
+                                <span class="hide-menu">Team Members</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="sponsors_form.php"
+                                aria-expanded="false">
+                                <i class="fa fa-table" aria-hidden="true"></i>
+                                <span class="hide-menu">Sponsors</span>
+                                </a>
+                        </li>
+                        <li class="sidebar-item">
+                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="view_committees.php"
+                                aria-expanded="false">
+                                <i class="fas fa-users" aria-hidden="true"></i>
+                                <span class="hide-menu">Committees</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="ProgramFile.php"
+                                aria-expanded="false">
+                                <i class="fas fa-file" aria-hidden="true"></i>
+                                <span class="hide-menu">Program File</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="fontawesome.php"
                                 aria-expanded="false">
                                 <i class="fa fa-font" aria-hidden="true"></i>

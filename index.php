@@ -323,7 +323,7 @@ session_start();
                                 <h6 class="position-relative d-inline text-primary ps-4">CDMA2022</h6>
                                 <h2 class="mt-2">CDMA2022 PROGRAM</h2>
                             </div>
-                        <a href="Program_Files/ProgramFile.pdf" target="_blank"> <button id="Program-btn" type="button" class="btn btn-primary btn-lg rounded-pill wow fadeInUp" data-wow-delay="0.5s"> CDMA Program </button> </a>
+                        <a href="Final_Admin/Program_Files/ProgramFile.pdf" target="_blank"> <button id="Program-btn" type="button" class="btn btn-primary btn-lg rounded-pill wow fadeInUp" data-wow-delay="0.5s"> CDMA Program </button> </a>
                     </div>
                 </div>
             </div>

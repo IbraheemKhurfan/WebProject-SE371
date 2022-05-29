@@ -8,32 +8,54 @@
     
     //file upload path
     
-    $targetDir = "C:/xampp/htdocs/WebProject-SE371/Program_Files/";
+    $targetDir = getcwd()."//Program_Files/";
     // $fileName = basename($_FILES["file"]["name"]);
     $fileName= "ProgramFile.pdf";
+    
     $targetFilePath = $targetDir . $fileName;
     $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
-    
-    if(isset($_POST["submit"]) && !empty($_FILES["file"]["name"])) {
+    if(isset($_POST["submit"])) {
+        if(is_uploaded_file($_FILES["file"]["tmp_name"])){
         //allow certain file formats
         $allowTypes = array('pdf');
         if(in_array($fileType, $allowTypes)){
             //upload file to server
             if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){
-                $statusMsg = "The file ".$fileName. " has been uploaded.";
-                $sql = "INSERT INTO add_program(Program_Name,Program_file) VALUES ('$fileName','$targetFilePath')"; 
-                $query = $conn->query($sql) or die(mysqli_error($conn)); 
-            }else{
-                $statusMsg = "Sorry, there was an error uploading your file.";
+                $sql = "UPDATE add_program SET Program_Name='$fileName',Program_file='$targetFilePath'"; 
+                if($query = $conn->query($sql)){?>
+                    <div class="alert  alert-success alert-dismissible " style="width: 50%; margin-left: 20%; margin-top: 2%;" >
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        <strong>All Set!</strong> File Updated!
+                    </div>
+                
+                <?php
+                }
+                else{
+                    die(mysqli_error($conn));
+                    ?>
+                
+                <div class="alert  alert-danger alert-dismissible mt-5">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" style="width: 50%; margin-left: 20%; margin-top: 2%;"></button>
+                    <strong>Error</strong> Something Went Wrong,please check your connection! 
+                </div>
+                
+                <?php
+                //end of else statement 
+                } 
             }
-        }else{
-            $statusMsg = 'Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.';
         }
     }else{
-        $statusMsg = 'Please select a file to upload.';
-    }
+        ?>
+      <div class="alert  alert-danger alert-dismissible " style="width: 50%; margin-left: 20%; margin-top: 2%;" >
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        <strong>Error</strong> Please provide the file 
+                    </div>
     
-
+    <?php
+    //end of else statement 
+    } 
+    
+    }
     
 ?>
 <!DOCTYPE html>
@@ -214,16 +236,9 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="fontawesome.php"
-                                aria-expanded="false">
-                                <i class="fa fa-font" aria-hidden="true"></i>
-                                <span class="hide-menu">Icon</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="team_members.php"
                                 aria-expanded="false">
-                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <i class="fa fa-users" aria-hidden="true"></i>
                                 <span class="hide-menu">Team Members</span>
                             </a>
                         </li>
@@ -232,10 +247,27 @@
                                 aria-expanded="false">
                                 <i class="fa fa-table" aria-hidden="true"></i>
                                 <span class="hide-menu">Sponsors</span>
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="view_committees.php"
+                                </a>
+                        </li>
+                        <li class="sidebar-item">
+                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="view_committees.php"
                                 aria-expanded="false">
                                 <i class="fas fa-users" aria-hidden="true"></i>
                                 <span class="hide-menu">Committees</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="ProgramFile.php"
+                                aria-expanded="false">
+                                <i class="fas fa-file" aria-hidden="true"></i>
+                                <span class="hide-menu">Program File</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="fontawesome.php"
+                                aria-expanded="false">
+                                <i class="fa fa-font" aria-hidden="true"></i>
+                                <span class="hide-menu">Icon</span>
                             </a>
                         </li>
                         <li class="sidebar-item">

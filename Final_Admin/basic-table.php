@@ -138,10 +138,52 @@ session_start();?>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="basic-table.php"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="view_Users.php"
+                                aria-expanded="false">
+                                <i class="fa fa-columns" aria-hidden="true"></i>
+                                <span class="hide-menu">Users</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="view_Carousel.php"
                                 aria-expanded="false">
                                 <i class="fa fa-table" aria-hidden="true"></i>
-                                <span class="hide-menu">Basic Table</span>
+                                <span class="hide-menu">Carousel</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="Lab_form.php"
+                                aria-expanded="false">
+                                <i class="fa fa-table" aria-hidden="true"></i>
+                                <span class="hide-menu">Labs</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="team_members.php"
+                                aria-expanded="false">
+                                <i class="fa fa-users" aria-hidden="true"></i>
+                                <span class="hide-menu">Team Members</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="sponsors_form.php"
+                                aria-expanded="false">
+                                <i class="fa fa-table" aria-hidden="true"></i>
+                                <span class="hide-menu">Sponsors</span>
+                                </a>
+                        </li>
+                        <li class="sidebar-item">
+                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="view_committees.php"
+                                aria-expanded="false">
+                                <i class="fas fa-users" aria-hidden="true"></i>
+                                <span class="hide-menu">Committees</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="ProgramFile.php"
+                                aria-expanded="false">
+                                <i class="fas fa-file" aria-hidden="true"></i>
+                                <span class="hide-menu">Program File</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
@@ -152,38 +194,10 @@ session_start();?>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="view_Users.php"
-                                aria-expanded="false">
-                                <i class="fa fa-columns" aria-hidden="true"></i>
-                                <span class="hide-menu">Edit Users</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="AddCorusel&Lab.php"
-                                aria-expanded="false">
-                                <i class="fa fa-columns" aria-hidden="true"></i>
-                                <span class="hide-menu">Add Carousel & Lab</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="404.php"
                                 aria-expanded="false">
                                 <i class="fa fa-info-circle" aria-hidden="true"></i>
                                 <span class="hide-menu">Error 404</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="view_Carousel.php"
-                                aria-expanded="false">
-                                <i class="fa fa-table" aria-hidden="true"></i>
-                                <span class="hide-menu">Edit Carousel</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="Lab_form.php"
-                                aria-expanded="false">
-                                <i class="fa fa-table" aria-hidden="true"></i>
-                                <span class="hide-menu">Lab Add</span>
                             </a>
                         </li>
                     </ul>
