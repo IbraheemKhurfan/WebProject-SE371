@@ -407,7 +407,7 @@ session_start();
                                         $result_chair = mysqli_query($conn,$query_chair);
                                         ?>
                         <p class="text-dark wow fadeInUp" data-wow-delay="0.5s">
-                                        <b><?php print $Position ?></b><br>
+                                        <b><?php print $Position ?>:</b><br>
                                         <?php
                                         while($row_chair=mysqli_fetch_assoc($result_chair)){
                                         $Name = $row_chair['name'];
@@ -418,8 +418,9 @@ session_start();
                                         <?php print $Name?><br> 
                                 
                                         <?php }else{?>
+                                        <p class="text-dark wow fadeInUp" data-wow-delay="0.5s">
                                         <?php print $Name.",".$University." ".$Country ?><br> 
-                                    
+                                        </p>
                                     <?php } ?>
                          </p>
                             <?php
