@@ -33,6 +33,8 @@ session_start();
   <!--Search Script --> 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  
 </head>
 
 <body>
@@ -53,7 +55,7 @@ session_start();
         <!-- ============================================================== -->
         <!-- Topbar header - style you can find in pages.scss -->
         <!-- ============================================================== -->
-        <header class="topbar" data-navbarbg="skin5">
+        <header class="topbar " data-navbarbg="skin5">
             <nav class="navbar top-navbar navbar-expand-md navbar-dark">
                 <div class="navbar-header" data-logobg="skin6">
                     <!-- ============================================================== -->
@@ -94,7 +96,7 @@ session_start();
                             $(document).ready(function(){
                             $("#myInput").on("keyup", function() {
                                 var value = $(this).val().toLowerCase();
-                                $("#mylist div").filter(function() {
+                                $(".f-icon ").filter(function() {
                                 $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                                 });
                             });
@@ -136,14 +138,14 @@ session_start();
         <!-- ============================================================== -->
         <!-- Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
-        <aside class="left-sidebar" data-sidebarbg="skin6">
+        <aside class="left-sidebar " data-sidebarbg="skin6">
             <!-- Sidebar scroll-->
-            <div class="scroll-sidebar">
+            <div class="scroll-sidebar ">
                 <!-- Sidebar navigation-->
-                <nav class="sidebar-nav">
-                    <ul id="sidebarnav">
+                <nav class="sidebar-nav ">
+                    <ul id="sidebarnav ">
                         <!-- User Profile-->
-                        <li class="sidebar-item pt-2">
+                        <li class="sidebar-item pt-2 ">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="dashboard.php"
                                 aria-expanded="false">
                                 <i class="far fa-clock" aria-hidden="true"></i>
@@ -227,13 +229,13 @@ session_start();
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
-                <div class="row" id="mylist" >
+                <div class="row"  >
                     <div class="col-12" >
                         <div class="card" >
                             <div class="card-body" >
                                 <h4 class="card-title">Solid Icons</h4>
                                 <h6 class="card-subtitle">use the icon by just put class
-                                    <!--<code>fas fa-address-book</code>-->
+                                    <code>fas fa-address-book</code>
                                      in i tag </h6>
                                 <section>
                                     <div class="icon-list-demo row" >
