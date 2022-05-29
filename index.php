@@ -355,6 +355,9 @@ session_start();
             include_once("dbconnect.php");
             $query_com = "SELECT * FROM committees";
             $result_com = mysqli_query($conn,$query_com);
+
+            $query_chair = "SELECT * FROM conference_chairs";
+            $result_chair = mysqli_query($conn,$query_chair);
         ?>
 
        <div id="committees" class="container-fluid bg-light mb-5 ">
@@ -392,22 +395,30 @@ session_start();
                         <div class="col-lg-4 text-lg-start wow fadeInUp" data-wow-delay="0.2s">
                           <h4 id="C_Chairs">Conference Chairs</h4>
                           <br>
-                    <p class="text-dark wow fadeInUp" data-wow-delay="0.5s"> 
-                        <b>Steering Committee Chair:</b><br> Mohamed Alkanhal<br>
-                        <b>General Chair:</b><br> Lahouari Ghouti<br>
-                        <b>Program Co-Chairs:</b><br> Hafiz Malik, University of Michigan-Dearborn, USA and Tanzila Saba, Prince Sultan University, Saudi Arabia<br>
-                        <b>Publication Chair:</b><br> Basit Qureshi<br>
-                        <b>Panel Chair:</b><br> Sakhar Alkhereyf<br>
-                        <b>Keynotes Chair:</b><br> Mohamed Tounsi<br>
-                        <b>IEEE Liaison Committee Chair:</b><br> Mohamed Almuhaini<br>
-                        <b>Publicity Chair:</b><br> Yasir Javed<br>
-                        <b>Local Arrangements Chair:</b><br> Suliman Jaber<br>
-                        <b>Local Arrangements Assistant 1:</b><br> Mr. Majed Sagr<br>
-                        <b>Local Arrangements Assistant 2:</b><br> Mr. Saud Alhamami<br>
-                        <b>Sponsors and Treasurer:</b><br> Mohamed Alkanhal <br>
-                        <b>Tutorials/Demos/Posters Chair:</b><br> Mohammad Zarour<br>
-                        <b>Travel and Visa arrangements:</b><br> Abdullah Al Hashel
-                    </p>
+
+
+                          <?php
+                                while($row_com=mysqli_fetch_assoc($result_chair))
+                                    {
+                                        
+                                        
+                                        $Position = $row_com['position'];
+                                        $query_pos = "SELECT * FROM conference_chairs where position='$Position'";
+                                        $result_pos = mysqli_query($conn,$query_pos);
+                                        while($row_pos=mysqli_fetch_assoc($result_pos)){
+                                        $Name = $row_pos['name'];
+                                        $University = $row_pos['university'];
+                                        $Country = $row_pos['country'];
+                            ?>
+                            <p class="text-dark wow fadeInUp" data-wow-delay="0.5s">
+                            <b><?php print $Position ?></b><br><?php print $Name.",".$University.",".$Country ?><br> 
+                         </p>
+                            <?php
+                                //closing While loop
+                                }
+                            }
+                            ?>
+                 
                     </div>
                     </div>
                 </div>
