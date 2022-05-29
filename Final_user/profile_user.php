@@ -109,7 +109,7 @@ function test_input($data) {
                             <li class="nav-item dropdown ">
                                 <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" ><?php echo $_SESSION['name'] ?></a>
                                 <ul class="dropdown-menu">
-                                     <li><a class="dropdown-item" href="\WebProject-SE371\indexUser.php">Home</a></li>
+                                     <li><a class="dropdown-item" href="\WebProject-SE371\index.php">Home</a></li>
                                      <li><a class="dropdown-item" href="\WebProject-SE371\logout.php">Logout</a></li>
                                 </ul>
                             </li>
@@ -148,13 +148,7 @@ function test_input($data) {
                                 <span class="hide-menu">Profile</span>
                             </a>
                         </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="basic-table_user.php"
-                                aria-expanded="false">
-                                <i class="fa fa-table" aria-hidden="true"></i>
-                                <span class="hide-menu">Basic Table</span>
-                            </a>
-                        </li>
+                      
                        
                        
                     </ul>

@@ -766,7 +766,7 @@ session_start();
                         <!-- ******************************************************* -->
                          <!-- ******************************************************* --> <!-- ******************************************************* -->
 
-                    <!-- Please make sure to put it above so the message shows up , also make sure it is done on email -->
+                    <!-- Please make sure to put it above so the message shows up , also make sure it is done on email  -->
 
                      <!-- ******************************************************* --> <!-- ******************************************************* -->
                     <!-- Checking for Newsletter Subscrivtion  -->
