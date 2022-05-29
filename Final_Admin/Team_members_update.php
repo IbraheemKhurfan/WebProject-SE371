@@ -1,23 +1,106 @@
+<?php
+    include_once("dbconnect.php");
+    include_once('checkExstension.php');
+    session_start();
+
+    $ID = $_GET['GetID'];
+    $query = "SELECT * FROM team_members WHERE member_id ='$ID'";
+    $result = mysqli_query($conn,$query);
+    
+    while($row=mysqli_fetch_assoc($result))
+    {
+        $ID = $row['member_id'];
+        $Path_lab=$row['member_path'];
+        $Name = $row['member_name'];
+        $Description = $row['member_desc'];
+        $Link = $row['member_link'];
+        $Image=$row['member_image'];
+        
+    }
+
+    # to keep track of errors we have these two variables: 
+
+    $error= false; 
+    $msg= "";
+if (isset($_POST['submit'])){
+
+    #mysqli_real_escape_string --> prevents sql injection attacks 
+    $member_name = mysqli_real_escape_string($conn, $_POST['name']);
+    $member_desc = mysqli_real_escape_string($conn, $_POST['member_desc']);
+    $member_link =$_POST['link'];
+    #getting the image data
+    //checking if he is adding a photo or not 
+    if(is_uploaded_file($_FILES["image"]["tmp_name"])){  
+        $Image = mysqli_real_escape_string($conn, file_get_contents($_FILES["image"]["tmp_name"]));
+        $Path_lab = mysqli_real_escape_string($conn, $_FILES["image"]["name"]);     
+        $msg = "";   
+        #check if the ducome already exist
+           #we check if the extension was valid or not
+           if (substr_compare(checkExtension ($Path_lab),"valid",0)===0){
+                  
+            $sql = "UPDATE team_members SET  member_name = '$member_name', member_path='$Path_lab' ,member_desc = '$member_desc', member_link = '$member_link', member_image = '$Image' WHERE member_id  = '".$ID."' ";
+            $query = $conn->query($sql) or die(mysqli_error($conn)); 
+            $msg="Inserted Correctly! ";
+           header("location:team_members.php");
+        }
+        #if the extension is not valid
+        else{
+            $error = true; 
+            $msg =  checkExtension ($path); 
+        } 
+    }else{
+        $msg = "";   
+        #check if the ducome already exist
+               #we check if the extension was valid or not
+               if (substr_compare(checkExtension ($Path_lab),"valid",0)===0){
+                      
+                $sql = "UPDATE team_members SET  member_name = '$member_name' ,member_desc = '$member_desc', member_link = '$member_link' WHERE member_id  = '".$ID."' ";
+                $query = $conn->query($sql) or die(mysqli_error($conn)); 
+                $msg="Inserted Correctly! ";
+               header("location:team_members.php");
+            }
+            #if the extension is not valid
+            else{
+                $error = true; 
+                $msg =  checkExtension ($path); 
+            } 
+            
+    }
+     
+   
+        
+
+
+    
+   
+    
+}
+
+
+
+
+
+
+
+
+    
+?>
+
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-<?php
-include_once("dbconnect.php");
-session_start();
-function test_input($data) {
-	$data = trim($data);
-	$data = stripslashes($data);
-	$data = htmlspecialchars($data);
-	return $data;
-  }
-  ?>
-  
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Profile</title>
+    <meta name="keywords"
+        content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Ample lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Ample admin lite dashboard bootstrap 5 dashboard template">
+    <meta name="description"
+        content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
+    <meta name="robots" content="noindex,nofollow">
+    <title>Edit User</title>
+    <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="plugins/images/favicon.png">
     <!-- Custom CSS -->
@@ -28,7 +111,7 @@ function test_input($data) {
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
-
+  
 </head>
 
 <body>
@@ -63,7 +146,7 @@ function test_input($data) {
                         </b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
-                      
+                       
                     </a>
                     <!-- ============================================================== -->
                     <!-- End Logo -->
@@ -78,34 +161,27 @@ function test_input($data) {
                 <!-- End Logo -->
                 <!-- ============================================================== -->
                 <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
-                    <ul class="navbar-nav d-none d-md-block d-lg-none">
-                        <li class="nav-item">
-                            <a class="nav-toggler nav-link waves-effect waves-light text-white"
-                                href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
-                        </li>
-                    </ul>
+                   
                     <!-- ============================================================== -->
                     <!-- Right side toggle and nav items -->
                     <!-- ============================================================== -->
                     <ul class="navbar-nav ms-auto d-flex align-items-center">
-                        
+
                         <!-- ============================================================== -->
                         <!-- Search -->
                         <!-- ============================================================== -->
-                        <!-- <li class=" in">
+                        <li class=" in">
                             <form role="search" class="app-search d-none d-md-block me-3">
                                 <input type="text" placeholder="Search..." class="form-control mt-0">
                                 <a href="" class="active">
                                     <i class="fa fa-search"></i>
                                 </a>
                             </form>
-                        </li> -->
+                        </li>
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
                         <li>
-                            
-                                
                             <li class="nav-item dropdown ">
                                 <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" ><?php echo $_SESSION['name'] ?></a>
                                 <ul class="dropdown-menu">
@@ -114,15 +190,9 @@ function test_input($data) {
                                 </ul>
                             </li>
                         </li>
-                        
-                                
-                        </li>
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
-
-
-                        
                     </ul>
                 </div>
             </nav>
@@ -190,13 +260,6 @@ function test_input($data) {
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="view_committees.php"
-                                aria-expanded="false">
-                                <i class="fas fa-users" aria-hidden="true"></i>
-                                <span class="hide-menu">Committees</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="404.php"
                                 aria-expanded="false">
                                 <i class="fa fa-info-circle" aria-hidden="true"></i>
@@ -216,108 +279,19 @@ function test_input($data) {
         <!-- ============================================================== -->
         <!-- Page wrapper  -->
         <!-- ============================================================== -->
-        <div class="page-wrapper">
+        <div class="page-wrapper" style="min-height: 250px;">
             <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Profile page</h4>
+                        <h4 class="page-title">Edit User</h4>
                     </div>
-                 
+   
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
-            <!-- checking for the input and updating it   -->
-            <?php
-            if(isset($_POST['update_information_button'])){
-                $name=test_input($_POST['name']);
-                $org_email=$_SESSION['email'];
-                $email=test_input($_POST['email']);
-                $phone=test_input($_POST['phone-number']);
-                $Query="UPDATE users SET name='$name', email='$email', phonenum='$phone' where email='$org_email' ";
-                if($result=$conn->query($Query)){?>
-                    <div class="alert  alert-success alert-dismissible " style="width: 50%; margin-left: 20%; margin-top: 2%;" >
-                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                        <strong>All Set!</strong> Profile Updated!
-                    </div>
-                
-                <?php
-                $_SESSION['name']=$name;
-                $_SESSION['email']=$email;
-                $_SESSION['phonenum']=$phone;
-                //end of if statement 
-                }
-                
-                else{?>
-                
-                <div class="alert  alert-danger alert-dismissible mt-5">
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" style="width: 50%; margin-left: 20%; margin-top: 2%;"></button>
-                    <strong>Error</strong> Something Went Wrong,please check your connection! 
-                </div>
-                
-                <?php
-                //end of else statement 
-                }
-                //end of if statement 
-            }
-
-            if(isset($_POST['update_password_button'])){
-                $old_password=md5(test_input($_POST['old_password']));
-                $new_password=md5(test_input($_POST['new_password']));
-                $new_password_repeat=md5(test_input($_POST['new_password_repeat']));
-                if($old_password==$_SESSION['password']){
-                    if($new_password==$new_password_repeat){
-                        // update password 
-                        $org_email=$_SESSION['email'];
-                        $Query="UPDATE users SET password='$new_password' where email='$org_email' ";
-                        if($result=$conn->query($Query)){?>
-                            <div class="alert  alert-success alert-dismissible " style="width: 50%; margin-left: 20%; margin-top: 2%;" >
-                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                                <strong>All Set!</strong> Password Updated!
-                            </div>
-                        
-                            <?php
-                            $_SESSION['password']=$new_password;
-                            //end of if statement 
-                            }
-                            
-                        else{?>
-                            
-                            <div class="alert  alert-danger alert-dismissible" style="width: 50%; margin-left: 20%; margin-top: 2%;">
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" ></button>
-                                <strong>Error</strong> Something Went Wrong,please check your connection! 
-                            </div>
-                            
-                            <?php
-                            //end of else statement 
-                        }
-
-                    }else{?>
-                    
-                    <div class="alert  alert-danger alert-dismissible " style="width: 50%; margin-left: 20%; margin-top: 2%;">
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" > </button>
-                    <strong>Mismatch</strong> Please repeat same password correctly  
-                    </div>
-                    
-                    <?php
-
-                    }
-
-                }else{?>
-                
-                <div class="alert  alert-danger alert-dismissible " style="width: 50%; margin-left: 20%; margin-top: 2%;">
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" > </button>
-                    <strong>Mismatch</strong> Old password is wrong  
-                </div>
-                
-                <?php
-
-                }
-
-            }
-            ?>
             <!-- ============================================================== -->
             <!-- End Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
@@ -328,101 +302,37 @@ function test_input($data) {
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
-                <!-- Row -->
                 <div class="row">
-                    <!-- Column -->
-                    <div class="col-lg-4 col-xlg-3 col-md-12">
+                    <div class="col-md-12">
                         <div class="white-box">
-                            <div class="user-bg"> <img width="100%" alt="user" src="plugins/images/large/background.jpg">
-                                <div class="overlay-box">
-                                    <div class="user-content">
-                                        <!-- Admin info -->
-                                        <a href="javascript:void(0)"><img src="plugins/images/users/user.jpg"
-                                                class="thumb-lg img-circle" alt="img"></a>
-                                        <h4 class="text-white mt-2"><?php echo $_SESSION['name'] ?></h4>  
-                                        <h5 class="text-white mt-2"><?php echo $_SESSION['email'] ?></h5>
-                                    </div>
+                            <form action="" method="post" enctype="multipart/form-data">
+                                <div class="mb-3 mt-3">
+                                  <label for="name">Member Name:</label>
+                                  <input type="name" class="form-control" id="name" name="name" placeholder="Please provide the lab name" value ="<?php echo $Name ?>">
                                 </div>
-                            </div>
+                                <div class="mb-3 mt-3">
+                                  <label for="member_desc">Member brief description:</label>
+                                  <textarea class="form-control" rows="5" cols="20" id="member_desc" name="member_desc" placeholder="Please provide a brief description" ><?php echo $Description ?></textarea>
+                                  </div>
+                                <div class="mb-3 mt-3">
+                                  <label for="link">Member Linkedin link</label>
+                                  <input type="url" class="form-control" id="link" name="link" placeholder="Please provide the link for the lab Linkedin " value ="<?php echo $Link ?>">
+                                </div>
+                                <div class="mb-3 mt-3">
+                                  <label for="logo">Member Image:</label>
+                                  <br>
+                                  <br>
+                                  <?php echo '<img style=" height: 150px; width: 150px; " class="d-block" src="data:image/'.';base64,'.base64_encode($Image).'"/>'?> 
+                                  <br>
+                                  <input type="file" id="image" name="image" >
+                                  <br>
+                                  <br>
+                                </div>
+                                <button type="submit" class="btn btn-primary" name="submit" value="save" id="submit">Save</button>
+                            </form>
                         </div>
                     </div>
-                    <!-- Column -->
-                    <!-- Column -->
-                    <div class="col-lg-8 col-xlg-9 col-md-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <form class="form-horizontal form-material" method="post">
-                                    <div class="form-group mb-4">
-                                        <!-- put full name  -->
-                                        <label class="col-md-12 p-0">Full Name</label>
-                                        <div class="col-md-12 border-bottom p-0">
-                                            <input type="text" name="name" value="<?php echo $_SESSION['name'] ?>"
-                                                class="form-control p-0 border-0"> </div>
-                                    </div>
-                                    <!-- put email  -->
-                                    <div class="form-group mb-4">
-                                        <label for="example-email" class="col-md-12 p-0">Email</label>
-                                        <div class="col-md-12 border-bottom p-0">
-                                            <input type="email" name="email" value="<?php echo $_SESSION['email'] ?>"
-                                                class="form-control p-0 border-0" name="example-email"
-                                                id="example-email">
-                                        </div>
-                                    </div>
-                                    <!-- put phone number  -->
-                                    <div class="form-group mb-4">
-                                        <label class="col-md-12 p-0">Phone No</label>
-                                        <div class="col-md-12 border-bottom p-0">
-                                        <input type="tel" name="phone-number" id="phone-number" class="input-text" minlength="3"
-                                         maxlength="13" pattern="+9[1-9]{2}-[0-9]{3}-[0-9]{4}" value="<?php print $_SESSION['phonenum']?>" placeholder="Phone Number"  >
-                                        </div>
-                                    </div>
-                                    <!-- button for submitting  -->
-                                    <div class="form-group mb-4">
-                                        <div class="col-sm-12" >
-                                            <!-- Update Button -->
-                                            <input type="submit" name="update_information_button" class="btn btn-success" value="Update Profile">
-                                            
-                                        </div>
-                                    </div>
-
-
-
-
-                                    <!-- old password  -->
-                                    <div class="form-group mb-4">
-                                        <label class="col-md-12 p-0">Your Old Password</label>
-                                        <div class="col-md-12 border-bottom p-0">
-                                            <input type="password" name="old_password" class="form-control p-0 border-0">
-                                        </div>
-                                    </div>
-                                    <!-- new password  -->
-                                    <div class="form-group mb-4">
-                                        <label class="col-md-12 p-0">New Password</label>
-                                        <div class="col-md-12 border-bottom p-0">
-                                            <input type="password" name="new_password" minlength="4" class="form-control p-0 border-0">
-                                        </div>
-                                    </div>
-                                    <!-- new password repeat  -->
-                                    <div class="form-group mb-4">
-                                        <label class="col-md-12 p-0">Repeat New Password</label>
-                                        <div class="col-md-12 border-bottom p-0">
-                                            <input type="password"  name="new_password_repeat" minlength="4" class="form-control p-0 border-0">
-                                        </div>
-                                    </div>
-                                   
-                                    <div class="form-group mb-4">
-                                        <div class="col-sm-12" method="post">
-                                            <!-- Update Button -->
-                                            <button type="submit" name="update_password_button" class="btn btn-success">Update Password</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Column -->
                 </div>
-                <!-- Row -->
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->

@@ -216,6 +216,13 @@ function total_subs($conn){
                             </a>
                         </li>
                         <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="team_members.php"
+                                aria-expanded="false">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <span class="hide-menu">Team Members</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="view_committees.php"
                                 aria-expanded="false">
                                 <i class="fas fa-users" aria-hidden="true"></i>
