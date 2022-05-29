@@ -92,10 +92,12 @@ session_start();
                               <?php }?>
                        </div>
                        <?php
-                     if(!isset($_SESSION['LogIn'])){?>            
-                    <button class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3" onclick="window.open('SignUp.php','_self');" style="width:auto;">SignUp</button>
-                    <button class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3"onclick="window.open('Login.php','_self');" style="width:auto;">Login</button>  
-                    <?php }?>                  
+                     if(!isset($_SESSION['LogIn'])){
+                         ?>            
+                    <button class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3" onclick="window.open('SignUp.php')" style="width:auto;">SignUp</button>
+                    <button class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3" onclick="window.open('LogIn.php')" style="width:auto;">Login</button>  
+                    <?php  }
+                    ?>                  
                 </div>
             </nav>
 
@@ -111,13 +113,15 @@ session_start();
                         $email=$_SESSION['email'];
                         $Query="UPDATE users SET registration ='1' where email='$email' ";
                         $result=$conn->query($Query);
-                        $_SESSION['registration']='1';?>
+                        $_SESSION['registration']='1';
+                        ?>
                         <div class="alert  alert-success alert-dismissible mt-5">
                             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                             <strong>All Set!</strong> You have been registered successfully to CDMA 2022
                         </div>
                         <?php
-                    }else{?>
+                    }else{
+                        ?>
                         <div class="alert  alert-danger alert-dismissible mt-5">
                             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                             <strong>Error</strong> You are already register in the event
@@ -127,7 +131,13 @@ session_start();
                     }
                     }
                     else{
-                        header('Location:LogIn.php');
+                        ?>
+                        <div class="alert  alert-danger alert-dismissible mt-5">
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                            <strong>Please</strong> You need to Login first to register!
+                        </div>
+                <?php 
+                    //else closing
                     }
                 }
                 

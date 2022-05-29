@@ -59,7 +59,7 @@ function test_input($data) {
                         <!-- Logo icon -->
                         <b class="logo-icon">
                             <!-- Dark Logo icon -->
-                            <img src="plugins/images/cdma2022_logo-removebg-preview.png" width="200px" alt="homepage" />
+                            <a href="/WebProject-SE371/index.php">  <img  src="plugins/images/cdma2022_logo-removebg-preview.png" width="200px" alt="homepage" /></a>
                         </b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
@@ -92,14 +92,14 @@ function test_input($data) {
                         <!-- ============================================================== -->
                         <!-- Search -->
                         <!-- ============================================================== -->
-                        <li class=" in">
+                        <!-- <li class=" in">
                             <form role="search" class="app-search d-none d-md-block me-3">
                                 <input type="text" placeholder="Search..." class="form-control mt-0">
                                 <a href="" class="active">
                                     <i class="fa fa-search"></i>
                                 </a>
                             </form>
-                        </li>
+                        </li> -->
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
