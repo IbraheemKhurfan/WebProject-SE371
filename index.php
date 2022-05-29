@@ -295,21 +295,20 @@ session_start();
                 <h2 class="mt-2">Sponsors</h2>
             </div>
             <div class=" d-flex align-items-center mt-4 " >
-                <img width="150" height="100" class="img-fluid wow zoomIn    p-2" data-wow-delay="0.5s" src="img/Ministry-of-education.png">
-                <img width="150" height="100"  class="img-fluid wow zoomIn   p-2" data-wow-delay="0.5s" src="img/psu-logo-lightbg.png">
-                <img width="150" height="100"  class="img-fluid wow zoomIn   p-2" data-wow-delay="0.5s" src="img/CCIS.png">
-                <img width="150" height="100"  class="img-fluid wow zoomIn   p-2" data-wow-delay="0.5s" src="img/riclogo.png">
-                <img width="150" height="100"  class="img-fluid wow zoomIn   p-2" data-wow-delay="0.5s" src="img/IEEE-KSA.png">
-                <img width="150" height="100"  class="img-fluid wow zoomIn   p-2" data-wow-delay="0.5s" src="img/IEEE-region.png">
-                <img width="150" height="100"  class="img-fluid wow zoomIn   p-2" data-wow-delay="0.5s" src="img/IEEE.png">
-                <img width="150" height="100"  class="img-fluid wow zoomIn   p-2" data-wow-delay="0.5s" src="img/cps.png">
+               
+                <?php          
+                 $sql = "select * from sponsors"; //Limit is 5 because carousel won't work well after 5 images
+                 $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+                while ($row = mysqli_fetch_array($result)) : //Start of the loop
+                                    
+                $name=$row['sponsors_name'];
+                ?>
+                <!-- getting the button  -->
+                <?php echo '<img width="150" height="100" class="img-fluid wow zoomIn p-2" data-wow-delay="0.5s" data-wow-delay="0.5s" src="data:image/'.';base64,'.base64_encode($row['sponsors_image']).'" alt="'.$name.'"/>'?> 
+                                    
+                <?php endwhile; ?>
             </div>
-            <div class="wow zoomIn ms-5 me-5 text-center" data-wow-delay="0.5s">
-                <h6>The 7th CDMA 2022 is technnically 
-                    co-sponsored by IEEE Region 8, IEEE Saudi Arabia Section and IEEE SA Section Computer Chapter with IEEE MCE record #54072. 
-                    <br>All accepted papers will be included in the proceedings of the conference and would be 
-                    submitted to IEEE CPS and indexed in IEEE Explore Digital Library.</h6>
-            </div>
+           
         </div>
         <!-- Sponsors End  -->
 

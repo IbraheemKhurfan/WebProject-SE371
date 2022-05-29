@@ -4,17 +4,17 @@
     session_start();
 
     $ID = $_GET['GetID'];
-    $query = "SELECT * FROM team_members WHERE member_id ='$ID'";
+    $query = "SELECT * FROM sponsors WHERE sponsors_id ='$ID'";
     $result = mysqli_query($conn,$query);
     
     while($row=mysqli_fetch_assoc($result))
     {
-        $ID = $row['member_id'];
-        $Path_lab=$row['member_path'];
-        $Name = $row['member_name'];
-        $Description = $row['member_desc'];
-        $Link = $row['member_link'];
-        $Image=$row['member_image'];
+        $ID = $row['sponsors_id'];
+        $Path_lab=$row['sponsors_path'];
+        $Name = $row['sponsors_name'];
+        $Description = $row['sponsors_desc'];
+        $Link = $row['sponsors_link'];
+        $Image=$row['sponsors_image'];
         
     }
 
@@ -25,9 +25,9 @@
 if (isset($_POST['submit'])){
 
     #mysqli_real_escape_string --> prevents sql injection attacks 
-    $member_name = mysqli_real_escape_string($conn, $_POST['name']);
-    $member_desc = mysqli_real_escape_string($conn, $_POST['member_desc']);
-    $member_link =$_POST['link'];
+    $sponsors_name = mysqli_real_escape_string($conn, $_POST['name']);
+    $sponsors_desc = mysqli_real_escape_string($conn, $_POST['sponsors_desc']);
+    $sponsors_link =$_POST['link'];
     #getting the image data
     //checking if he is adding a photo or not 
     if(is_uploaded_file($_FILES["image"]["tmp_name"])){  
@@ -38,10 +38,10 @@ if (isset($_POST['submit'])){
            #we check if the extension was valid or not
            if (substr_compare(checkExtension ($Path_lab),"valid",0)===0){
                   
-            $sql = "UPDATE team_members SET  member_name = '$member_name', member_path='$Path_lab' ,member_desc = '$member_desc', member_link = '$member_link', member_image = '$Image' WHERE member_id  = '".$ID."' ";
+            $sql = "UPDATE sponsors SET  sponsors_name = '$sponsors_name', sponsors_path='$Path_lab' ,sponsors_desc = '$sponsors_desc', sponsors_link = '$sponsors_link', sponsors_image = '$Image' WHERE sponsors_id  = '".$ID."' ";
             $query = $conn->query($sql) or die(mysqli_error($conn)); 
             $msg="Inserted Correctly! ";
-           header("location:team_members.php");
+           header("location:sponsors_form.php");
         }
         #if the extension is not valid
         else{
@@ -54,10 +54,10 @@ if (isset($_POST['submit'])){
                #we check if the extension was valid or not
                if (substr_compare(checkExtension ($Path_lab),"valid",0)===0){
                       
-                $sql = "UPDATE team_members SET  member_name = '$member_name' ,member_desc = '$member_desc', member_link = '$member_link' WHERE member_id  = '".$ID."' ";
+                $sql = "UPDATE sponsors SET  sponsors_name = '$sponsors_name' ,sponsors_desc = '$sponsors_desc', sponsors_link = '$sponsors_link' WHERE sponsors_id  = '".$ID."' ";
                 $query = $conn->query($sql) or die(mysqli_error($conn)); 
                 $msg="Inserted Correctly! ";
-               header("location:team_members.php");
+               header("location:sponsors_form.php");
             }
             #if the extension is not valid
             else{
@@ -318,8 +318,8 @@ if (isset($_POST['submit'])){
                                   <input type="name" class="form-control" id="name" name="name" placeholder="Please provide the lab name" value ="<?php echo $Name ?>">
                                 </div>
                                 <div class="mb-3 mt-3">
-                                  <label for="member_desc">Member brief description:</label>
-                                  <textarea class="form-control" rows="5" cols="20" id="member_desc" name="member_desc" placeholder="Please provide a brief description" ><?php echo $Description ?></textarea>
+                                  <label for="sponsors_desc">Member brief description:</label>
+                                  <textarea class="form-control" rows="5" cols="20" id="sponsors_desc" name="sponsors_desc" placeholder="Please provide a brief description" ><?php echo $Description ?></textarea>
                                   </div>
                                 <div class="mb-3 mt-3">
                                   <label for="link">Member Linkedin link</label>

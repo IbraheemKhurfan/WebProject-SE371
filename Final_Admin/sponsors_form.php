@@ -3,20 +3,7 @@
     include_once('checkExstension.php');
     session_start();
 
-    $ID = $_GET['GetID'];
-    $query = "SELECT * FROM team_members WHERE member_id ='$ID'";
-    $result = mysqli_query($conn,$query);
-    
-    while($row=mysqli_fetch_assoc($result))
-    {
-        $ID = $row['member_id'];
-        $Path_lab=$row['member_path'];
-        $Name = $row['member_name'];
-        $Description = $row['member_desc'];
-        $Link = $row['member_link'];
-        $Image=$row['member_image'];
-        
-    }
+
 
     # to keep track of errors we have these two variables: 
 
@@ -25,67 +12,88 @@
 if (isset($_POST['submit'])){
 
     #mysqli_real_escape_string --> prevents sql injection attacks 
-    $member_name = mysqli_real_escape_string($conn, $_POST['name']);
-    $member_desc = mysqli_real_escape_string($conn, $_POST['member_desc']);
-    $member_link =$_POST['link'];
+    $sponsors_name = mysqli_real_escape_string($conn, $_POST['name']);
+    $sponsors_desc = mysqli_real_escape_string($conn, $_POST['sponsors_desc']);
+    $sponsors_link =$_POST['link'];
     #getting the image data
-    //checking if he is adding a photo or not 
-    if(is_uploaded_file($_FILES["image"]["tmp_name"])){  
-        $Image = mysqli_real_escape_string($conn, file_get_contents($_FILES["image"]["tmp_name"]));
-        $Path_lab = mysqli_real_escape_string($conn, $_FILES["image"]["name"]);     
-        $msg = "";   
-        #check if the ducome already exist
+    $sponsors_image = mysqli_real_escape_string($conn, file_get_contents($_FILES["image"]["tmp_name"]));
+    $path = mysqli_real_escape_string($conn, $_FILES["image"]["name"]); 
+    $msg = "";   
+    #check if the ducome already exist
+    if(!exist($path,$sponsors_name)){
+        #we check if there is less than 5 reviews already
+           
            #we check if the extension was valid or not
-           if (substr_compare(checkExtension ($Path_lab),"valid",0)===0){
-                  
-            $sql = "UPDATE team_members SET  member_name = '$member_name', member_path='$Path_lab' ,member_desc = '$member_desc', member_link = '$member_link', member_image = '$Image' WHERE member_id  = '".$ID."' ";
+           if (substr_compare(checkExtension ($path),"valid",0)===0){
+            $sql = "INSERT INTO sponsors (sponsors_path, sponsors_name,sponsors_desc,sponsors_link, sponsors_image) VALUES ('$path', '$sponsors_name','$sponsors_desc','$sponsors_link', '$sponsors_image')";
             $query = $conn->query($sql) or die(mysqli_error($conn)); 
-            $msg="Inserted Correctly! ";
-           header("location:team_members.php");
+            $msg="Inserted Correctly! "; 
         }
         #if the extension is not valid
         else{
             $error = true; 
             $msg =  checkExtension ($path); 
         } 
-    }else{
-        $msg = "";   
-        #check if the ducome already exist
-               #we check if the extension was valid or not
-               if (substr_compare(checkExtension ($Path_lab),"valid",0)===0){
-                      
-                $sql = "UPDATE team_members SET  member_name = '$member_name' ,member_desc = '$member_desc', member_link = '$member_link' WHERE member_id  = '".$ID."' ";
-                $query = $conn->query($sql) or die(mysqli_error($conn)); 
-                $msg="Inserted Correctly! ";
-               header("location:team_members.php");
-            }
-            #if the extension is not valid
-            else{
-                $error = true; 
-                $msg =  checkExtension ($path); 
-            } 
-            
-    }
-     
-   
+        
         
 
 
-    
-   
+    }
+    # if the recrd already exist we say an error. 
+    else {
+        $error = true; 
+        $msg="The photo already exists";
+    }
     
 }
 
 
+function exist($path,$sponsors_name){
+    $sql = "select * from sponsors where sponsors_path ='$path' AND sponsors_name='$sponsors_name'"; 
+    $query = $GLOBALS['conn']->query($sql) or die(mysqli_error($GLOBALS['conn']));
+    $msg = ""; 
+    if (mysqli_num_rows($query)>0){
+        return true;  
+    }
+    else{
+        return false;
+    }
+
+}
 
 
-
-
+    // $ID = $_GET['GetID'];
+    // $query = "SELECT * FROM users WHERE id ='".$ID."'";
+    // $result = mysqli_query($conn,$query);
+    
+    // while($row=mysqli_fetch_assoc($result))
+    // {
+    //     $ID = $row['id'];
+    //     $Name = $row['name'];
+    //     $Phone = $row['phonenum'];
+    //     $Email = $row['email'];
+    //     if($row['registration'] == 1){
+    //         $Registered = "Registered";
+    //     }else{
+    //         $Registered = "Not Registered";
+    //     }
+    //     if($row['Is_Admin'] == 1){
+    //         $Role = 'Admin';
+    //     }else{
+    //         $Role = 'User';
+    //     }
+    // }
 
 
     
 ?>
+<?php 
 
+
+$query1 = "select * from sponsors";
+$result1 = mysqli_query($conn, $query1) or die(mysqli_error($conn));
+
+?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -105,13 +113,19 @@ if (isset($_POST['submit'])){
     <link rel="icon" type="image/png" sizes="16x16" href="plugins/images/favicon.png">
     <!-- Custom CSS -->
    <link href="css/style.min.css" rel="stylesheet">
+
+
+  <!--Search Script --> 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
-  
+
 </head>
 
 <body>
@@ -140,7 +154,7 @@ if (isset($_POST['submit'])){
                     <!-- ============================================================== -->
                     <a class="navbar-brand" href="/WebProject-SE371/">
                         <!-- Logo icon -->
-                        <b class="logo-icon">
+                        <b class="image-icon">
                             <!-- Dark Logo icon -->
                             <img src="plugins/images/cdma2022_logo-removebg-preview.png" width="200px" alt="homepage" />
                         </b>
@@ -166,13 +180,25 @@ if (isset($_POST['submit'])){
                     <!-- Right side toggle and nav items -->
                     <!-- ============================================================== -->
                     <ul class="navbar-nav ms-auto d-flex align-items-center">
-
+                        <!-- ============================================================== -->
+                        <!-- Search Script --> 
+                        <!-- ============================================================== -->
+                        <script>
+                            $(document).ready(function(){
+                            $("#myInput").on("keyup", function() {
+                                var value = $(this).val().toLowerCase();
+                                $("#myTable tr").filter(function() {
+                                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                                });
+                            });
+                            });
+                        </script>
                         <!-- ============================================================== -->
                         <!-- Search -->
                         <!-- ============================================================== -->
                         <li class=" in">
                             <form role="search" class="app-search d-none d-md-block me-3">
-                                <input type="text" placeholder="Search..." class="form-control mt-0">
+                                <input type="text" placeholder="Search..." id="myInput" class="form-control mt-0">
                                 <a href="" class="active">
                                     <i class="fa fa-search"></i>
                                 </a>
@@ -286,6 +312,7 @@ if (isset($_POST['submit'])){
         <!-- ============================================================== -->
         <!-- Page wrapper  -->
         <!-- ============================================================== -->
+        
         <div class="page-wrapper" style="min-height: 250px;">
             <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
@@ -293,7 +320,7 @@ if (isset($_POST['submit'])){
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Edit User</h4>
+                        <h4 class="page-title">Add Sponsor</h4>
                     </div>
    
                 </div>
@@ -306,32 +333,98 @@ if (isset($_POST['submit'])){
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">
-                <!-- ============================================================== -->
-                <!-- Start Page Content -->
-                <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- Start Page Content -->
+                    <!-- ============================================================== -->
+        
+                    <div class="container-fluid">
+                    <!-- ============================================================== -->
+                    <!-- Start Page Content -->
+                    <!-- ============================================================== -->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="white-box">
+                                <h3 class="box-title">Sponsors Table</h3>
+                                <div class="table table-responsive table-hover ">
+                                    <table class="table text-nowrap">
+                                        <thead>
+                                            <tr>
+                                                <th class="border-top-0"><strong>ID</strong></th>
+                                                <th class="border-top-0"><strong>Name</strong></th>
+                                                <th class="border-top-0"><strong>Description</strong></th>
+                                                <th class="border-top-0"><strong>Sponsors Link</strong></th>
+                                                <th class="border-top-0"><strong>Image</strong></th>
+                                                <th class="border-top-0"><strong>Edit</strong></th>
+                                                <th class="border-top-0"><strong>Delete</strong></th>
+                                            </tr>
+                                        </thead>
+        
+                                        
+                                        <?php 
+                                        while($row=mysqli_fetch_assoc($result1))
+                                        {
+                                            $ID = $row['sponsors_id'];
+                                            $Name = $row['sponsors_name'];
+                                            $Description = $row['sponsors_desc'];
+                                            $Link = $row['sponsors_link'];
+                                            $Path = $row['sponsors_path'];
+                                        ?>
+    
+                                        <tbody id="myTable">
+                                            <tr style="height:200px">
+                                                <td><?php echo $ID ?></td>
+                                                <td ><?php echo $Name ?></td>
+                                                <td ><textarea name="" id="" disabled cols="30" rows="6"><?php echo $Description?></textarea></td>
+                                                <td><?php echo $Link ?></td>
+                                                <td><?php echo '<img style=" height: 150px; width: 150px; " class="d-block" src="data:image/'.';base64,'.base64_encode($row['sponsors_image']).'"/>'?> </td>
+                                                <td><a href="sponsors_update.php?GetID=<?php echo $ID ?>">Edit</a></td>
+                                                <td><a href="delete_sponsors.php?Del=<?php echo $ID ?>">Delete</a></td>
+                                            </tr>  
+                                        </tbody>
+                                        
+                                        <?php 
+                                        }  //Closing the Loop
+                                        ?>
+                                        
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- End PAge Content -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- Right sidebar -->
+                    <!-- ============================================================== -->
+                    <!-- .right-sidebar -->
+                    <!-- ============================================================== -->
+                    <!-- End Right sidebar -->
+                    <!-- ============================================================== -->
+            </div>
+
+
                 <div class="row">
                     <div class="col-md-12">
                         <div class="white-box">
                             <form action="" method="post" enctype="multipart/form-data">
                                 <div class="mb-3 mt-3">
-                                  <label for="name">Member Name:</label>
-                                  <input type="name" class="form-control" id="name" name="name" placeholder="Please provide the lab name" value ="<?php echo $Name ?>">
+                                  <label for="name">Sponsors Name:</label>
+                                  <input type="name" class="form-control" id="name" name="name" placeholder="Please provide the Sponsors name" value ="">
                                 </div>
                                 <div class="mb-3 mt-3">
-                                  <label for="member_desc">Member brief description:</label>
-                                  <textarea class="form-control" rows="5" cols="20" id="member_desc" name="member_desc" placeholder="Please provide a brief description" ><?php echo $Description ?></textarea>
+                                  <label for="sponsors_desc">Sponsors brief description:</label>
+                                  <textarea class="form-control" rows="5" id="sponsors_desc" name="sponsors_desc" placeholder="Please provide a brief description" value =""></textarea>
                                   </div>
                                 <div class="mb-3 mt-3">
-                                  <label for="link">Member Linkedin link</label>
-                                  <input type="url" class="form-control" id="link" name="link" placeholder="Please provide the link for the lab Linkedin " value ="<?php echo $Link ?>">
+                                  <label for="link">Sponsors link</label>
+                                  <input type="url" class="form-control" id="link" name="link" placeholder="Please provide the link for the Sponsors Sponsors " value ="https://www.psu.edu.sa/en">
                                 </div>
                                 <div class="mb-3 mt-3">
-                                  <label for="logo">Member Image:</label>
+                                  <label for="image">Sponsors Image:</label>
+                                  <p for="image">Please make sure the name of file has no (<span class="text-danger display-5">.</span>) <br> <span class="text-danger">Allowed types: "png", "jpeg", "svg", "webp", "jpg","jfif"</span></p>
                                   <br>
-                                  <br>
-                                  <?php echo '<img style=" height: 150px; width: 150px; " class="d-block" src="data:image/'.';base64,'.base64_encode($Image).'"/>'?> 
-                                  <br>
-                                  <input type="file" id="image" name="image" >
+                                  <input type="file" id="image" name="image" required>
                                   <br>
                                   <br>
                                 </div>
