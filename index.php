@@ -356,8 +356,8 @@ session_start();
             $query_com = "SELECT * FROM committees";
             $result_com = mysqli_query($conn,$query_com);
 
-            $query_chair = "SELECT * FROM conference_chairs";
-            $result_chair = mysqli_query($conn,$query_chair);
+            $query_position= "SELECT position FROM conference_chairs";
+            $result_position = mysqli_query($conn,$query_position);
         ?>
 
        <div id="committees" class="container-fluid bg-light mb-5 ">
@@ -398,20 +398,26 @@ session_start();
 
 
                           <?php
-                                while($row_com=mysqli_fetch_assoc($result_chair))
+                                while($row_pos=mysqli_fetch_assoc($result_position))
                                     {
                                         
                                         
-                                        $Position = $row_com['position'];
-                                        $query_pos = "SELECT * FROM conference_chairs where position='$Position'";
-                                        $result_pos = mysqli_query($conn,$query_pos);
-                                        while($row_pos=mysqli_fetch_assoc($result_pos)){
-                                        $Name = $row_pos['name'];
-                                        $University = $row_pos['university'];
-                                        $Country = $row_pos['country'];
+                                        $Position = $row_pos['position'];
+                                        $query_chair = "SELECT * FROM conference_chairs where position='$Position'";
+                                        $result_chair = mysqli_query($conn,$query_chair);
+                                        while($row_chair=mysqli_fetch_assoc($result_chair)){
+                                        $Name = $row_chair['name'];
+                                        $University = $row_chair['university'];
+                                        $Country = $row_chair['country'];
                             ?>
                             <p class="text-dark wow fadeInUp" data-wow-delay="0.5s">
-                            <b><?php print $Position ?></b><br><?php print $Name.",".$University.",".$Country ?><br> 
+                            <?php if($University=="" && $Country==""){?>
+                                <b><?php print $Position ?></b><br><?php print $Name?><br> 
+                                
+                                <?php }else{?>
+                                    <b><?php print $Position ?></b><br><?php print $Name.",".$University." ".$Country ?><br> 
+                                    
+                                    <?php } ?>
                          </p>
                             <?php
                                 //closing While loop
