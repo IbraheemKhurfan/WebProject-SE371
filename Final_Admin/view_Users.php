@@ -264,6 +264,7 @@
                                             <th class="border-top-0"><strong>Email</strong></th>
                                             <th class="border-top-0"><strong>Register</strong></th>
                                             <th class="border-top-0"><strong>Role</strong></th>
+                                            <th class="border-top-0"><strong>News Letter Subscribtion</strong></th>
                                             <th class="border-top-0"><strong>Edit</strong></th>
                                             <th class="border-top-0"><strong>Delete</strong></th>
                                         </tr>
@@ -287,7 +288,11 @@
                                         }else{
                                             $Role = "User";
                                         }
-                                        
+                                        if($row['news_sub'] == 1){
+                                            $Sub = "Subscribed";
+                                        }else{
+                                            $Sub = "Not Subscribed";
+                                        }
                                     ?>
 
                                     <tbody id="myTable">
@@ -298,6 +303,7 @@
                                             <td><?php echo $Email ?></td>
                                             <td><?php echo $Registered ?></td>
                                             <td><?php echo $Role ?></td>
+                                            <td><?php echo $Sub ?></td>
                                             <td><a href="edit.php?GetID=<?php echo $ID ?>">Edit</a></td>
                                             <td><a href="delete.php?Del=<?php echo $ID ?>">Delete</a></td>
                                         </tr>  

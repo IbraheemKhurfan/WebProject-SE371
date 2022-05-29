@@ -1,5 +1,6 @@
 <?php
     include_once("dbconnect.php");
+    session_start();
 
     if(isset($_POST['save']))
     {
@@ -19,8 +20,14 @@
        }else{
            $IsRegistered = 0;
        }
+       if(strtolower($_POST['sub']) == 'subscribed')
+       {
+           $Sub = 1;
+       }else{
+           $Sub = 0;
+       }
 
-       $query = "UPDATE users SET id = '".$UpdatedID."', name = '".$UpdatedName."', phonenum = '".$UpdatedPhone."', email = '".$UpdatedEmail."', Is_Admin = '".$IsAdmin."', registration = '$IsRegistered' WHERE id = '".$UpdatedID."' ";
+       $query = "UPDATE users SET id = '".$UpdatedID."', name = '".$UpdatedName."', phonenum = '".$UpdatedPhone."', email = '".$UpdatedEmail."', Is_Admin = '".$IsAdmin."', registration = '$IsRegistered', news_sub = '$Sub' WHERE id = '".$UpdatedID."' ";
        $result = mysqli_query($conn,$query);
 
        if($result){
