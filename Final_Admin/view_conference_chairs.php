@@ -300,8 +300,8 @@
                                             <td><?php echo $University ?></td>
                                             <td><?php echo $Country ?></td>
                                             <td><?php echo $Position ?></td>
-                                            <td><a href="edit_committees.php?GetID=<?php echo $ID ?>">Edit</a></td>
-                                            <td><a href="delete_committees.php?Del=<?php echo $ID ?>">Delete</a></td>
+                                            <td><a href="edit_conference_chairs.php?GetID=<?php echo $ID ?>">Edit</a></td>
+                                            <td><a href="delete_conference_chairs.php?Del=<?php echo $ID ?>">Delete</a></td>
                                         </tr>  
                                     </tbody>
 
